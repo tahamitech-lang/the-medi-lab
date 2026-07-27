@@ -10,22 +10,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 <meta name="google-site-verification" content="UttZrFIUuZTdt7b16Ezd-H5rTEt0HkCd8CuT2qq_Pu8" />
 
-<script>
-(function () {
-  var params = new URLSearchParams(window.location.search);
-  var hash = (window.location.hash || '').replace('#', '').toLowerCase();
-  var view = (params.get('view') || '').toLowerCase();
-  var wantsAuth = view === 'signup' || view === 'login' || hash === 'signup' || hash === 'register' || hash === 'login';
-
-  if (!wantsAuth) {
-    var isIndexEntry = /^\/?$/.test(window.location.pathname) || /\/index\.html?$/i.test(window.location.pathname);
-    if (isIndexEntry) {
-      window.location.replace('home.html');
-    }
-  }
-})();
-</script>
-
 <style>
 /* ═══════════════════════════════════════════
    RESET & BRAND TOKENS — matched to site
@@ -999,17 +983,13 @@ async function checkUser() {
     const { data: { user } } = await supabaseClient.auth.getUser();
     if (user) {
       console.log('User is already logged in:', user.email);
-      // Redirect to home if already logged in and not on home page
-      if (!window.location.pathname.includes('home.html')) {
-        window.location.href = 'home.html';
-      }
     }
   } catch (error) {
     console.error('Error checking user:', error);
   }
 }
 
-// Check user on page load
+// Check user on page load without forcing a redirect
 checkUser();
 
 </script>
