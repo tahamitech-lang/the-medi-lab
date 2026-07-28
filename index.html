@@ -992,6 +992,14 @@ async function checkUser() {
 // Check user on page load without forcing a redirect
 checkUser();
 
+(function(){
+  var authSession = localStorage.getItem('authSession');
+  var savedUser = localStorage.getItem('userData');
+  if (authSession || savedUser) {
+    window.location.replace('home.html');
+  }
+})();
+
 </script>
 </body>
 </html>

@@ -1020,6 +1020,15 @@ gsap.fromTo('.cta-section h2',
   setTimeout(tick,900);
 })();
 
+/* ── Auth-aware CTAs ── */
+(function(){
+  var hasSession = !!(localStorage.getItem('authSession') || localStorage.getItem('userData') || localStorage.getItem('emailConfirmed'));
+  if (!hasSession) return;
+  document.querySelectorAll('a[href*="index.html?view=signup"]').forEach(function(link){
+    link.setAttribute('href', 'home.html');
+  });
+})();
+
 /* ── Navbar scroll + scroll-top btn ── */
 var nav=document.getElementById('mainNav');
 var stb=document.getElementById('scrollTopBtn');
