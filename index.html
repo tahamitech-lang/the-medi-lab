@@ -752,7 +752,7 @@ function saveLocalAuthUser(userData){
 
 function redirectToHome(delay){
   setTimeout(function(){
-    window.location.href = 'home.html';
+    window.location.replace('home.html');
   }, delay || 1000);
 }
 
@@ -802,7 +802,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
           address: ''
         });
       }
-      showBanner('loginBanner', 'success', 'Login successful! Your email is marked as confirmed locally for this site.');
+      showBanner('loginBanner', 'success', 'Login successful! Redirecting to home...');
       redirectToHome(1000);
       return;
     }
@@ -815,7 +815,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
       email: data && data.user && data.user.email ? data.user.email : email.value,
       address: data && data.user && data.user.user_metadata ? (data.user.user_metadata.address || '') : ''
     });
-    showBanner('loginBanner', 'success', 'Login successful! Redirecting...');
+    showBanner('loginBanner', 'success', 'Login successful! Redirecting to home...');
     redirectToHome(1000);
 
   } catch (error) {
@@ -905,9 +905,9 @@ document.getElementById('signupForm').addEventListener('submit', async function(
     });
 
     if (error && isAuthBypassError(error)) {
-      showBanner('signupBanner', 'success', 'Account created successfully. Your email is marked as confirmed locally for this site.');
+      showBanner('signupBanner', 'success', 'Account created successfully! Redirecting to home...');
     } else {
-      showBanner('signupBanner', 'success', 'Registration successful! Please check your email for verification.');
+      showBanner('signupBanner', 'success', 'Registration successful! Redirecting to home...');
     }
 
     redirectToHome(1500);
@@ -923,7 +923,7 @@ document.getElementById('signupForm').addEventListener('submit', async function(
         email: email.value,
         address: address.value.trim()
       });
-      showBanner('signupBanner', 'success', 'Account created successfully. Your email is marked as confirmed locally for this site.');
+      showBanner('signupBanner', 'success', 'Account created successfully! Redirecting to home...');
       redirectToHome(1500);
       return;
     }
@@ -989,16 +989,8 @@ async function checkUser() {
   }
 }
 
-// Check user on page load without forcing a redirect
+// Only check auth status; do not redirect on page load.
 checkUser();
-
-(function(){
-  var authSession = localStorage.getItem('authSession');
-  var savedUser = localStorage.getItem('userData');
-  if (authSession || savedUser) {
-    window.location.replace('home.html');
-  }
-})();
 
 </script>
 </body>
