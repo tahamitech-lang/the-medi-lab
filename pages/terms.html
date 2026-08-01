@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Service | Medicare Laboratory</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Terms of Service of The Medicare Laboratory & Diagnostic Center. Read our terms, conditions, and legal policies before using our services." />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+            <!-- ═══ FAVICON - Lab Logo ═══ -->
+    <link rel="icon" type="image/png" sizes="any" href="../images/logo icon.png" />
+    <link rel="icon" type="image/x-icon" href="../images/logo icon.png" />
+    <link rel="apple-touch-icon" href="../images/logo icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logo icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/logo icon.png" />
+    
+    <!-- ═══ Fonts & CSS ═══ -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+
+    <style>
+        /* ── RESET & VARIABLES (exactly matching your main theme) ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d970d;
+            --primary-dark: #2d9c21;
+            --secondary-color: #4ff054;
+            --accent-color: #0f550b;
+            --light-blue-bg: #e6f2ff;
+            --dark-bg: #0f1419;
+            --light-bg: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 20px rgba(32, 180, 42, .8);
+            --shadow-hover: 0 8px 30px rgba(35, 189, 96, .8);
+            --radius: 16px;
+            --transition: .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ── NAVBAR (matching your theme) ── */
+        nav {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: background .4s, padding .4s, box-shadow .4s;
+        }
+
+        nav.nav-scrolled {
+            background: rgba(10, 28, 8, .95);
+            backdrop-filter: blur(18px);
+            padding: .65rem 0;
+            box-shadow: 0 2px 32px rgba(0, 0, 0, .4);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .logo-img {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid rgba(79, 240, 84, .6);
+            box-shadow: 0 0 14px rgba(79, 240, 84, .4);
+            transition: transform .4s, box-shadow .4s;
+        }
+
+        .logo:hover .logo-img {
+            transform: rotate(8deg) scale(1.1);
+            box-shadow: 0 0 24px rgba(79, 240, 84, .8);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav ul a {
+            color: rgba(255, 255, 255, .9);
+            font-weight: 500;
+            font-size: .95rem;
+            transition: color .3s;
+            position: relative;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width .3s;
+        }
+
+        nav ul a:hover {
+            color: #fff;
+        }
+        nav ul a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--secondary-color), #175308) !important;
+            color: #fff !important;
+            padding: .65rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            box-shadow: 0 4px 16px rgba(79, 240, 84, .45);
+            transition: transform .3s, box-shadow .3s !important;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(79, 240, 84, .7) !important;
+        }
+        .cta-btn::after {
+            display: none !important;
+        }
+
+        /* ── HERO (Page Title) ── */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #71c860 50%, var(--primary-dark) 100%);
+            color: #fff;
+            padding: 140px 2rem 70px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            opacity: .3;
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 900;
+            margin-bottom: .5rem;
+        }
+
+        .page-hero .breadcrumb {
+            font-size: 1rem;
+            opacity: .85;
+        }
+
+        .page-hero .breadcrumb i {
+            margin: 0 .4rem;
+            font-size: .7rem;
+        }
+
+        .page-hero .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: rgba(255, 255, 255, .12);
+            border: 1px solid rgba(255, 255, 255, .25);
+            padding: .4rem 1.2rem;
+            border-radius: 50px;
+            font-size: .88rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .95);
+            margin-bottom: 1.2rem;
+        }
+
+        .page-hero .hero-badge i {
+            color: var(--secondary-color);
+        }
+
+        /* ── TERMS CONTENT ── */
+        .terms-section {
+            padding: 80px 2rem;
+            background: var(--light-blue-bg);
+        }
+
+        .terms-container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3.5rem 4rem;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .06);
+            border: 1px solid rgba(45, 151, 13, .08);
+        }
+
+        .terms-container .last-updated {
+            color: var(--text-light);
+            font-size: .9rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .terms-container .last-updated i {
+            color: var(--primary-color);
+            margin-right: .4rem;
+        }
+
+        .terms-container h2 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 2.2rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .terms-container h2 i {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+            width: 2rem;
+            text-align: center;
+        }
+
+        .terms-container h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .terms-container p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .terms-container ul {
+            margin: 1.2rem 0 1.8rem 1.8rem;
+            color: var(--text-light);
+        }
+
+        .terms-container ul li {
+            margin-bottom: .6rem;
+            list-style-type: disc;
+        }
+
+        .terms-container ul li strong {
+            color: var(--text-dark);
+        }
+
+        .terms-container ol {
+            margin: 1.2rem 0 1.8rem 2.2rem;
+            color: var(--text-light);
+        }
+
+        .terms-container ol li {
+            margin-bottom: .6rem;
+        }
+
+        .terms-container ol li strong {
+            color: var(--text-dark);
+        }
+
+        .terms-highlight {
+            background: linear-gradient(135deg, rgba(45, 151, 13, .06), rgba(79, 240, 84, .08));
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            margin: 1.8rem 0;
+        }
+
+        .terms-highlight p {
+            margin-bottom: 0;
+        }
+
+        .terms-highlight i {
+            color: var(--primary-color);
+            margin-right: .6rem;
+        }
+
+        .terms-highlight.warning {
+            border-left-color: #f39c12;
+            background: linear-gradient(135deg, rgba(243, 156, 18, .06), rgba(243, 156, 18, .1));
+        }
+
+        .terms-highlight.warning i {
+            color: #f39c12;
+        }
+
+        .terms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .terms-grid .term-card {
+            background: var(--light-blue-bg);
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .terms-grid .term-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-color);
+            box-shadow: 0 8px 24px rgba(45, 151, 13, .12);
+        }
+
+        .terms-grid .term-card i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: .3rem;
+            display: block;
+        }
+
+        .terms-grid .term-card span {
+            font-weight: 600;
+            font-size: .9rem;
+            color: var(--text-dark);
+        }
+
+        /* ── BACK BUTTON ── */
+        .back-home-wrap {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .back-home-wrap .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: .9rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            transition: all .35s ease;
+            box-shadow: 0 4px 20px rgba(45, 151, 13, .35);
+        }
+
+        .back-home-wrap .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(45, 151, 13, .5);
+        }
+
+        .back-home-wrap .btn-primary i {
+            margin-right: .6rem;
+        }
+
+        .back-home-wrap .btn-secondary-outline {
+            background: transparent;
+            color: var(--primary-color);
+            padding: .9rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            transition: all .35s ease;
+            border: 2px solid var(--primary-color);
+            margin-left: .8rem;
+        }
+
+        .back-home-wrap .btn-secondary-outline:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ── FOOTER (matching your theme) ── */
+        footer {
+            background: var(--dark-bg);
+            color: #fff;
+            padding: 55px 2rem 28px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: .95rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section li {
+            margin-bottom: .5rem;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, .6);
+            font-size: .88rem;
+            transition: color .3s, padding-left .3s;
+        }
+        .footer-section a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(58, 185, 53, .35);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, .45);
+            font-size: .83rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-container ul {
+                display: none;
+            }
+
+            .terms-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .terms-container h2 {
+                font-size: 1.4rem;
+            }
+
+            .page-hero {
+                padding: 120px 1.5rem 50px;
+            }
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .back-home-wrap .btn-secondary-outline {
+                margin-left: 0;
+                margin-top: .8rem;
+            }
+
+            .terms-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .terms-container {
+                padding: 1.5rem 1rem;
+            }
+            .terms-highlight {
+                padding: 1rem;
+            }
+            .terms-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══ NAVBAR ═══ -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <img src="../images/Lab Logo.png" alt="Lab Logo" class="logo-img" />
+                <span>The Medicare Laboratory &amp; Diagnostic Center</span>
+            </a>
+            <ul>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="../home.html#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="#" class="cta-btn" onclick="alert('🛒 Order Now\n\nThis service is currently unavailable.\nWe are upgrading our ordering system and will be available very soon.\n\nThank you for your patience!'); return false;">Order Now</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══ PAGE HERO ═══ -->
+    <section class="page-hero">
+        <div class="hero-content" data-aos="fade-up">
+            <div class="hero-badge">
+                <i class="fas fa-gavel"></i>
+                Legal Agreement · Effective July 2026
+            </div>
+            <h1>Terms of Service</h1>
+            <p class="breadcrumb">
+                <a href="home.html">Home</a> <i class="fas fa-chevron-right"></i> Terms of Service
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ TERMS OF SERVICE CONTENT ═══ -->
+    <section class="terms-section">
+        <div class="terms-container" data-aos="fade-up">
+
+            <!-- Last Updated -->
+            <div class="last-updated">
+                <i class="fas fa-calendar-alt"></i>
+                Last Updated: <strong>July 30, 2026</strong> &nbsp;|&nbsp;
+                <i class="fas fa-clock"></i> Version 1.0
+            </div>
+
+            <!-- 1. Acceptance of Terms -->
+            <h2><i class="fas fa-check-circle"></i> 1. Acceptance of Terms</h2>
+            <p>
+                By using the website and services of <strong>The Medicare Laboratory &amp; Diagnostic Center</strong> ("we," "us," "our"), you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services.
+            </p>
+            <p>
+                We reserve the right to update or modify these terms at any time without prior notice. Your continued use constitutes acceptance of the updated terms.
+            </p>
+
+            <!-- 2. Services Provided -->
+            <h2><i class="fas fa-flask"></i> 2. Services Provided</h2>
+            <p>
+                The Medicare Laboratory &amp; Diagnostic Center provides diagnostic and medical testing services, including but not limited to:
+            </p>
+            <ul>
+                <li><strong>Blood Tests:</strong> Complete blood count, biochemistry, hormone panels, and infectious disease screening.</li>
+                <li><strong>Microbiology:</strong> Culture sensitivity, bacterial identification, and antimicrobial testing.</li>
+                <li><strong>Health Checkups:</strong> Comprehensive health packages for preventive care.</li>
+                <li><strong>Home Collection:</strong> Free sample collection at your doorstep.</li>
+            </ul>
+            <p>
+                All services are provided in accordance with applicable medical standards and regulations in Pakistan.
+            </p>
+
+            <!-- 3. User Obligations -->
+            <h2><i class="fas fa-user-check"></i> 3. User Obligations</h2>
+            <p>When using our services, you agree to:</p>
+            <ul>
+                <li>Provide accurate, complete, and up-to-date personal and medical information.</li>
+                <li>Follow all instructions provided by our medical staff and technicians.</li>
+                <li>Inform us of any known allergies, medical conditions, or medications before testing.</li>
+                <li>Pay all fees associated with the services you request.</li>
+                <li>Use our website and services only for lawful purposes.</li>
+            </ul>
+
+            <div class="terms-highlight">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> Failure to provide accurate medical information may result in incorrect test results and potential health risks. We are not liable for any consequences arising from inaccurate information provided by you.</p>
+            </div>
+
+            <!-- 4. Appointment & Cancellation -->
+            <h2><i class="fas fa-calendar-check"></i> 4. Appointments &amp; Cancellations</h2>
+            <p>
+                We strive to accommodate all appointment requests. Please note the following:
+            </p>
+            <ul>
+                <li><strong>Scheduling:</strong> Appointments can be scheduled online, by phone, or in person.</li>
+                <li><strong>Cancellations:</strong> Please notify us at least <strong>4 hours</strong> in advance for cancellations or rescheduling.</li>
+                <li><strong>No-Show Policy:</strong> Repeated no-shows may result in a cancellation fee or restriction of future appointments.</li>
+                <li><strong>Emergency Cases:</strong> Priority is given to emergency and urgent cases.</li>
+            </ul>
+
+            <!-- 5. Fees & Payments -->
+            <h2><i class="fas fa-credit-card"></i> 5. Fees &amp; Payments</h2>
+            <p>
+                All fees for diagnostic services are clearly communicated before testing. Payment is due at the time of service unless otherwise agreed in writing.
+            </p>
+            <ul>
+                <li>We accept cash, bank transfers, and online payments.</li>
+                <li>Prices are subject to change without notice. However, confirmed orders will be honored at the quoted price.</li>
+                <li>Insurance claims are processed as per the patient's insurance policy terms.</li>
+                <li>Refunds for canceled tests are processed within <strong>7-10 business days</strong>.</li>
+            </ul>
+
+            <div class="terms-highlight warning">
+                <p><i class="fas fa-exclamation-circle"></i> <strong>Note:</strong> All payments are in Pakistani Rupees (PKR) unless otherwise specified. International transactions may incur additional bank charges.</p>
+            </div>
+
+            <!-- 6. Medical Disclaimer -->
+            <h2><i class="fas fa-heartbeat"></i> 6. Medical Disclaimer</h2>
+            <p>
+                The test results and reports provided by The Medicare Laboratory are for <strong>informational and diagnostic purposes only</strong>. They are not a substitute for professional medical advice, diagnosis, or treatment.
+            </p>
+            <p>
+                Always consult a qualified healthcare provider regarding your test results and any health concerns. We do not provide medical treatment or prescribe medications.
+            </p>
+
+            <div class="terms-highlight warning">
+                <p><i class="fas fa-exclamation-triangle"></i> <strong>Emergency Warning:</strong> If you are experiencing a medical emergency, call <strong>1122</strong> (ambulance) immediately or go to the nearest emergency room. Do not rely on this website for emergency care.</p>
+            </div>
+
+            <!-- 7. Intellectual Property -->
+            <h2><i class="fas fa-copyright"></i> 7. Intellectual Property</h2>
+            <p>
+                All content on this website, including but not limited to text, graphics, logos, images, and software, is the property of The Medicare Laboratory &amp; Diagnostic Center and is protected by copyright and intellectual property laws.
+            </p>
+            <p>
+                You may not reproduce, distribute, modify, or create derivative works of any content without our express written permission.
+            </p>
+
+            <!-- 8. Limitation of Liability -->
+            <h2><i class="fas fa-shield-alt"></i> 8. Limitation of Liability</h2>
+            <p>
+                To the fullest extent permitted by law, The Medicare Laboratory &amp; Diagnostic Center shall not be liable for:
+            </p>
+            <ul>
+                <li>Any indirect, incidental, or consequential damages arising from the use of our services.</li>
+                <li>Errors or inaccuracies in test results caused by factors beyond our control.</li>
+                <li>Delays or disruptions in service due to technical issues, natural disasters, or other events.</li>
+                <li>Unauthorized access to or use of your data despite our security measures.</li>
+            </ul>
+            <p>
+                Our total liability is limited to the amount you paid for the specific service in question.
+            </p>
+
+            <!-- 9. User Conduct -->
+            <h2><i class="fas fa-gavel"></i> 9. User Conduct</h2>
+            <p>When using our website or services, you agree not to:</p>
+            <ul>
+                <li>Violate any applicable laws or regulations.</li>
+                <li>Post, transmit, or distribute any harmful, defamatory, or obscene content.</li>
+                <li>Attempt to gain unauthorized access to our systems or data.</li>
+                <li>Impersonate any person or entity or misrepresent your identity.</li>
+                <li>Interfere with the operation of our website or services.</li>
+            </ul>
+
+            <!-- 10. Third-Party Links -->
+            <h2><i class="fas fa-link"></i> 10. Third-Party Links</h2>
+            <p>
+                Our website may contain links to third-party websites for your convenience. We do not endorse or assume responsibility for the content, privacy policies, or practices of any third-party sites. Access these links at your own risk.
+            </p>
+
+            <!-- 11. Termination -->
+            <h2><i class="fas fa-ban"></i> 11. Termination</h2>
+            <p>
+                We reserve the right to suspend or terminate your access to our website and services at any time, without notice, for any reason, including but not limited to:
+            </p>
+            <ul>
+                <li>Violation of these Terms of Service.</li>
+                <li>Fraudulent, abusive, or illegal activity.</li>
+                <li>Non-payment of fees or charges.</li>
+            </ul>
+
+            <!-- 12. Governing Law -->
+            <h2><i class="fas fa-balance-scale"></i> 12. Governing Law</h2>
+            <p>
+                These Terms of Service are governed by and construed in accordance with the laws of the <strong>Islamic Republic of Pakistan</strong>. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in <strong>Karachi, Pakistan</strong>.
+            </p>
+
+            <!-- 13. Contact Information -->
+            <h2><i class="fas fa-envelope"></i> 13. Contact Information</h2>
+            <p>
+                If you have any questions or concerns regarding these Terms of Service, please contact us:
+            </p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:legal@medicare.com" style="color: var(--primary-color); font-weight: 600;">legal@medicare.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+92300123456" style="color: var(--primary-color); font-weight: 600;">+92 (300) 123-456</a></li>
+                <li><strong>Address:</strong> 123 Medical Street, Karachi, Pakistan</li>
+            </ul>
+
+            <!-- Quick Summary Cards -->
+            <div style="margin: 2rem 0 1rem;">
+                <p style="font-weight: 600; color: var(--text-dark); margin-bottom: .8rem;">
+                    <i class="fas fa-list-check" style="color: var(--primary-color);"></i> Quick Summary:
+                </p>
+                <div class="terms-grid">
+                    <div class="term-card">
+                        <i class="fas fa-shield-halved"></i>
+                        <span>Data Protected</span>
+                    </div>
+                    <div class="term-card">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Service</span>
+                    </div>
+                    <div class="term-card">
+                        <i class="fas fa-check-double"></i>
+                        <span>Accurate Results</span>
+                    </div>
+                    <div class="term-card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <span>Patient First</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to Home -->
+            <div class="back-home-wrap">
+                <a href="../home.html" class="btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+                <a href="privacy.html" class="btn-secondary-outline">
+                    <i class="fas fa-lock"></i> Privacy Policy
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="../home.html#about">Our Story</a></li>
+                    <li><a href="expertteam.html">Team</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#" onclick="alert('This service is currently unavailable. It will be launched very soon. Thank you for your patience!'); return false;">Blood Tests</a></li>
+                    <li><a href="healthcheckup.html">Health Packages</a></li>
+                    <li><a href="homecollection.html">Home Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="tel:+92300123456">📞 +92 (300) 123-456</a></li>
+                    <li><a href="mailto:info@medicare.com">📧 info@medicare.com</a></li>
+                    <li><a href="contact.html">📍 123 Medical Street</a></li>
+                    <li><a href="contact.html">Karachi, Pakistan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Medicare Laboratory &amp; Diagnostic Center. All rights reserved. | Designed by Tahami Tech for your health</p>
+        </div>
+    </footer>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // ── AOS INIT ──
+        AOS.init({
+            duration: 600,
+            once: true,
+            easing: 'ease-out-cubic',
+            offset: 40
+        });
+
+        // ── NAVBAR SCROLL EFFECT ──
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // ── DYNAMIC FOOTER YEAR ──
+        const footerYear = document.querySelector('.footer-bottom p');
+        if (footerYear) {
+            footerYear.innerHTML = footerYear.innerHTML.replace('2026', new Date().getFullYear());
+        }
+
+        // ── SMOOTH HASH SCROLL ──
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

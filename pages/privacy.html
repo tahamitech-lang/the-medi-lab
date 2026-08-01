@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Privacy Policy | Medicare Laboratory</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Privacy Policy of The Medicare Laboratory & Diagnostic Center. Learn how we protect your personal and medical data." />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+            <!-- ═══ FAVICON - Lab Logo ═══ -->
+    <link rel="icon" type="image/png" sizes="any" href="../images/logo icon.png" />
+    <link rel="icon" type="image/x-icon" href="../images/logo icon.png" />
+    <link rel="apple-touch-icon" href="../images/logo icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/logo icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/logo icon.png" />
+    
+    <!-- ═══ Fonts & CSS ═══ -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    
+
+    <style>
+        /* ── RESET & VARIABLES (exactly matching your main theme) ── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #2d970d;
+            --primary-dark: #2d9c21;
+            --secondary-color: #4ff054;
+            --accent-color: #0f550b;
+            --light-blue-bg: #e6f2ff;
+            --dark-bg: #0f1419;
+            --light-bg: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --border-color: #e0e0e0;
+            --shadow: 0 4px 20px rgba(32, 180, 42, .8);
+            --shadow-hover: 0 8px 30px rgba(35, 189, 96, .8);
+            --radius: 16px;
+            --transition: .35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ── NAVBAR (matching your theme) ── */
+        nav {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: background .4s, padding .4s, box-shadow .4s;
+        }
+
+        nav.nav-scrolled {
+            background: rgba(10, 28, 8, .95);
+            backdrop-filter: blur(18px);
+            padding: .65rem 0;
+            box-shadow: 0 2px 32px rgba(0, 0, 0, .4);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .logo-img {
+            width: 54px;
+            height: 54px;
+            object-fit: contain;
+            border-radius: 50%;
+            border: 2px solid rgba(79, 240, 84, .6);
+            box-shadow: 0 0 14px rgba(79, 240, 84, .4);
+            transition: transform .4s, box-shadow .4s;
+        }
+
+        .logo:hover .logo-img {
+            transform: rotate(8deg) scale(1.1);
+            box-shadow: 0 0 24px rgba(79, 240, 84, .8);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav ul a {
+            color: rgba(255, 255, 255, .9);
+            font-weight: 500;
+            font-size: .95rem;
+            transition: color .3s;
+            position: relative;
+        }
+
+        nav ul a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width .3s;
+        }
+
+        nav ul a:hover {
+            color: #fff;
+        }
+        nav ul a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--secondary-color), #175308) !important;
+            color: #fff !important;
+            padding: .65rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: .9rem;
+            box-shadow: 0 4px 16px rgba(79, 240, 84, .45);
+            transition: transform .3s, box-shadow .3s !important;
+            border: none;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 24px rgba(79, 240, 84, .7) !important;
+        }
+        .cta-btn::after {
+            display: none !important;
+        }
+
+        /* ── HERO (Page Title) ── */
+        .page-hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #71c860 50%, var(--primary-dark) 100%);
+            color: #fff;
+            padding: 140px 2rem 70px;
+            text-align: center;
+            margin-top: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            opacity: .3;
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.4rem, 5vw, 3.6rem);
+            font-weight: 900;
+            margin-bottom: .5rem;
+        }
+
+        .page-hero .breadcrumb {
+            font-size: 1rem;
+            opacity: .85;
+        }
+
+        .page-hero .breadcrumb i {
+            margin: 0 .4rem;
+            font-size: .7rem;
+        }
+
+        /* ── POLICY CONTENT ── */
+        .policy-section {
+            padding: 80px 2rem;
+            background: var(--light-blue-bg);
+        }
+
+        .policy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3.5rem 4rem;
+            border-radius: var(--radius);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, .06);
+            border: 1px solid rgba(45, 151, 13, .08);
+        }
+
+        .policy-container h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin: 2rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+        }
+
+        .policy-container h2 i {
+            font-size: 1.4rem;
+            color: var(--secondary-color);
+        }
+
+        .policy-container h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .policy-container p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .policy-container ul {
+            margin: 1.2rem 0 1.8rem 1.8rem;
+            color: var(--text-light);
+        }
+
+        .policy-container ul li {
+            margin-bottom: .6rem;
+            list-style-type: disc;
+        }
+
+        .policy-container ul li strong {
+            color: var(--text-dark);
+        }
+
+        .policy-highlight {
+            background: linear-gradient(135deg, rgba(45, 151, 13, .06), rgba(79, 240, 84, .08));
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border-left: 5px solid var(--primary-color);
+            margin: 1.8rem 0;
+        }
+
+        .policy-highlight p {
+            margin-bottom: 0;
+        }
+
+        .policy-highlight i {
+            color: var(--primary-color);
+            margin-right: .6rem;
+        }
+
+        /* ── BACK BUTTON ── */
+        .back-home-wrap {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+
+        .back-home-wrap .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: #fff;
+            padding: .9rem 2.8rem;
+            border-radius: 50px;
+            font-weight: 700;
+            display: inline-block;
+            transition: all .35s ease;
+            box-shadow: 0 4px 20px rgba(45, 151, 13, .35);
+        }
+
+        .back-home-wrap .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 32px rgba(45, 151, 13, .5);
+        }
+
+        /* ── FOOTER (matching your theme) ── */
+        footer {
+            background: var(--dark-bg);
+            color: #fff;
+            padding: 55px 2rem 28px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+            font-weight: 700;
+            font-size: .95rem;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+        .footer-section li {
+            margin-bottom: .5rem;
+        }
+        .footer-section a {
+            color: rgba(255, 255, 255, .6);
+            font-size: .88rem;
+            transition: color .3s, padding-left .3s;
+        }
+        .footer-section a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(58, 185, 53, .35);
+            padding-top: 1.5rem;
+            text-align: center;
+            color: rgba(255, 255, 255, .45);
+            font-size: .83rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .nav-container ul {
+                display: none;
+            }
+
+            .policy-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .policy-container h2 {
+                font-size: 1.4rem;
+            }
+
+            .page-hero {
+                padding: 120px 1.5rem 50px;
+            }
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .policy-container {
+                padding: 1.5rem 1rem;
+            }
+            .policy-highlight {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+   <!-- ═══ NAVBAR ═══ -->
+    <nav id="mainNav">
+        <div class="nav-container">
+            <a href="home.html" class="logo">
+                <img src="../images/Lab Logo.png" alt="Lab Logo" class="logo-img" />
+                <span>The Medicare Laboratory &amp; Diagnostic Center</span>
+            </a>
+            <ul>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="../home.html#about">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li>
+                    <a href="#" class="cta-btn" onclick="alert('🛒 Order Now\n\nThis service is currently unavailable.\nWe are upgrading our ordering system and will be available very soon.\n\nThank you for your patience!'); return false;">Order Now</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ═══ PAGE HERO ═══ -->
+    <section class="page-hero">
+        <div class="hero-content" data-aos="fade-up">
+            <h1>Privacy Policy</h1>
+            <p class="breadcrumb">
+                <a href="../home.html">Home</a> <i class="fas fa-chevron-right"></i> Privacy Policy
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══ PRIVACY POLICY CONTENT ═══ -->
+    <section class="policy-section">
+        <div class="policy-container" data-aos="fade-up">
+
+            <!-- Last Updated -->
+            <p style="color: var(--text-light); font-size: .9rem; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+                <i class="fas fa-calendar-alt" style="color: var(--primary-color); margin-right: .4rem;"></i>
+                Last Updated: <strong>July 30, 2026</strong>
+            </p>
+
+            <!-- 1. Introduction -->
+            <h2><i class="fas fa-info-circle"></i> 1. Introduction</h2>
+            <p>
+                Welcome to The Medicare Laboratory &amp; Diagnostic Center. Your privacy is critically important to us. This Privacy Policy explains how we collect, use, disclose, and safeguard your personal and medical information when you visit our website or use our diagnostic services.
+            </p>
+            <p>
+                By using our website and services, you agree to the collection and use of information in accordance with this policy. We are committed to protecting your data and complying with applicable privacy laws in Pakistan and internationally.
+            </p>
+
+            <!-- 2. Information We Collect -->
+            <h2><i class="fas fa-database"></i> 2. Information We Collect</h2>
+            <p>We may collect the following types of information:</p>
+            <ul>
+                <li><strong>Personal Identification:</strong> Name, email address, phone number, date of birth, gender, and national ID (CNIC).</li>
+                <li><strong>Medical Data:</strong> Test results, health history, prescriptions, and diagnostic reports.</li>
+                <li><strong>Technical Data:</strong> IP address, browser type, device information, and cookies for website analytics.</li>
+                <li><strong>Usage Data:</strong> Pages visited, time spent, and interactions with our website.</li>
+            </ul>
+            <p>We collect this data directly from you when you fill out forms, schedule appointments, or interact with our services.</p>
+
+            <!-- 3. How We Use Your Information -->
+            <h2><i class="fas fa-cogs"></i> 3. How We Use Your Information</h2>
+            <p>Your information is used for the following purposes:</p>
+            <ul>
+                <li>To provide diagnostic services, process test orders, and deliver reports.</li>
+                <li>To schedule appointments and manage patient records.</li>
+                <li>To communicate with you about your health, test results, and promotional offers (with your consent).</li>
+                <li>To improve our website, services, and patient experience.</li>
+                <li>To comply with legal and regulatory requirements.</li>
+            </ul>
+
+            <div class="policy-highlight">
+                <p><i class="fas fa-shield-alt"></i> <strong>Your medical data is never sold, rented, or shared with third parties for marketing purposes.</strong> We only share data with healthcare providers directly involved in your care.</p>
+            </div>
+
+            <!-- 4. Cookies & Tracking -->
+            <h2><i class="fas fa-cookie-bite"></i> 4. Cookies &amp; Tracking</h2>
+            <p>
+                Our website uses cookies to enhance your browsing experience. Cookies are small text files stored on your device that help us understand how you use our site. We use:
+            </p>
+            <ul>
+                <li><strong>Essential Cookies:</strong> Necessary for basic site functionality.</li>
+                <li><strong>Analytics Cookies:</strong> To track traffic and improve performance.</li>
+                <li><strong>Preference Cookies:</strong> To remember your settings.</li>
+            </ul>
+            <p>
+                You can control cookie preferences through your browser settings. However, disabling cookies may affect some features of our website.
+            </p>
+
+            <!-- 5. Third-Party Disclosure -->
+            <h2><i class="fas fa-share-alt"></i> 5. Third-Party Disclosure</h2>
+            <p>
+                We may share your information with trusted third parties only when necessary for providing our services, including:
+            </p>
+            <ul>
+                <li>Healthcare providers and specialists for diagnosis and treatment.</li>
+                <li>Laboratory partners for specialized tests.</li>
+                <li>IT service providers who maintain our systems.</li>
+                <li>Legal authorities when required by law.</li>
+            </ul>
+            <p>
+                All third parties are contractually bound to maintain the confidentiality of your data.
+            </p>
+
+            <!-- 6. Data Security -->
+            <h2><i class="fas fa-lock"></i> 6. Data Security</h2>
+            <p>
+                We implement industry-standard security measures to protect your data, including:
+            </p>
+            <ul>
+                <li>Encryption of sensitive data during transmission (SSL/TLS).</li>
+                <li>Secure storage systems with access controls.</li>
+                <li>Regular security audits and employee training.</li>
+            </ul>
+            <p>
+                While we strive to protect your information, no transmission over the internet is 100% secure. We cannot guarantee absolute security, but we work continuously to safeguard your data.
+            </p>
+
+            <!-- 7. Your Rights -->
+            <h2><i class="fas fa-user-check"></i> 7. Your Rights</h2>
+            <p>
+                You have the following rights regarding your personal and medical data:
+            </p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of the data we hold about you.</li>
+                <li><strong>Correction:</strong> Update or correct inaccurate information.</li>
+                <li><strong>Deletion:</strong> Request deletion of your data (subject to legal retention requirements).</li>
+                <li><strong>Withdraw Consent:</strong> Withdraw your consent for marketing communications at any time.</li>
+            </ul>
+            <p>
+                To exercise these rights, please contact us at <a href="mailto:privacy@medicare.com" style="color: var(--primary-color); font-weight: 600;">privacy@medicare.com</a>.
+            </p>
+
+            <!-- 8. Children's Privacy -->
+            <h2><i class="fas fa-child"></i> 8. Children's Privacy</h2>
+            <p>
+                Our services are not directed to individuals under the age of 13. We do not knowingly collect personal information from children. If you are a parent or guardian and believe your child has provided us with information, please contact us immediately.
+            </p>
+
+            <!-- 9. Changes to Policy -->
+            <h2><i class="fas fa-edit"></i> 9. Changes to This Policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time. We will notify you of any significant changes by posting the new policy on this page with an updated date. We encourage you to review this page periodically.
+            </p>
+            <p>
+                Your continued use of our website after changes constitutes acceptance of the revised policy.
+            </p>
+
+            <!-- 10. Contact Us -->
+            <h2><i class="fas fa-envelope"></i> 10. Contact Us</h2>
+            <p>
+                If you have any questions, concerns, or requests regarding this Privacy Policy, please reach out to us:
+            </p>
+            <ul>
+                <li><strong>Email:</strong> <a href="mailto:privacy@medicare.com" style="color: var(--primary-color); font-weight: 600;">privacy@medicare.com</a></li>
+                <li><strong>Phone:</strong> <a href="tel:+92300123456" style="color: var(--primary-color); font-weight: 600;">+92 (300) 123-456</a></li>
+                <li><strong>Address:</strong> 123 Medical Street, Karachi, Pakistan</li>
+            </ul>
+
+            <!-- Back to Home -->
+            <div class="back-home-wrap">
+                <a href="../home.html" class="btn-primary">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ═══ FOOTER ═══ -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="../home.html#about">Our Story</a></li>
+                    <li><a href="expertteam.html">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#" onclick="alert('This service is currently unavailable. It will be launched very soon. Thank you for your patience!'); return false;">Blood Tests</a></li>
+                    <li><a href="healthcheckup.html">Health Packages</a></li>
+                    <li><a href="homecollection.html">Home Collection</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="tel:+92300123456">📞 +92 (300) 123-456</a></li>
+                    <li><a href="mailto:info@medicare.com">📧 info@medicare.com</a></li>
+                    <li><a href="contact.html">📍 123 Medical Street</a></li>
+                    <li><a href="contact.html">Karachi, Pakistan</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Medicare Laboratory &amp; Diagnostic Center. All rights reserved. | Designed by Tahami Tech for your health</p>
+        </div>
+    </footer>
+
+    <!-- ═══ SCRIPTS ═══ -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // ── AOS INIT ──
+        AOS.init({
+            duration: 600,
+            once: true,
+            easing: 'ease-out-cubic',
+            offset: 40
+        });
+
+        // ── NAVBAR SCROLL EFFECT ──
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', function() {
+            nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+        }, { passive: true });
+
+        // ── DYNAMIC FOOTER YEAR ──
+        const footerYear = document.querySelector('.footer-bottom p');
+        if (footerYear) {
+            footerYear.innerHTML = footerYear.innerHTML.replace('2026', new Date().getFullYear());
+        }
+
+        // ── SMOOTH HASH SCROLL ──
+        document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+            a.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
