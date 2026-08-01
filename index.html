@@ -996,6 +996,346 @@ async function checkUser() {
   }
 }
 
+/* ══════════════════════════════════════════
+   SIGN-UP FORM WITH SUPABASE INTEGRATION
+   Complete validation + table insertion
+══════════════════════════════════════════ */
+
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  
+  // ── 1. Get all form field values ──
+  const fullName = document.getElementById('fullName');
+  const fatherName = document.getElementById('fatherName');
+  const cellNo = document.getElementById('cellNo');
+  const email = document.getElementById('signupEmail');
+  const address = document.getElementById('address');
+  const password = document.getElementById('signupPassword');
+  const confirmPassword = document.getElementById('confirmPassword');
+  const termsCheckbox = document.getElementById('agreeTerms');
+  const submitBtn = document.getElementById('signupSubmit');
+  
+  // ── 2. Clear previous errors ──
+  hideBanner('signupBanner');
+  clearAllErrors();
+  
+  // ── 3. Validate all fields ──
+  let isValid = true;
+  
+  // Full name validation
+  if (fullName.value.trim().length < 2) {
+    setError('f-fullname', true);
+    isValid = false;
+  } else {
+    setError('f-fullname', false);
+  }
+  
+  // Father's name validation
+  if (fatherName.value.trim().length < 2) {
+    setError('f-fathername', true);
+    isValid = false;
+  } else {
+    setError('f-fathername', false);
+  }
+  
+  // Cell number validation (Pakistan format: 03XX-XXXXXXX)
+  const phonePattern = /^0\d{10}$/;
+  const cleanPhone = cellNo.value.replace(/[-\s]/g, '');
+  if (!phonePattern.test(cleanPhone)) {
+    setError('f-cell', true);
+    isValid = false;
+  } else {
+    setError('f-cell', false);
+  }
+  
+  // Email validation
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailPattern.test(email.value.trim())) {
+    setError('f-email', true);
+    isValid = false;
+  } else {
+    setError('f-email', false);
+  }
+  
+  // Address validation
+  if (address.value.trim().length < 5) {
+    setError('f-address', true);
+    isValid = false;
+  } else {
+    setError('f-address', false);
+  }
+  
+  // Password validation (minimum 8 characters)
+  if (password.value.length < 8) {
+    setError('f-signup-pass', true);
+    isValid = false;
+  } else {
+    setError('f-signup-pass', false);
+  }
+  
+  // Confirm password validation
+  if (confirmPassword.value !== password.value || confirmPassword.value === '') {
+    setError('f-confirm-pass', true);
+    isValid = false;
+  } else {
+    setError('f-confirm-pass', false);
+  }
+  
+  // Terms checkbox validation
+  if (!termsCheckbox.checked) {
+    showBanner('signupBanner', 'error', 'Please agree to the Terms of Service and Privacy Policy to continue.');
+    isValid = false;
+  }
+  
+  // ── 4. If validation fails, stop here ──
+  if (!isValid) {
+    return;
+  }
+  
+  // ── 5. Show loading state ──
+  submitBtn.classList.add('loading');
+  submitBtn.disabled = true;
+  
+  try {
+    // ── 6. Step 1: Create auth user with Supabase ──
+    console.log('Creating auth user for:', email.value.trim());
+    
+    const { data: authData, error: authError } = await supabaseClient.auth.signUp({
+      email: email.value.trim(),
+      password: password.value,
+      options: {
+        data: {
+          full_name: fullName.value.trim(),
+          father_name: fatherName.value.trim(),
+          phone: cellNo.value.trim(),
+          address: address.value.trim()
+        }
+      }
+    });
+    
+    // Handle auth errors
+    if (authError) {
+      console.error('Auth signup error:', authError);
+      
+      // Check if it's an email confirmation error
+      if (authError.message && authError.message.includes('email not confirmed')) {
+        // User might already exist but not confirmed
+        showBanner('signupBanner', 'error', 'This email is already registered but not confirmed. Please check your email for confirmation link.');
+      } else {
+        showBanner('signupBanner', 'error', authError.message || 'Registration failed. Please try again.');
+      }
+      
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      return;
+    }
+    
+    // Check if user was created
+    if (!authData || !authData.user) {
+      console.error('No user data returned from auth signup');
+      showBanner('signupBanner', 'error', 'Registration failed. Please try again.');
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+      return;
+    }
+    
+    const userId = authData.user.id;
+    const userEmail = authData.user.email || email.value.trim();
+    
+    console.log('Auth user created successfully with ID:', userId);
+    
+    // ── 7. Step 2: Insert user data into custom table ──
+    const tableName = 'The Medicare Laboratory & Diagnostic Center Table';
+    
+    // Prepare the data object matching your table columns
+    const userData = {
+      user_id: userId,                    // Supabase auth user ID
+      full_name: fullName.value.trim(),
+      father_name: fatherName.value.trim(),
+      cell_number: cellNo.value.trim(),
+      email: userEmail,
+      home_address: address.value.trim(),
+      created_at: new Date().toISOString(),
+      // Optional: Add any additional fields your table might have
+      // status: 'active',
+      // email_confirmed: false
+    };
+    
+    console.log('Inserting user data into table:', tableName);
+    console.log('Data to insert:', userData);
+    
+    // Insert into your custom table
+    const { data: insertData, error: insertError } = await supabaseClient
+      .from(tableName)
+      .insert([userData])
+      .select(); // This returns the inserted record
+    
+    if (insertError) {
+      console.error('Database insert error:', insertError);
+      
+      // Even if DB insert fails, auth user was created.
+      // You might want to handle this differently - maybe retry or log.
+      showBanner('signupBanner', 'error', 'Account created but there was an issue saving your data. Please contact support.');
+      
+      // Still save locally so user can proceed
+      saveLocalAuthUser({
+        full_name: fullName.value.trim(),
+        father_name: fatherName.value.trim(),
+        phone: cellNo.value.trim(),
+        email: userEmail,
+        address: address.value.trim()
+      });
+      
+      // Redirect after a short delay
+      setTimeout(() => {
+        window.location.replace('home.html');
+      }, 2000);
+      
+      return;
+    }
+    
+    console.log('User data inserted successfully:', insertData);
+    
+    // ── 8. Success! ──
+    // Save user data locally for session management
+    saveLocalAuthUser({
+      full_name: fullName.value.trim(),
+      father_name: fatherName.value.trim(),
+      phone: cellNo.value.trim(),
+      email: userEmail,
+      address: address.value.trim()
+    });
+    
+    // Show success message
+    showBanner('signupBanner', 'success', 'Account created successfully! Redirecting to home page...');
+    
+    // Redirect to home page
+    setTimeout(() => {
+      window.location.replace('home.html');
+    }, 1500);
+    
+  } catch (error) {
+    // ── 9. Catch any unexpected errors ──
+    console.error('Unexpected error during signup:', error);
+    showBanner('signupBanner', 'error', error.message || 'An unexpected error occurred. Please try again.');
+    
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
+});
+
+/* ══════════════════════════════════════════
+   HELPER FUNCTIONS
+══════════════════════════════════════════ */
+
+// Clear all field errors
+function clearAllErrors() {
+  const errorFields = document.querySelectorAll('.field.has-error');
+  errorFields.forEach(field => {
+    field.classList.remove('has-error');
+    const input = field.querySelector('input, textarea');
+    if (input) input.classList.remove('invalid');
+  });
+}
+
+// Set error state on a field
+function setError(fieldId, hasError) {
+  const field = document.getElementById(fieldId);
+  if (!field) return;
+  
+  field.classList.toggle('has-error', hasError);
+  const input = field.querySelector('input, textarea');
+  if (input) input.classList.toggle('invalid', hasError);
+}
+
+// Show banner message
+function showBanner(id, type, message) {
+  const banner = document.getElementById(id);
+  if (!banner) return;
+  
+  const icon = type === 'success' ? 'fa-circle-check' : 'fa-circle-exclamation';
+  banner.className = `form-banner show ${type}`;
+  banner.innerHTML = `<i class="fas fa-${icon}"></i><span>${message}</span>`;
+}
+
+// Hide banner
+function hideBanner(id) {
+  const banner = document.getElementById(id);
+  if (banner) banner.className = 'form-banner';
+}
+
+// Save user data locally
+function saveLocalAuthUser(userData) {
+  const safeUser = {
+    full_name: userData.full_name || '',
+    father_name: userData.father_name || '',
+    phone: userData.phone || '',
+    email: userData.email || '',
+    address: userData.address || '',
+    confirmed: true,
+    loginTime: new Date().toISOString()
+  };
+  
+  localStorage.setItem('userData', JSON.stringify(safeUser));
+  localStorage.setItem('authSession', JSON.stringify({ 
+    email: safeUser.email, 
+    confirmed: true 
+  }));
+  localStorage.setItem('emailConfirmed', 'true');
+}
+
+/* ══════════════════════════════════════════
+   ADDITIONAL VALIDATION HELPERS
+══════════════════════════════════════════ */
+
+// Email validation function
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Phone validation for Pakistan numbers
+function isValidPhone(phone) {
+  return /^0\d{10}$/.test(phone.replace(/[-\s]/g, ''));
+}
+
+// Auto-format cell number as user types
+document.addEventListener('DOMContentLoaded', function() {
+  const cellInput = document.getElementById('cellNo');
+  if (cellInput) {
+    cellInput.addEventListener('input', function() {
+      let value = this.value.replace(/\D/g, '').slice(0, 11);
+      if (value.length > 4) {
+        value = value.slice(0, 4) + '-' + value.slice(4);
+      }
+      this.value = value;
+    });
+  }
+  
+  // Real-time password confirmation check
+  const confirmInput = document.getElementById('confirmPassword');
+  const passwordInput = document.getElementById('signupPassword');
+  
+  if (confirmInput && passwordInput) {
+    confirmInput.addEventListener('input', function() {
+      const field = document.getElementById('f-confirm-pass');
+      if (this.value && this.value !== passwordInput.value) {
+        setError('f-confirm-pass', true);
+      } else if (this.value) {
+        setError('f-confirm-pass', false);
+      }
+    });
+    
+    passwordInput.addEventListener('input', function() {
+      const confirmField = document.getElementById('f-confirm-pass');
+      if (confirmInput.value && confirmInput.value !== this.value) {
+        setError('f-confirm-pass', true);
+      } else if (confirmInput.value) {
+        setError('f-confirm-pass', false);
+      }
+    });
+  }
+});
+
 // Only check auth status; do not redirect on page load.
 checkUser();
 
