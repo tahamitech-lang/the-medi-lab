@@ -10,7 +10,7 @@ define('DB_USER', 'root');
 define('DB_PASS', '');
 
 // Site URL
-define('SITE_URL', 'http://localhost/medicare/');
+define('SITE_URL', 'http://localhost/tahami-lab-website/');
 define('SITE_NAME', 'The Medicare Laboratory');
 
 // Session timeout (24 hours)
