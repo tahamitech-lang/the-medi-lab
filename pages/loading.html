@@ -3,251 +3,180 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Green Laboratory Loader</title>
+  <title>Loading — The Medicare Laboratory</title>
 
   <style>
-
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-      width:100%;
-      height:100vh;
-
-      display:flex;
-      justify-content:center;
-      align-items:center;
-
-      overflow:hidden;
-
-      font-family:Arial, sans-serif;
-
-      background:
-      radial-gradient(circle,#2f8f2f,#041404);
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+      background: radial-gradient(ellipse at center, #0f1f0e 0%, #060d05 100%);
     }
 
-    .loader-container{
-      text-align:center;
-      position:relative;
+    .loader-container {
+      text-align: center;
+      position: relative;
     }
 
-    /* Scientist Image */
-
-    .scientist{
-      width:520px;
-      max-width:100%;
-      height:auto;
-      display:block;
-      margin:0 auto;
-
-      animation:
-      float 2s ease-in-out infinite;
+    /* ── Scientist Image ── */
+    .scientist {
+      width: 420px;
+      max-width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      animation: float 2.5s ease-in-out infinite;
+      filter: drop-shadow(0 0 40px rgba(79, 240, 84, 0.06));
     }
 
-    @keyframes float{
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-14px); }
+      100% { transform: translateY(0px); }
+    }
 
-      0%{
-        transform:translateY(0px);
+    /* ── Loading Text ── */
+    .loading-text {
+      margin-top: 24px;
+      color: #fff;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 0 0 20px rgba(79, 240, 84, 0.15);
+      animation: textPulse 1.2s ease-in-out infinite;
+    }
+    .loading-text .green {
+      background: linear-gradient(135deg, #4ff054, #2d970d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes textPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(0.98); }
+    }
+
+    /* ── Progress Bar ── */
+    .progress-wrap {
+      width: 380px;
+      max-width: 85%;
+      margin: 28px auto 0;
+      position: relative;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(79, 240, 84, 0.08);
+      box-shadow: inset 0 0 20px rgba(79, 240, 84, 0.02);
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #2d970d, #4ff054, #2d970d);
+      background-size: 200% 100%;
+      animation: progressAnim 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      box-shadow: 0 0 30px rgba(79, 240, 84, 0.15);
+    }
+
+    @keyframes progressAnim {
+      0% { width: 0%; background-position: 0% 0%; }
+      50% { width: 72%; background-position: 50% 0%; }
+      100% { width: 100%; background-position: 100% 0%; }
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      color: rgba(255, 255, 255, 0.2);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .progress-label .percent {
+      color: rgba(79, 240, 84, 0.5);
+      font-size: 0.75rem;
+    }
+
+    /* ── Loading Dots ── */
+    .dot-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .dot-group .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(79, 240, 84, 0.06);
+      transition: all 0.3s ease;
+      animation: dotPulse 1.6s ease-in-out infinite;
+    }
+
+    .dot-group .dot:nth-child(2) { animation-delay: 0.2s; }
+    .dot-group .dot:nth-child(3) { animation-delay: 0.4s; }
+    .dot-group .dot:nth-child(4) { animation-delay: 0.6s; }
+    .dot-group .dot:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes dotPulse {
+      0%, 100% { 
+        background: rgba(79, 240, 84, 0.06); 
+        transform: scale(1); 
       }
-
-      50%{
-        transform:translateY(-12px);
-      }
-
-      100%{
-        transform:translateY(0px);
-      }
-    }
-
-    /* Green Liquid Pour */
-
-    .liquid-stream{
-
-      position:absolute;
-
-      top:128px;
-      left:190px;
-
-      width:8px;
-      height:80px;
-
-      border-radius:20px;
-
-      background:#00ff55;
-
-      box-shadow:
-      0 0 20px #00ff55,
-      0 0 40px #00ff55;
-
-      animation:
-      pour 0.3s infinite alternate;
-    }
-
-    @keyframes pour{
-
-      from{
-        height:40px;
-      }
-
-      to{
-        height:85px;
-      }
-    }
-
-    /* Loading Text */
-
-    .loading-text{
-
-      margin-top:20px;
-
-      color:white;
-
-      font-size:48px;
-
-      font-weight:bold;
-
-      letter-spacing:2px;
-
-      text-shadow:
-      0 0 10px #00ff55;
-
-      animation:
-      blink 1s infinite;
-    }
-
-    .green{
-      color:#00ff55;
-    }
-
-    @keyframes blink{
-
-      0%,100%{
-        opacity:1;
-      }
-
-      50%{
-        opacity:0.7;
-      }
-    }
-
-    /* Progress Bar */
-
-    .progress-bar{
-
-      width:420px;
-      height:12px;
-
-      margin:auto;
-      margin-top:30px;
-
-      border-radius:20px;
-
-      overflow:hidden;
-
-      background:
-      rgba(255,255,255,0.1);
-
-      border:
-      1px solid rgba(0,255,85,0.3);
-    }
-
-    .progress{
-
-      width:0%;
-
-      height:100%;
-
-      border-radius:20px;
-
-      background:
-      linear-gradient(
-      90deg,
-      #00ff55,
-      #5cff99
-      );
-
-      box-shadow:
-      0 0 20px #00ff55,
-      0 0 40px #00ff55;
-
-      animation:
-      loading 1.2s linear infinite;
-    }
-
-    @keyframes loading{
-
-      from{
-        width:0%;
-      }
-
-      to{
-        width:100%;
+      50% { 
+        background: #4ff054; 
+        transform: scale(1.5); 
+        box-shadow: 0 0 20px rgba(79, 240, 84, 0.15);
       }
     }
 
-    /* Bubbles */
-
-    .bubble{
-      position:absolute;
-
-      width:14px;
-      height:14px;
-
-      border-radius:50%;
-
-      background:#00ff55;
-
-      box-shadow:
-      0 0 15px #00ff55;
-
-      opacity:0.8;
-
-      animation:
-      rise 3s linear infinite;
+    /* ── Brand Tag ── */
+    .brand-tag {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, 0.06);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      white-space: nowrap;
     }
 
-    .bubble1{
-      left:70px;
-      bottom:180px;
-      animation-delay:0s;
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      .scientist { width: 280px; }
+      .loading-text { font-size: 28px; }
+      .progress-wrap { width: 280px; }
     }
 
-    .bubble2{
-      right:80px;
-      bottom:220px;
-      animation-delay:1s;
+    @media (max-width: 400px) {
+      .scientist { width: 200px; }
+      .loading-text { font-size: 22px; }
+      .progress-wrap { width: 220px; }
     }
-
-    .bubble3{
-      left:180px;
-      bottom:250px;
-      animation-delay:2s;
-    }
-
-    @keyframes rise{
-
-      0%{
-        transform:
-        translateY(0) scale(1);
-
-        opacity:0;
-      }
-
-      50%{
-        opacity:1;
-      }
-
-      100%{
-        transform:
-        translateY(-120px) scale(1.5);
-
-        opacity:0;
-      }
-    }
-
   </style>
 </head>
 
@@ -258,36 +187,121 @@
     <!-- Scientist Image -->
     <img src="../images/loading lab.png" class="scientist" alt="Loading lab">
 
-    <!-- Liquid -->
-    <div class="liquid-stream"></div>
-
-    <!-- Bubbles -->
-    <div class="bubble bubble1"></div>
-    <div class="bubble bubble2"></div>
-    <div class="bubble bubble3"></div>
-
-    <!-- Text -->
+    <!-- Loading Text -->
     <div class="loading-text">
       Loading <span class="green">Laboratory...</span>
     </div>
 
-    <!-- Loading Bar -->
-    <div class="progress-bar">
-      <div class="progress"></div>
+    <!-- Progress Bar -->
+    <div class="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+      <div class="progress-label">
+        <span>Preparing</span>
+        <span class="percent" id="percentText">0%</span>
+      </div>
     </div>
+
+    <!-- Dots -->
+    <div class="dot-group">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+
+    <!-- Brand Tag -->
+    <div class="brand-tag">The Medicare Laboratory</div>
 
   </div>
 
   <script>
-    console.log("Green Laboratory Loading Started");
+    (function() {
+      console.log("🟢 Premium Loading Screen Initialized");
 
-    const params = new URLSearchParams(window.location.search);
-    const target = params.get('target');
-    if (target) {
-      setTimeout(() => {
-        window.location.replace(target);
-      }, 1500);
-    }
+      // ── Progress bar counter ──
+      var fill = document.getElementById('progressFill');
+      var percentText = document.getElementById('percentText');
+      var startTime = Date.now();
+      var duration = 1800; // 1.8 seconds
+
+      function updateProgress() {
+        var elapsed = Date.now() - startTime;
+        var progress = Math.min(elapsed / duration, 1);
+        var percent = Math.round(progress * 100);
+        if (percentText) percentText.textContent = percent + '%';
+        if (percent >= 100) return;
+        requestAnimationFrame(updateProgress);
+      }
+      updateProgress();
+
+      // ── Get target URL from URL params ──
+      var params = new URLSearchParams(window.location.search);
+      var target = params.get('target');
+
+      // ── Also check hash for target ──
+      if (!target && window.location.hash) {
+        var hash = window.location.hash.replace('#', '');
+        if (hash.startsWith('?')) {
+          var hashParams = new URLSearchParams(hash.substring(1));
+          target = hashParams.get('target');
+        }
+      }
+
+      // ── Clean URL for history ──
+      if (window.history && window.history.replaceState) {
+        var cleanUrl = window.location.pathname;
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+
+      // ── Redirect to target after delay ──
+      if (target) {
+        // Decode target if encoded
+        try {
+          target = decodeURIComponent(target);
+        } catch (_) {}
+
+        console.log('🎯 Redirecting to:', target);
+
+        // Ensure target is a valid URL
+        try {
+          var testUrl = new URL(target, window.location.origin);
+          setTimeout(function() {
+            window.location.replace(testUrl.href);
+          }, 1800);
+        } catch (_) {
+          console.warn('⚠️ Invalid target URL:', target);
+          // Fallback: try to navigate anyway
+          setTimeout(function() {
+            window.location.replace(target);
+          }, 1800);
+        }
+      } else {
+        console.log('ℹ️ No target specified, staying on loading page');
+        // If no target, go to home after 2 seconds
+        setTimeout(function() {
+          window.location.replace('../home.html');
+        }, 2000);
+      }
+
+      // ── Prevent back button from showing loading again ──
+      window.addEventListener('pageshow', function(event) {
+        if (event.persisted) {
+          // Page loaded from cache (back button)
+          console.log('🔄 Page restored from cache, redirecting to home');
+          window.location.replace('../home.html');
+        }
+      });
+
+      // ── Also handle popstate (back/forward) ──
+      window.addEventListener('popstate', function() {
+        console.log('⏪ Popstate detected, redirecting to home');
+        window.location.replace('../home.html');
+      });
+
+    })();
   </script>
 
 </body>

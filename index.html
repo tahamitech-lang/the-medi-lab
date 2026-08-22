@@ -921,7 +921,7 @@ body::before {
 </div>
 
 <!-- ════════════════════════════════════════
-     JAVASCRIPT — NO SUPABASE, PURE FRONTEND
+     JAVASCRIPT — PHP BACKEND
 ════════════════════════════════════════ -->
 <script>
 /* ══════════════════════════════════════════
@@ -934,10 +934,9 @@ const tabs = document.querySelectorAll('.auth-tab');
 const glider = document.getElementById('tabGlider');
 
 /* ══════════════════════════════════════════
-   VIEW SWITCHING — FIXED!
+   VIEW SWITCHING
 ══════════════════════════════════════════ */
 function switchView(view) {
-  // Hide all views
   document.querySelectorAll('.auth-view').forEach(el => el.classList.remove('active'));
   
   if (view === 'login') {
@@ -955,21 +954,18 @@ function switchView(view) {
   }
 }
 
-// Tab clicks
 tabs.forEach(tab => {
   tab.addEventListener('click', function() {
     switchView(this.dataset.view);
   });
 });
 
-// Switch buttons inside forms
 document.querySelectorAll('[data-switch]').forEach(btn => {
   btn.addEventListener('click', function() {
     switchView(this.dataset.switch);
   });
 });
 
-// Forgot password
 document.getElementById('gotoForgot').addEventListener('click', () => switchView('forgot'));
 document.getElementById('forgotBack').addEventListener('click', () => switchView('login'));
 document.getElementById('backToLoginBtn').addEventListener('click', () => switchView('login'));
@@ -1054,7 +1050,26 @@ pwInput?.addEventListener('input', function() {
 });
 
 /* ══════════════════════════════════════════
-   LOGIN FORM
+   AJAX HELPER — PHP BACKEND
+══════════════════════════════════════════ */
+function ajaxRequest(url, data, callback) {
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: new URLSearchParams(data)
+  })
+  .then(response => response.json())
+  .then(result => callback(result))
+  .catch(error => {
+    console.error('Error:', error);
+    callback({ success: false, message: 'Network error. Please try again.' });
+  });
+}
+
+/* ══════════════════════════════════════════
+   LOGIN FORM — PHP BACKEND
 ══════════════════════════════════════════ */
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1062,6 +1077,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 
   const email = document.getElementById('loginEmail');
   const pass = document.getElementById('loginPassword');
+  const remember = document.getElementById('rememberMe');
   let valid = true;
 
   if (!isValidEmail(email.value)) {
@@ -1084,22 +1100,39 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
   btn.classList.add('loading');
   btn.disabled = true;
 
-  setTimeout(() => {
-    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-    const found = users.find(u => u.email === email.value && u.password === pass.value);
-    if (found) {
-      showBanner('loginBanner', 'success', 'Login successful! Redirecting...');
-      setTimeout(() => window.location.replace('home.html'), 1000);
+  const data = {
+    email: email.value.trim(),
+    password: pass.value,
+    remember: remember.checked ? '1' : '0'
+  };
+
+  ajaxRequest('includes/login.php', data, function(result) {
+    if (result.success) {
+      showBanner('loginBanner', 'success', result.message);
+      setTimeout(() => {
+        window.location.replace('home.php');
+      }, 1000);
     } else {
-      showBanner('loginBanner', 'error', 'Invalid email or password.');
+      if (result.data && result.data.errors) {
+        const errors = result.data.errors;
+        if (errors.email) {
+          setFieldError('loginEmail', 'loginEmailError', true);
+        }
+        if (errors.password) {
+          setFieldError('loginPassword', 'loginPassError', true);
+        }
+        showBanner('loginBanner', 'error', 'Please fix the errors above.');
+      } else {
+        showBanner('loginBanner', 'error', result.message || 'Login failed. Please try again.');
+      }
       btn.classList.remove('loading');
       btn.disabled = false;
     }
-  }, 1000);
+  });
 });
 
 /* ══════════════════════════════════════════
-   SIGNUP FORM
+   SIGNUP FORM — PHP BACKEND
 ══════════════════════════════════════════ */
 document.getElementById('signupForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1162,17 +1195,52 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
   btn.classList.add('loading');
   btn.disabled = true;
 
-  setTimeout(() => {
-    const users = JSON.parse(localStorage.getItem('registeredUsers') || '[]');
-    users.push({ email: email.value, password: pass.value });
-    localStorage.setItem('registeredUsers', JSON.stringify(users));
-    showBanner('signupBanner', 'success', 'Account created successfully! Redirecting...');
-    setTimeout(() => window.location.replace('home.html'), 1500);
-  }, 1000);
+  const data = {
+    full_name: fullName.value.trim(),
+    father_name: fatherName.value.trim(),
+    cell_number: cellNo.value.trim(),
+    email: email.value.trim(),
+    address: address.value.trim(),
+    password: pass.value,
+    confirm_password: confirm.value
+  };
+
+  ajaxRequest('includes/signup.php', data, function(result) {
+    if (result.success) {
+      showBanner('signupBanner', 'success', result.message);
+      setTimeout(() => {
+        window.location.replace('home.php');
+      }, 1500);
+    } else {
+      if (result.data && result.data.errors) {
+        const errors = result.data.errors;
+        for (const [field, message] of Object.entries(errors)) {
+          const errorMap = {
+            'full_name': ['fullName', 'fullNameError'],
+            'father_name': ['fatherName', 'fatherNameError'],
+            'cell_number': ['cellNo', 'cellError'],
+            'email': ['signupEmail', 'signupEmailError'],
+            'address': ['address', 'addressError'],
+            'password': ['signupPassword', 'signupPassError'],
+            'confirm_password': ['confirmPassword', 'confirmPassError']
+          };
+          if (errorMap[field]) {
+            const [inputId, errorId] = errorMap[field];
+            setFieldError(inputId, errorId, true);
+          }
+        }
+        showBanner('signupBanner', 'error', 'Please fix the errors above.');
+      } else {
+        showBanner('signupBanner', 'error', result.message || 'Registration failed. Please try again.');
+      }
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }
+  });
 });
 
 /* ══════════════════════════════════════════
-   FORGOT PASSWORD FORM
+   FORGOT PASSWORD FORM — PHP BACKEND
 ══════════════════════════════════════════ */
 document.getElementById('forgotForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1190,15 +1258,30 @@ document.getElementById('forgotForm').addEventListener('submit', function(e) {
   btn.classList.add('loading');
   btn.disabled = true;
 
-  // Simulate sending email
-  setTimeout(() => {
-    document.getElementById('forgotEmailShown').textContent = email.value;
-    document.getElementById('forgotStep1').style.display = 'none';
-    document.getElementById('forgotStep2').style.display = 'block';
-    showBanner('forgotBanner', 'success', 'Reset link sent successfully!');
+  const data = {
+    email: email.value.trim()
+  };
+
+  ajaxRequest('includes/forgot.php', data, function(result) {
+    if (result.success) {
+      document.getElementById('forgotEmailShown').textContent = email.value;
+      document.getElementById('forgotStep1').style.display = 'none';
+      document.getElementById('forgotStep2').style.display = 'block';
+      showBanner('forgotBanner', 'success', result.message);
+    } else {
+      showBanner('forgotBanner', 'error', result.message || 'Email not found. Please check your email address.');
+    }
     btn.classList.remove('loading');
     btn.disabled = false;
-  }, 1000);
+  });
+});
+
+// ── URL se logout success check ──
+window.addEventListener('load', function() {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('logout') === 'success') {
+    showBanner('loginBanner', 'success', 'You have been logged out successfully.');
+  }
 });
 </script>
 </body>

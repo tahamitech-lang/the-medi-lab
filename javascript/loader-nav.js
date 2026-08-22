@@ -1,8 +1,8 @@
 /* ═══════════════════════════════════════════════════
-   loader-nav.js (Ultra Premium)
+   loader-nav.js (Ultra Premium — FIXED)
    — Injects site-wide enhancements into every page
    — Premium 1-second loading screen (NO image, NO label)
-   — Ultra smooth interactions & animations
+   — Fixed: Back button, stuck loading, professional transitions
 ═══════════════════════════════════════════════════ */
 
 (function () {
@@ -408,95 +408,10 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* ── 7. Hide loader after 1 second with smooth animation ── */
-  setTimeout(function () {
+  /* ── 7. Hide loader after 1.2 seconds ── */
+  var loaderTimeout = setTimeout(function () {
     loader.classList.add('hidden');
-  }, 1000);
-
-  /* ── 8. Load AOS + GSAP scripts then init ── */
-  function loadScript(src, cb) {
-    if (document.querySelector('script[src="' + src + '"]')) { if (cb) cb(); return; }
-    var s = document.createElement('script');
-    s.src = src;
-    s.onload = cb || null;
-    document.body.appendChild(s);
-  }
-
-  function initEnhancements() {
-    if (window.AOS) {
-      AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic', offset: 50 });
-      document.querySelectorAll(
-        '.card, .pricing-card, .highlight-card, .package-card, .detailed-item, .why-card, .mv-card, .team-card'
-      ).forEach(function (el, i) {
-        if (!el.getAttribute('data-aos')) {
-          el.setAttribute('data-aos', 'fade-up');
-          el.setAttribute('data-aos-delay', String((i % 4) * 80));
-        }
-      });
-      AOS.refresh();
-    }
-
-    if (window.gsap && window.ScrollTrigger) {
-      gsap.registerPlugin(ScrollTrigger);
-
-      var heroContent = document.querySelector('.hero-content, .hero .text, .hero > div');
-      if (heroContent) {
-        gsap.fromTo(heroContent.children,
-          { y: 35, opacity: 0, scale: 0.98 },
-          { y: 0, opacity: 1, scale: 1, duration: .85, stagger: .12, ease: 'power3.out', delay: .3 }
-        );
-      }
-
-      ['service-card', 'package-card', 'pricing-card', 'highlight-card', 'stat-box', 'team-card'].forEach(function (cls) {
-        var els = document.querySelectorAll('.' + cls);
-        if (els.length) {
-          gsap.fromTo(els,
-            { y: 45, opacity: 0, scale: 0.97 },
-            {
-              y: 0, opacity: 1, scale: 1, duration: .65, stagger: .1, ease: 'power2.out',
-              scrollTrigger: { trigger: els[0].parentElement, start: 'top 82%', once: true }
-            }
-          );
-        }
-      });
-
-      var ctaH = document.querySelector('.cta-section h2');
-      if (ctaH) {
-        gsap.fromTo(ctaH,
-          { y: 28, opacity: 0 },
-          { y: 0, opacity: 1, duration: .8, ease: 'power3.out',
-            scrollTrigger: { trigger: ctaH, start: 'top 82%', once: true } }
-        );
-      }
-
-      var galleryImgs = document.querySelectorAll('.gallery img');
-      if (galleryImgs.length) {
-        gsap.fromTo(galleryImgs,
-          { scale: .85, opacity: 0, rotation: -2 },
-          {
-            scale: 1, opacity: 1, rotation: 0, duration: .6, stagger: .1, ease: 'back.out(1.6)',
-            scrollTrigger: { trigger: '.gallery', start: 'top 85%', once: true }
-          }
-        );
-      }
-    }
-
-    var sfObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('visible'); sfObs.unobserve(e.target); }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -70px 0px' });
-    document.querySelectorAll('.scroll-fade').forEach(function (el) { sfObs.observe(el); });
-
-    document.querySelectorAll(
-      '.card, .pricing-card, .highlight-card, .why-card, .mv-card, .team-card, .stat-box, .info-item'
-    ).forEach(function (el) {
-      if (!el.classList.contains('scroll-fade')) {
-        el.classList.add('scroll-fade');
-        sfObs.observe(el);
-      }
-    });
-  }
+  }, 1200);
 
   function onReady(callback) {
     if (document.readyState !== 'loading') return callback();
@@ -504,6 +419,93 @@
   }
 
   onReady(function () {
+
+    /* ── 8. Load AOS + GSAP scripts then init ── */
+    function loadScript(src, cb) {
+      if (document.querySelector('script[src="' + src + '"]')) { if (cb) cb(); return; }
+      var s = document.createElement('script');
+      s.src = src;
+      s.onload = cb || null;
+      document.body.appendChild(s);
+    }
+
+    function initEnhancements() {
+      if (window.AOS) {
+        AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic', offset: 50 });
+        document.querySelectorAll(
+          '.card, .pricing-card, .highlight-card, .package-card, .detailed-item, .why-card, .mv-card, .team-card'
+        ).forEach(function (el, i) {
+          if (!el.getAttribute('data-aos')) {
+            el.setAttribute('data-aos', 'fade-up');
+            el.setAttribute('data-aos-delay', String((i % 4) * 80));
+          }
+        });
+        AOS.refresh();
+      }
+
+      if (window.gsap && window.ScrollTrigger) {
+        gsap.registerPlugin(ScrollTrigger);
+
+        var heroContent = document.querySelector('.hero-content, .hero .text, .hero > div');
+        if (heroContent) {
+          gsap.fromTo(heroContent.children,
+            { y: 35, opacity: 0, scale: 0.98 },
+            { y: 0, opacity: 1, scale: 1, duration: .85, stagger: .12, ease: 'power3.out', delay: .3 }
+          );
+        }
+
+        ['service-card', 'package-card', 'pricing-card', 'highlight-card', 'stat-box', 'team-card'].forEach(function (cls) {
+          var els = document.querySelectorAll('.' + cls);
+          if (els.length) {
+            gsap.fromTo(els,
+              { y: 45, opacity: 0, scale: 0.97 },
+              {
+                y: 0, opacity: 1, scale: 1, duration: .65, stagger: .1, ease: 'power2.out',
+                scrollTrigger: { trigger: els[0].parentElement, start: 'top 82%', once: true }
+              }
+            );
+          }
+        });
+
+        var ctaH = document.querySelector('.cta-section h2');
+        if (ctaH) {
+          gsap.fromTo(ctaH,
+            { y: 28, opacity: 0 },
+            { y: 0, opacity: 1, duration: .8, ease: 'power3.out',
+              scrollTrigger: { trigger: ctaH, start: 'top 82%', once: true } }
+          );
+        }
+
+        var galleryImgs = document.querySelectorAll('.gallery img');
+        if (galleryImgs.length) {
+          gsap.fromTo(galleryImgs,
+            { scale: .85, opacity: 0, rotation: -2 },
+            {
+              scale: 1, opacity: 1, rotation: 0, duration: .6, stagger: .1, ease: 'back.out(1.6)',
+              scrollTrigger: { trigger: '.gallery', start: 'top 85%', once: true }
+            }
+          );
+        }
+      }
+
+      var sfObs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { e.target.classList.add('visible'); sfObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -70px 0px' });
+      document.querySelectorAll('.scroll-fade').forEach(function (el) { sfObs.observe(el); });
+
+      document.querySelectorAll(
+        '.card, .pricing-card, .highlight-card, .why-card, .mv-card, .team-card, .stat-box, .info-item'
+      ).forEach(function (el) {
+        if (!el.classList.contains('scroll-fade')) {
+          el.classList.add('scroll-fade');
+          sfObs.observe(el);
+        }
+      });
+    }
+
+    /* ── 9. Navbar scroll + stt visibility ── */
     var nav = document.querySelector('nav');
     function refreshNavState() {
       if (!nav) nav = document.querySelector('nav');
@@ -514,6 +516,7 @@
     window.addEventListener('scroll', refreshNavState, { passive: true });
     refreshNavState();
 
+    /* ── 10. Smooth hash scroll ── */
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
       a.addEventListener('click', function (e) {
         var h = this.getAttribute('href');
@@ -524,6 +527,7 @@
       });
     });
 
+    /* ── 11. Premium button ripple ── */
     document.querySelectorAll('button, .cta-btn, .package-btn, .filter-btn, .btn-primary, .btn-secondary, .submit-btn, .book-btn, .service-btn').forEach(function (btn) {
       btn.addEventListener('click', function (e) {
         var r = document.createElement('span');
@@ -536,6 +540,9 @@
       });
     });
 
+    /* ── 12. FIXED: Loading on link click ── */
+    var isNavigating = false;
+
     document.querySelectorAll('a[href]').forEach(function (link) {
       var href = link.getAttribute('href');
       if (!href) return;
@@ -546,23 +553,82 @@
         trimmed.startsWith('mailto:') ||
         trimmed.startsWith('tel:') ||
         trimmed.startsWith('javascript:') ||
-        trimmed.toLowerCase().includes('loading.html')
+        trimmed.toLowerCase().includes('loading.html') ||
+        trimmed.toLowerCase().includes('home.html') && trimmed.startsWith('#')
       ) return;
+
       try {
         var url = new URL(trimmed, window.location.href);
         if (url.origin !== window.location.origin) return;
-        if (!url.pathname.toLowerCase().endsWith('.html')) return;
+        if (!url.pathname.toLowerCase().endsWith('.html') && !url.pathname.toLowerCase().endsWith('/')) {
+          // Allow links without .html (like home)
+        }
       } catch (_) { return; }
 
       link.addEventListener('click', function (event) {
+        // Prevent multiple simultaneous navigations
+        if (isNavigating) {
+          event.preventDefault();
+          return;
+        }
+
+        // Check if link is a CTA or package button that already shows alert
+        if (this.classList.contains('cta-btn') || this.classList.contains('package-btn')) {
+          // These have their own onclick handlers
+          return;
+        }
+
+        // Check if link has inline onclick
+        if (this.hasAttribute('onclick')) {
+          // Let inline onclick handle it
+          return;
+        }
+
         event.preventDefault();
+        isNavigating = true;
+
+        // Show loader
         loader.classList.remove('hidden');
-        setTimeout(function () {
+
+        // Clear any existing timeout
+        if (window._navTimeout) {
+          clearTimeout(window._navTimeout);
+        }
+
+        // Navigate after 1.2 seconds
+        window._navTimeout = setTimeout(function () {
           window.location.href = trimmed;
-        }, 1000);
+          isNavigating = false;
+        }, 1200);
       });
     });
 
+    /* ── 13. Handle back button ── */
+    window.addEventListener('pageshow', function(event) {
+      if (event.persisted) {
+        // Page loaded from cache (back button)
+        console.log('🔄 Page restored from cache, hiding loader');
+        loader.classList.add('hidden');
+        isNavigating = false;
+        if (window._navTimeout) {
+          clearTimeout(window._navTimeout);
+          window._navTimeout = null;
+        }
+      }
+    });
+
+    /* ── 14. Handle popstate (back/forward) ── */
+    window.addEventListener('popstate', function() {
+      console.log('⏪ Popstate detected, hiding loader');
+      loader.classList.add('hidden');
+      isNavigating = false;
+      if (window._navTimeout) {
+        clearTimeout(window._navTimeout);
+        window._navTimeout = null;
+      }
+    });
+
+    /* ── 15. Load AOS → then GSAP → then init ── */
     loadScript('https://unpkg.com/aos@2.3.4/dist/aos.js', function () {
       loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js', function () {
         loadScript('https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js', function () {
@@ -571,11 +637,13 @@
       });
     });
 
+    /* ── 16. Dynamic footer year ── */
     document.querySelectorAll('.footer-bottom p, #footerCopy').forEach(function (el) {
       el.innerHTML = el.innerHTML.replace(/202[0-9]/g, new Date().getFullYear());
     });
     var yr = document.getElementById('year');
     if (yr) yr.textContent = new Date().getFullYear();
+
   });
 
 })();
