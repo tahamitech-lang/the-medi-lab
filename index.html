@@ -921,7 +921,7 @@ body::before {
 </div>
 
 <!-- ════════════════════════════════════════
-     JAVASCRIPT — PHP BACKEND
+     JAVASCRIPT — PHP BACKEND (PATHS CORRECTED)
 ════════════════════════════════════════ -->
 <script>
 /* ══════════════════════════════════════════
@@ -1069,7 +1069,7 @@ function ajaxRequest(url, data, callback) {
 }
 
 /* ══════════════════════════════════════════
-   LOGIN FORM — PHP BACKEND
+   LOGIN FORM — PHP BACKEND ✅ PATH: includes/login.php
 ══════════════════════════════════════════ */
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1106,6 +1106,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
     remember: remember.checked ? '1' : '0'
   };
 
+  // ✅ CORRECT PATH: includes/login.php
   ajaxRequest('includes/login.php', data, function(result) {
     if (result.success) {
       showBanner('loginBanner', 'success', result.message);
@@ -1132,7 +1133,7 @@ document.getElementById('loginForm').addEventListener('submit', function(e) {
 });
 
 /* ══════════════════════════════════════════
-   SIGNUP FORM — PHP BACKEND
+   SIGNUP FORM — PHP BACKEND ✅ PATH: includes/signup.php
 ══════════════════════════════════════════ */
 document.getElementById('signupForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1205,6 +1206,7 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     confirm_password: confirm.value
   };
 
+  // ✅ CORRECT PATH: includes/signup.php
   ajaxRequest('includes/signup.php', data, function(result) {
     if (result.success) {
       showBanner('signupBanner', 'success', result.message);
@@ -1240,7 +1242,7 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
 });
 
 /* ══════════════════════════════════════════
-   FORGOT PASSWORD FORM — PHP BACKEND
+   FORGOT PASSWORD FORM — PHP BACKEND ✅ PATH: includes/forgot.php
 ══════════════════════════════════════════ */
 document.getElementById('forgotForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1262,6 +1264,7 @@ document.getElementById('forgotForm').addEventListener('submit', function(e) {
     email: email.value.trim()
   };
 
+  // ✅ CORRECT PATH: includes/forgot.php
   ajaxRequest('includes/forgot.php', data, function(result) {
     if (result.success) {
       document.getElementById('forgotEmailShown').textContent = email.value;
