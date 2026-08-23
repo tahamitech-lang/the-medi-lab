@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Test - The Medicare Laboratory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2d970d;
+            --primary-dark: #1f6e09;
+            --primary-light: #4ff054;
+            --bg-dark: #080f07;
+            --bg-card: rgba(255, 255, 255, 0.04);
+            --text-white: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-glass: rgba(255, 255, 255, 0.06);
+            --radius: 20px;
+            --transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-white);
+            min-height: 100vh;
+            background-image: radial-gradient(ellipse at 20% 50%, rgba(45, 151, 13, 0.06) 0%, transparent 60%);
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: linear-gradient(rgba(79, 240, 84, 0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(79, 240, 84, 0.015) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0 1.5rem;
+            border-bottom: 1px solid var(--border-glass);
+            margin-bottom: 2rem;
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(79, 240, 84, 0.3);
+        }
+
+        .header-logo span {
+            font-weight: 800;
+            font-size: 1.1rem;
+            background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .back-btn {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            color: var(--text-muted);
+            padding: 0.6rem 1.4rem;
+            border-radius: 60px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 2rem;
+            animation: fadeUp 0.8s ease;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+
+        .card h2 .highlight {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card p.sub {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 0.35rem;
+        }
+
+        .form-group label .required {
+            color: #ff6b6b;
+        }
+
+        .input-wrap {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrap .icon {
+            position: absolute;
+            left: 14px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .input-wrap input,
+        .input-wrap select,
+        .input-wrap textarea {
+            width: 100%;
+            padding: 0.85rem 0.9rem 0.85rem 2.6rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1.5px solid var(--border-glass);
+            border-radius: 12px;
+            font-size: 0.92rem;
+            color: #fff;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .input-wrap select option {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .input-wrap input:focus,
+        .input-wrap select:focus,
+        .input-wrap textarea:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 0 4px rgba(79, 240, 84, 0.06);
+        }
+
+        .input-wrap textarea {
+            resize: vertical;
+            min-height: 80px;
+            padding-top: 0.85rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+
+        .test-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid var(--border-glass);
+            border-radius: 12px;
+            padding: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .test-option:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(79, 240, 84, 0.3);
+        }
+
+        .test-option.selected {
+            border-color: var(--primary-light);
+            background: rgba(79, 240, 84, 0.05);
+            box-shadow: 0 0 20px rgba(79, 240, 84, 0.05);
+        }
+
+        .test-option .icon {
+            font-size: 1.5rem;
+            color: var(--primary-light);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .test-option .name {
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .test-option .price {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 0.95rem;
+            border: none;
+            border-radius: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            box-shadow: 0 4px 24px rgba(45, 151, 13, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(45, 151, 13, 0.45);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        .form-banner {
+            display: none;
+            padding: 0.85rem 1rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            animation: bannerIn 0.4s ease;
+        }
+
+        .form-banner.show {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .form-banner.success {
+            background: rgba(79, 240, 84, 0.08);
+            border: 1px solid rgba(79, 240, 84, 0.15);
+            color: var(--primary-light);
+        }
+
+        .form-banner.error {
+            background: rgba(255, 107, 107, 0.08);
+            border: 1px solid rgba(255, 107, 107, 0.15);
+            color: #ff6b6b;
+        }
+
+        @keyframes bannerIn {
+            from { opacity: 0; transform: translateY(-8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2.5px solid rgba(255, 255, 255, 0.2);
+            border-top-color: #fff;
+            animation: spin 0.7s linear infinite;
+            display: none;
+        }
+
+        .btn-submit.loading .spinner {
+            display: block;
+        }
+
+        .btn-submit.loading .btn-text {
+            opacity: 0.8;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .test-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <a href="dashboard.html" class="header-logo">
+                <img src="images/Lab Logo.png" alt="The Medicare Laboratory">
+                <span>The Medicare Laboratory</span>
+            </a>
+            <a href="dashboard.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        </header>
+
+        <div class="card">
+            <h2>📋 Book a <span class="highlight">Test</span></h2>
+            <p class="sub">Select the test you need and schedule your appointment</p>
+
+            <div class="form-banner" id="bookingBanner"></div>
+
+            <form id="bookingForm">
+                <!-- Test Selection -->
+                <div class="form-group">
+                    <label>Select Test <span class="required">*</span></label>
+                    <div class="test-grid" id="testGrid">
+                        <div class="test-option" data-test="CBC">
+                            <span class="icon"><i class="fas fa-droplet"></i></span>
+                            <span class="name">CBC</span>
+                            <span class="price">Complete Blood Count</span>
+                        </div>
+                        <div class="test-option" data-test="Lipid Profile">
+                            <span class="icon"><i class="fas fa-heart"></i></span>
+                            <span class="name">Lipid Profile</span>
+                            <span class="price">Cholesterol Test</span>
+                        </div>
+                        <div class="test-option" data-test="Liver Function">
+                            <span class="icon"><i class="fas fa-liver"></i></span>
+                            <span class="name">Liver Function</span>
+                            <span class="price">LFT Test</span>
+                        </div>
+                        <div class="test-option" data-test="Kidney Function">
+                            <span class="icon"><i class="fas fa-kidney"></i></span>
+                            <span class="name">Kidney Function</span>
+                            <span class="price">KFT Test</span>
+                        </div>
+                        <div class="test-option" data-test="Thyroid">
+                            <span class="icon"><i class="fas fa-thyroid"></i></span>
+                            <span class="name">Thyroid</span>
+                            <span class="price">T3, T4, TSH</span>
+                        </div>
+                        <div class="test-option" data-test="Diabetes">
+                            <span class="icon"><i class="fas fa-syringe"></i></span>
+                            <span class="name">Diabetes</span>
+                            <span class="price">HbA1c, Fasting</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="selectedTest" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Preferred Date <span class="required">*</span></label>
+                        <div class="input-wrap">
+                            <i class="fas fa-calendar-day icon"></i>
+                            <input type="date" id="preferredDate" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Time <span class="required">*</span></label>
+                        <div class="input-wrap">
+                            <i class="fas fa-clock icon"></i>
+                            <select id="preferredTime" required>
+                                <option value="">Select time</option>
+                                <option value="09:00">09:00 AM</option>
+                                <option value="10:00">10:00 AM</option>
+                                <option value="11:00">11:00 AM</option>
+                                <option value="12:00">12:00 PM</option>
+                                <option value="14:00">02:00 PM</option>
+                                <option value="15:00">03:00 PM</option>
+                                <option value="16:00">04:00 PM</option>
+                                <option value="17:00">05:00 PM</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <div class="input-wrap">
+                        <i class="fas fa-comment icon" style="top:14px;transform:none;"></i>
+                        <textarea id="notes" placeholder="Any special instructions or requirements..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit" id="bookingSubmit">
+                    <span class="btn-text"><i class="fas fa-calendar-check"></i> Book Test</span>
+                    <span class="spinner"></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2">
+    </script>
+    <script>
+        // =============================================
+        // SUPABASE INITIALIZATION
+        // =============================================
+
+        // 🔑 APNI KEYS YAHAN DAALO
+        const SUPABASE_URL = 'https://YOUR_PROJECT_ID.supabase.co';
+        const SUPABASE_ANON_KEY = 'YOUR_ANON_KEY';
+
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // =============================================
+        // CHECK AUTH
+        // =============================================
+
+        async function checkAuth() {
+            const { data: { session } } = await supabase.auth.getSession();
+            if (!session) {
+                window.location.href = 'index.html';
+                return null;
+            }
+            return session;
+        }
+
+        // =============================================
+        // TEST SELECTION
+        // =============================================
+
+        let selectedTest = '';
+
+        document.querySelectorAll('.test-option').forEach(el => {
+            el.addEventListener('click', function() {
+                document.querySelectorAll('.test-option').forEach(t => t.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedTest = this.dataset.test;
+                document.getElementById('selectedTest').value = selectedTest;
+            });
+        });
+
+        // =============================================
+        // BOOKING FORM
+        // =============================================
+
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const banner = document.getElementById('bookingBanner');
+            banner.className = 'form-banner';
+
+            const date = document.getElementById('preferredDate').value;
+            const time = document.getElementById('preferredTime').value;
+            const notes = document.getElementById('notes').value.trim();
+
+            // Validate
+            if (!selectedTest) {
+                banner.className = 'form-banner show error';
+                banner.innerHTML = '<i class="fas fa-circle-exclamation"></i><span>Please select a test</span>';
+                return;
+            }
+
+            if (!date || !time) {
+                banner.className = 'form-banner show error';
+                banner.innerHTML = '<i class="fas fa-circle-exclamation"></i><span>Please select date and time</span>';
+                return;
+            }
+
+            const btn = document.getElementById('bookingSubmit');
+            btn.classList.add('loading');
+            btn.disabled = true;
+
+            try {
+                const session = await checkAuth();
+                if (!session) return;
+
+                const user = session.user;
+
+                // Get patient data
+                const { data: patient, error: patientError } = await supabase
+                    .from('patients')
+                    .select('id')
+                    .eq('email', user.email)
+                    .single();
+
+                if (patientError || !patient) {
+                    throw new Error('Patient record not found');
+                }
+
+                // Create appointment
+                const appointmentDate = new Date(`${date}T${time}:00`);
+
+                const { data, error } = await supabase
+                    .from('appointments')
+                    .insert([{
+                        patient_id: patient.id,
+                        doctor_name: 'Lab Technician',
+                        appointment_date: appointmentDate.toISOString(),
+                        status: 'scheduled',
+                        notes: `Test: ${selectedTest}\n${notes}`
+                    }]);
+
+                if (error) throw error;
+
+                banner.className = 'form-banner show success';
+                banner.innerHTML = '<i class="fas fa-circle-check"></i><span>✅ Test booked successfully! You will receive a confirmation email.</span>';
+
+                btn.classList.remove('loading');
+                btn.disabled = false;
+
+                // Reset form
+                document.querySelectorAll('.test-option').forEach(t => t.classList.remove('selected'));
+                selectedTest = '';
+                document.getElementById('selectedTest').value = '';
+                document.getElementById('preferredDate').value = '';
+                document.getElementById('preferredTime').value = '';
+                document.getElementById('notes').value = '';
+
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 3000);
+
+            } catch (err) {
+                banner.className = 'form-banner show error';
+                banner.innerHTML = `<i class="fas fa-circle-exclamation"></i><span>Error: ${err.message}</span>`;
+                btn.classList.remove('loading');
+                btn.disabled = false;
+            }
+        });
+
+        // =============================================
+        // SET MIN DATE (Today)
+        // =============================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('preferredDate');
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        });
+
+        // =============================================
+        // ON PAGE LOAD
+        // =============================================
+
+        window.addEventListener('load', function() {
+            checkAuth();
+        });
+    </script>
+
+</body>
+</html>

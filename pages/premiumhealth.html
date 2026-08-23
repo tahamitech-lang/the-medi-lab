@@ -1116,10 +1116,10 @@ function bookPremiumPackage() {
       {name:'Diabetes Screening (Glucose, HbA1C)',price:800}
     ])
   });
-  if (typeof navigateWithLoading === 'function') {
-    navigateWithLoading('schedule%20your%20payment.html?' + params.toString());
+    if (typeof navigateWithLoading === 'function') {
+    navigateWithLoading('schedule-your-payment.html?' + params.toString());
   } else {
-    window.location.href = 'schedule%20your%20payment.html?' + params.toString();
+    window.location.href = 'schedule-your-payment.html?' + params.toString();
   }
 }
 </script>

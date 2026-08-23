@@ -103,6 +103,10 @@ body::before {
   animation: cardIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   max-height: 98vh;
   overflow-y: auto;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .auth-container::-webkit-scrollbar { width: 4px; }
@@ -286,6 +290,9 @@ body::before {
   .auth-tab { font-size: 0.78rem; padding: 0.6rem 0.5rem; }
 }
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 </head>
 <body>
 
@@ -441,9 +448,22 @@ body::before {
 </div>
 
 <!-- ════════════════════════════════════════
-     JAVASCRIPT — PHP BACKEND (PATHS: includes/)
+     JAVASCRIPT — SUPABASE (FULLY WORKING)
 ════════════════════════════════════════ -->
 <script>
+// =============================================
+// SUPABASE INITIALIZATION
+// =============================================
+
+const SUPABASE_URL = 'https://kkqezznsyejmpsdetmnf.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_XB_hY2IpTPOXigr3gCqhaw_N8UjRmzz';
+
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+// =============================================
+// UI FUNCTIONS
+// =============================================
+
 const loginView = document.getElementById('loginView');
 const signupView = document.getElementById('signupView');
 const forgotView = document.getElementById('forgotView');
@@ -452,10 +472,13 @@ const glider = document.getElementById('tabGlider');
 
 function switchView(view) {
   document.querySelectorAll('.auth-view').forEach(el => el.classList.remove('active'));
+  
   if (view === 'login') {
     loginView.classList.add('active');
     tabs.forEach(t => t.classList.toggle('active', t.dataset.view === 'login'));
     glider.classList.remove('pos-1');
+    document.getElementById('forgotStep1').style.display = 'block';
+    document.getElementById('forgotStep2').style.display = 'none';
   } else if (view === 'signup') {
     signupView.classList.add('active');
     tabs.forEach(t => t.classList.toggle('active', t.dataset.view === 'signup'));
@@ -467,11 +490,34 @@ function switchView(view) {
   }
 }
 
-tabs.forEach(tab => { tab.addEventListener('click', function() { switchView(this.dataset.view); }); });
-document.querySelectorAll('[data-switch]').forEach(btn => { btn.addEventListener('click', function() { switchView(this.dataset.switch); }); });
-document.getElementById('gotoForgot').addEventListener('click', () => switchView('forgot'));
-document.getElementById('forgotBack').addEventListener('click', () => switchView('login'));
-document.getElementById('backToLoginBtn').addEventListener('click', () => switchView('login'));
+tabs.forEach(tab => {
+  tab.addEventListener('click', function(e) {
+    e.preventDefault();
+    switchView(this.dataset.view);
+  });
+});
+
+document.querySelectorAll('[data-switch]').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    switchView(this.dataset.switch);
+  });
+});
+
+document.getElementById('gotoForgot').addEventListener('click', function(e) {
+  e.preventDefault();
+  switchView('forgot');
+});
+
+document.getElementById('forgotBack').addEventListener('click', function(e) {
+  e.preventDefault();
+  switchView('login');
+});
+
+document.getElementById('backToLoginBtn').addEventListener('click', function(e) {
+  e.preventDefault();
+  switchView('login');
+});
 
 document.querySelectorAll('.pass-toggle').forEach(btn => {
   btn.addEventListener('click', function() {
@@ -523,55 +569,73 @@ pwInput?.addEventListener('input', function() {
   pwLabel.textContent = v.length === 0 ? 'Use 8+ characters with numbers & symbols' : labels[Math.min(score - 1, 3)] + ' password';
 });
 
-function ajaxRequest(url, data, callback) {
-  fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data)
-  })
-  .then(response => response.json())
-  .then(result => callback(result))
-  .catch(error => {
-    console.error('Error:', error);
-    callback({ success: false, message: 'Network error. Please try again.' });
-  });
-}
+// =============================================
+// LOGIN FORM - SUPABASE
+// =============================================
 
-// ── LOGIN FORM ──
-document.getElementById('loginForm').addEventListener('submit', function(e) {
+document.getElementById('loginForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   hideBanner('loginBanner');
+  
   const email = document.getElementById('loginEmail');
   const pass = document.getElementById('loginPassword');
-  const remember = document.getElementById('rememberMe');
+  
   let valid = true;
-  if (!isValidEmail(email.value)) { setFieldError('loginEmail', 'loginEmailError', true); valid = false; } else { setFieldError('loginEmail', 'loginEmailError', false); }
-  if (pass.value.length === 0) { setFieldError('loginPassword', 'loginPassError', true); valid = false; } else { setFieldError('loginPassword', 'loginPassError', false); }
+  
+  if (!isValidEmail(email.value)) { 
+    setFieldError('loginEmail', 'loginEmailError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('loginEmail', 'loginEmailError', false); 
+  }
+  
+  if (pass.value.length === 0) { 
+    setFieldError('loginPassword', 'loginPassError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('loginPassword', 'loginPassError', false); 
+  }
+  
   if (!valid) return;
+  
   const btn = document.getElementById('loginSubmit');
-  btn.classList.add('loading'); btn.disabled = true;
-  ajaxRequest('includes/login.php', { email: email.value.trim(), password: pass.value, remember: remember.checked ? '1' : '0' }, function(result) {
-    if (result.success) {
-      showBanner('loginBanner', 'success', result.message);
-      setTimeout(() => { window.location.replace('home.php'); }, 1000);
-    } else {
-      if (result.data && result.data.errors) {
-        const errors = result.data.errors;
-        if (errors.email) setFieldError('loginEmail', 'loginEmailError', true);
-        if (errors.password) setFieldError('loginPassword', 'loginPassError', true);
-        showBanner('loginBanner', 'error', 'Please fix the errors above.');
-      } else {
-        showBanner('loginBanner', 'error', result.message || 'Login failed.');
-      }
-      btn.classList.remove('loading'); btn.disabled = false;
+  btn.classList.add('loading');
+  btn.disabled = true;
+  
+  try {
+    const { data, error } = await _supabase.auth.signInWithPassword({
+      email: email.value.trim(),
+      password: pass.value
+    });
+    
+    if (error) {
+      showBanner('loginBanner', 'error', '❌ Invalid email or password. Please try again.');
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      return;
     }
-  });
+    
+    if (data.user) {
+      showBanner('loginBanner', 'success', '✅ Login successful! Redirecting...');
+      setTimeout(() => { 
+        window.location.replace('pages/dashboard.html');
+      }, 1000);
+    }
+  } catch (err) {
+    showBanner('loginBanner', 'error', 'Network error. Please try again.');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
 });
 
-// ── SIGNUP FORM ──
-document.getElementById('signupForm').addEventListener('submit', function(e) {
+// =============================================
+// SIGNUP FORM - SUPABASE (FULLY WORKING)
+// =============================================
+
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   hideBanner('signupBanner');
+  
   const fullName = document.getElementById('fullName');
   const fatherName = document.getElementById('fatherName');
   const cellNo = document.getElementById('cellNo');
@@ -580,81 +644,236 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
   const pass = document.getElementById('signupPassword');
   const confirm = document.getElementById('confirmPassword');
   const terms = document.getElementById('agreeTerms');
+  
   let valid = true;
-  if (fullName.value.trim().length < 2) { setFieldError('fullName', 'fullNameError', true); valid = false; } else { setFieldError('fullName', 'fullNameError', false); }
-  if (fatherName.value.trim().length < 2) { setFieldError('fatherName', 'fatherNameError', true); valid = false; } else { setFieldError('fatherName', 'fatherNameError', false); }
-  if (!isValidPhone(cellNo.value)) { setFieldError('cellNo', 'cellError', true); valid = false; } else { setFieldError('cellNo', 'cellError', false); }
-  if (!isValidEmail(email.value)) { setFieldError('signupEmail', 'signupEmailError', true); valid = false; } else { setFieldError('signupEmail', 'signupEmailError', false); }
-  if (address.value.trim().length < 5) { setFieldError('address', 'addressError', true); valid = false; } else { setFieldError('address', 'addressError', false); }
-  if (pass.value.length < 8) { setFieldError('signupPassword', 'signupPassError', true); valid = false; } else { setFieldError('signupPassword', 'signupPassError', false); }
-  if (confirm.value !== pass.value || confirm.value === '') { setFieldError('confirmPassword', 'confirmPassError', true); valid = false; } else { setFieldError('confirmPassword', 'confirmPassError', false); }
-  if (!terms.checked) { showBanner('signupBanner', 'error', 'Please agree to Terms.'); valid = false; }
+  
+  if (fullName.value.trim().length < 2) { 
+    setFieldError('fullName', 'fullNameError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('fullName', 'fullNameError', false); 
+  }
+  
+  if (fatherName.value.trim().length < 2) { 
+    setFieldError('fatherName', 'fatherNameError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('fatherName', 'fatherNameError', false); 
+  }
+  
+  if (!isValidPhone(cellNo.value)) { 
+    setFieldError('cellNo', 'cellError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('cellNo', 'cellError', false); 
+  }
+  
+  if (!isValidEmail(email.value)) { 
+    setFieldError('signupEmail', 'signupEmailError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('signupEmail', 'signupEmailError', false); 
+  }
+  
+  if (address.value.trim().length < 5) { 
+    setFieldError('address', 'addressError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('address', 'addressError', false); 
+  }
+  
+  if (pass.value.length < 8) { 
+    setFieldError('signupPassword', 'signupPassError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('signupPassword', 'signupPassError', false); 
+  }
+  
+  if (confirm.value !== pass.value || confirm.value === '') { 
+    setFieldError('confirmPassword', 'confirmPassError', true); 
+    valid = false; 
+  } else { 
+    setFieldError('confirmPassword', 'confirmPassError', false); 
+  }
+  
+  if (!terms.checked) { 
+    showBanner('signupBanner', 'error', 'Please agree to Terms.'); 
+    valid = false; 
+  }
+  
   if (!valid) return;
+  
   const btn = document.getElementById('signupSubmit');
-  btn.classList.add('loading'); btn.disabled = true;
-  ajaxRequest('includes/signup.php', {
-    full_name: fullName.value.trim(),
-    father_name: fatherName.value.trim(),
-    cell_number: cellNo.value.trim(),
-    email: email.value.trim(),
-    address: address.value.trim(),
-    password: pass.value,
-    confirm_password: confirm.value
-  }, function(result) {
-    if (result.success) {
-      showBanner('signupBanner', 'success', result.message);
-      setTimeout(() => { window.location.replace('home.php'); }, 1500);
-    } else {
-      if (result.data && result.data.errors) {
-        const errors = result.data.errors;
-        const errorMap = {
-          'full_name': ['fullName', 'fullNameError'],
-          'father_name': ['fatherName', 'fatherNameError'],
-          'cell_number': ['cellNo', 'cellError'],
-          'email': ['signupEmail', 'signupEmailError'],
-          'address': ['address', 'addressError'],
-          'password': ['signupPassword', 'signupPassError'],
-          'confirm_password': ['confirmPassword', 'confirmPassError']
-        };
-        for (const [field, message] of Object.entries(errors)) {
-          if (errorMap[field]) { const [inputId, errorId] = errorMap[field]; setFieldError(inputId, errorId, true); }
+  btn.classList.add('loading');
+  btn.disabled = true;
+  
+  try {
+    // Step 1: Auth mein user create karo
+    const { data: authData, error: authError } = await _supabase.auth.signUp({
+      email: email.value.trim(),
+      password: pass.value,
+      options: {
+        data: {
+          full_name: fullName.value.trim(),
+          father_name: fatherName.value.trim(),
+          cell_number: cellNo.value.trim(),
+          address: address.value.trim()
         }
-        showBanner('signupBanner', 'error', 'Please fix the errors above.');
-      } else {
-        showBanner('signupBanner', 'error', result.message || 'Registration failed.');
       }
-      btn.classList.remove('loading'); btn.disabled = false;
+    });
+    
+    if (authError) {
+      if (authError.message.includes('already registered')) {
+        showBanner('signupBanner', 'error', '❌ Email already registered. Please login instead.');
+      } else {
+        showBanner('signupBanner', 'error', '❌ ' + authError.message);
+      }
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      return;
     }
-  });
+    
+    // Step 2: Patients table mein data insert karo (bina password ke)
+    try {
+      // Check if record already exists
+      const { data: existing } = await _supabase
+        .from('patients')
+        .select('id')
+        .eq('id', authData.user.id)
+        .maybeSingle();
+      
+      if (!existing) {
+        const { error: insertError } = await _supabase
+          .from('patients')
+          .insert([
+            {
+              id: authData.user.id,
+              full_name: fullName.value.trim(),
+              father_name: fatherName.value.trim(),
+              cell_number: cellNo.value.trim(),
+              email: email.value.trim(),
+              address: address.value.trim()
+            }
+          ]);
+        
+        if (insertError) {
+          console.error('Insert Error:', insertError);
+          showBanner('signupBanner', 'error', '⚠️ ' + insertError.message);
+          btn.classList.remove('loading');
+          btn.disabled = false;
+          return;
+        }
+      }
+    } catch (tableError) {
+      console.error('Table Error:', tableError);
+      showBanner('signupBanner', 'error', '⚠️ Database error. Please contact support.');
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      return;
+    }
+    
+    // Success!
+    showBanner('signupBanner', 'success', '✅ Account created successfully! Please check your email for verification.');
+    
+    setTimeout(() => { 
+      switchView('login');
+      btn.classList.remove('loading');
+      btn.disabled = false;
+    }, 2500);
+    
+  } catch (err) {
+    console.error('Signup Error:', err);
+    showBanner('signupBanner', 'error', '❌ Network error. Please try again.');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
 });
 
-// ── FORGOT PASSWORD ──
-document.getElementById('forgotForm').addEventListener('submit', function(e) {
+// =============================================
+// FORGOT PASSWORD - SUPABASE
+// =============================================
+
+document.getElementById('forgotForm').addEventListener('submit', async function(e) {
   e.preventDefault();
   hideBanner('forgotBanner');
+  
   const email = document.getElementById('forgotEmail');
-  if (!isValidEmail(email.value)) { setFieldError('forgotEmail', 'forgotEmailError', true); return; }
+  
+  if (!isValidEmail(email.value)) { 
+    setFieldError('forgotEmail', 'forgotEmailError', true); 
+    return; 
+  }
   setFieldError('forgotEmail', 'forgotEmailError', false);
+  
   const btn = document.getElementById('forgotSubmit');
-  btn.classList.add('loading'); btn.disabled = true;
-  ajaxRequest('includes/forgot.php', { email: email.value.trim() }, function(result) {
-    if (result.success) {
-      document.getElementById('forgotEmailShown').textContent = email.value;
-      document.getElementById('forgotStep1').style.display = 'none';
-      document.getElementById('forgotStep2').style.display = 'block';
-      showBanner('forgotBanner', 'success', result.message);
-    } else {
-      showBanner('forgotBanner', 'error', result.message || 'Email not found.');
+  btn.classList.add('loading');
+  btn.disabled = true;
+  
+  try {
+    const { data, error } = await _supabase.auth.resetPasswordForEmail(
+      email.value.trim(),
+      {
+        redirectTo: window.location.origin + '/reset-password.html',
+      }
+    );
+    
+    if (error) {
+      showBanner('forgotBanner', 'error', error.message || 'Email not found.');
+      btn.classList.remove('loading');
+      btn.disabled = false;
+      return;
     }
-    btn.classList.remove('loading'); btn.disabled = false;
-  });
+    
+    document.getElementById('forgotEmailShown').textContent = email.value;
+    document.getElementById('forgotStep1').style.display = 'none';
+    document.getElementById('forgotStep2').style.display = 'block';
+    showBanner('forgotBanner', 'success', '✅ Reset link sent to your email');
+    
+    btn.classList.remove('loading');
+    btn.disabled = false;
+    
+  } catch (err) {
+    showBanner('forgotBanner', 'error', 'Network error. Please try again.');
+    btn.classList.remove('loading');
+    btn.disabled = false;
+  }
 });
+
+// =============================================
+// LOGOUT
+// =============================================
+
+async function logout() {
+  try {
+    const { error } = await _supabase.auth.signOut();
+    if (error) throw error;
+    window.location.href = 'index.html?logout=success';
+  } catch (err) {
+    console.error('Logout error:', err);
+  }
+}
+
+// =============================================
+// ON PAGE LOAD
+// =============================================
 
 window.addEventListener('load', function() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('logout') === 'success') {
     showBanner('loginBanner', 'success', 'You have been logged out successfully.');
   }
+  
+  _supabase.auth.getSession().then(({ data: { session } }) => {
+    if (session) {
+      window.location.replace('home.html');
+    }
+  });
+  
+  _supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_IN') {
+      window.location.replace('home.html');
+    }
+  });
 });
 </script>
 </body>

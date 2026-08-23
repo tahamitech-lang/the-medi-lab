@@ -1,0 +1,16 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Redirect to HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Custom error pages
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
+
+# Protect files
+<FilesMatch "\.(env|json|config|sql|log)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
