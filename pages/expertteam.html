@@ -764,15 +764,7 @@ function closeDrawer() {
   document.body.style.overflow = '';
 }
 
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('navDrawer').classList.toggle('open');
-  if (document.getElementById('navDrawer').classList.contains('open')) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-});
+/* Mobile nav is handled by javascript/mobile-nav.js */
 
 /* Smooth hash scroll */
 document.querySelectorAll('a[href^="#"]').forEach(function(a) {

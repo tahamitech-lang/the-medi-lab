@@ -1104,10 +1104,7 @@ function closeDrawer(){
   document.body.style.overflow = '';
 }
 
-document.getElementById('hamburger').addEventListener('click', function(){
-  this.classList.toggle('open');
-  document.getElementById('navDrawer').classList.toggle('open');
-});
+/* Mobile nav is handled by javascript/mobile-nav.js */
 
 /* ── Smooth hash scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(function(a){
