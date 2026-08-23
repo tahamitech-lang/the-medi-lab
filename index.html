@@ -17,11 +17,7 @@
 /* ═══════════════════════════════════════════
    ULTRA PREMIUM — RESET & VARIABLES
 ═══════════════════════════════════════════ */
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --primary: #2d970d;
@@ -75,7 +71,6 @@ body::before {
   100% { transform: translate(60px, 60px); }
 }
 
-/* ─── Floating orbs ─── */
 .orb {
   position: fixed;
   border-radius: 50%;
@@ -84,43 +79,15 @@ body::before {
   z-index: 0;
   animation: orbFloat 12s ease-in-out infinite alternate;
 }
-
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: rgba(45, 151, 13, 0.12);
-  top: -100px;
-  right: -100px;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  background: rgba(79, 240, 84, 0.08);
-  bottom: -50px;
-  left: -50px;
-  animation-delay: 4s;
-}
-
-.orb-3 {
-  width: 200px;
-  height: 200px;
-  background: rgba(45, 151, 13, 0.06);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: 8s;
-}
+.orb-1 { width: 400px; height: 400px; background: rgba(45, 151, 13, 0.12); top: -100px; right: -100px; animation-delay: 0s; }
+.orb-2 { width: 300px; height: 300px; background: rgba(79, 240, 84, 0.08); bottom: -50px; left: -50px; animation-delay: 4s; }
+.orb-3 { width: 200px; height: 200px; background: rgba(45, 151, 13, 0.06); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 8s; }
 
 @keyframes orbFloat {
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(40px, -40px) scale(1.2); }
 }
 
-/* ═══════════════════════════════════════════
-   MAIN WRAPPER — GLASS CARD
-═══════════════════════════════════════════ */
 .auth-container {
   position: relative;
   z-index: 1;
@@ -138,18 +105,9 @@ body::before {
   overflow-y: auto;
 }
 
-.auth-container::-webkit-scrollbar {
-  width: 4px;
-}
-
-.auth-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.auth-container::-webkit-scrollbar-thumb {
-  background: rgba(79, 240, 84, 0.3);
-  border-radius: 10px;
-}
+.auth-container::-webkit-scrollbar { width: 4px; }
+.auth-container::-webkit-scrollbar-track { background: transparent; }
+.auth-container::-webkit-scrollbar-thumb { background: rgba(79, 240, 84, 0.3); border-radius: 10px; }
 
 @keyframes cardIn {
   from { opacity: 0; transform: translateY(30px) scale(0.96); }
@@ -169,67 +127,16 @@ body::before {
   pointer-events: none;
 }
 
-/* ─── Logo & Brand ─── */
-.auth-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.auth-logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.7rem;
-  margin-bottom: 0.8rem;
-  transition: transform var(--transition);
-}
-
+.auth-header { text-align: center; margin-bottom: 2rem; }
+.auth-logo { display: inline-flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; transition: transform var(--transition); }
 .auth-logo:hover { transform: scale(1.02); }
+.auth-logo img { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(79, 240, 84, 0.4); box-shadow: 0 0 30px rgba(79, 240, 84, 0.15); transition: box-shadow var(--transition); }
+.auth-logo:hover img { box-shadow: 0 0 50px rgba(79, 240, 84, 0.3); }
+.auth-logo span { font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.7)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.auth-title { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1.2; margin-bottom: 0.3rem; }
+.auth-title .highlight { background: linear-gradient(135deg, var(--primary-light), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.auth-sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 400; }
 
-.auth-logo img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  border: 2px solid rgba(79, 240, 84, 0.4);
-  box-shadow: 0 0 30px rgba(79, 240, 84, 0.15);
-  transition: box-shadow var(--transition);
-}
-
-.auth-logo:hover img {
-  box-shadow: 0 0 50px rgba(79, 240, 84, 0.3);
-}
-
-.auth-logo span {
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.7));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.auth-title {
-  font-size: 1.8rem;
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.2;
-  margin-bottom: 0.3rem;
-}
-
-.auth-title .highlight {
-  background: linear-gradient(135deg, var(--primary-light), var(--primary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.auth-sub {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  font-weight: 400;
-}
-
-/* ─── Tabs ─── */
 .auth-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -240,7 +147,6 @@ body::before {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.04);
 }
-
 .auth-tab {
   border: none;
   background: transparent;
@@ -254,9 +160,7 @@ body::before {
   z-index: 2;
   transition: color 0.4s ease;
 }
-
 .auth-tab.active { color: #fff; }
-
 .auth-tab-glider {
   position: absolute;
   top: 4px;
@@ -268,70 +172,23 @@ body::before {
   transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 4px 24px rgba(45, 151, 13, 0.35);
 }
-
 .auth-tab-glider.pos-1 { transform: translateX(100%); }
 
-/* ─── Views ─── */
-.auth-view {
-  display: none;
-  animation: viewIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
+.auth-view { display: none; animation: viewIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
 .auth-view.active { display: block; }
+@keyframes viewIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes viewIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ─── Headings ─── */
 .view-head { margin-bottom: 1.4rem; }
+.view-head h2 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; }
+.view-head p { color: var(--text-muted); font-size: 0.88rem; margin-top: 0.2rem; }
 
-.view-head h2 {
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-}
-
-.view-head p {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  margin-top: 0.2rem;
-}
-
-/* ─── Form Fields ─── */
 .form-group { margin-bottom: 1.1rem; }
-
-.form-group label {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--text-light);
-  margin-bottom: 0.35rem;
-  letter-spacing: 0.02em;
-}
-
+.form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-light); margin-bottom: 0.35rem; letter-spacing: 0.02em; }
 .form-group label .req { color: #ff6b6b; }
-
-.input-wrap {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input-wrap .icon {
-  position: absolute;
-  left: 14px;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  pointer-events: none;
-  transition: color 0.3s;
-}
-
-.input-wrap input,
-.input-wrap textarea {
-  width: 100%;
-  padding: 0.85rem 0.9rem 0.85rem 2.6rem;
+.input-wrap { position: relative; display: flex; align-items: center; }
+.input-wrap .icon { position: absolute; left: 14px; color: var(--text-muted); font-size: 0.9rem; pointer-events: none; transition: color 0.3s; }
+.input-wrap input, .input-wrap textarea {
+  width: 100%; padding: 0.85rem 0.9rem 0.85rem 2.6rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1.5px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
@@ -340,142 +197,32 @@ body::before {
   font-family: inherit;
   transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
 }
+.input-wrap textarea { resize: vertical; min-height: 60px; padding-top: 0.85rem; }
+.input-wrap input:focus, .input-wrap textarea:focus { outline: none; border-color: var(--primary-light); background: rgba(255, 255, 255, 0.06); box-shadow: 0 0 0 4px rgba(79, 240, 84, 0.06); }
+.input-wrap input::placeholder, .input-wrap textarea::placeholder { color: rgba(255, 255, 255, 0.25); }
+.input-wrap input:focus + .icon, .input-wrap textarea:focus + .icon { color: var(--primary-light); }
 
-.input-wrap textarea {
-  resize: vertical;
-  min-height: 60px;
-  padding-top: 0.85rem;
-}
-
-.input-wrap input:focus,
-.input-wrap textarea:focus {
-  outline: none;
-  border-color: var(--primary-light);
-  background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 4px rgba(79, 240, 84, 0.06);
-}
-
-.input-wrap input::placeholder,
-.input-wrap textarea::placeholder {
-  color: rgba(255, 255, 255, 0.25);
-}
-
-.input-wrap input:focus + .icon,
-.input-wrap textarea:focus + .icon {
-  color: var(--primary-light);
-}
-
-/* ─── Field Error ─── */
-.field-error {
-  color: #ff6b6b;
-  font-size: 0.74rem;
-  font-weight: 600;
-  margin-top: 0.3rem;
-  display: none;
-}
-
+.field-error { color: #ff6b6b; font-size: 0.74rem; font-weight: 600; margin-top: 0.3rem; display: none; }
 .field-error.show { display: block; }
+.input-wrap.input-error input, .input-wrap.input-error textarea { border-color: #ff6b6b; box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.08); }
 
-.input-wrap.input-error input,
-.input-wrap.input-error textarea {
-  border-color: #ff6b6b;
-  box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.08);
-}
-
-/* ─── Password Toggle ─── */
-.pass-toggle {
-  position: absolute;
-  right: 14px;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  cursor: pointer;
-  font-size: 0.9rem;
-  padding: 0.2rem;
-  transition: color 0.3s;
-}
-
+.pass-toggle { position: absolute; right: 14px; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.9rem; padding: 0.2rem; transition: color 0.3s; }
 .pass-toggle:hover { color: var(--primary-light); }
 
-/* ─── Password Strength ─── */
-.pw-strength {
-  display: flex;
-  gap: 4px;
-  margin-top: 0.4rem;
-}
+.pw-strength { display: flex; gap: 4px; margin-top: 0.4rem; }
+.pw-strength .bar { flex: 1; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.06); transition: background 0.3s; }
+.pw-strength-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; font-weight: 500; }
 
-.pw-strength .bar {
-  flex: 1;
-  height: 3px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.06);
-  transition: background 0.3s;
-}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
 
-.pw-strength-label {
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  margin-top: 0.25rem;
-  font-weight: 500;
-}
+.checkbox-wrap { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.82rem; cursor: pointer; user-select: none; }
+.checkbox-wrap input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; flex: none; }
 
-/* ─── Form Row ─── */
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.8rem;
-}
+.terms-wrap { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--text-muted); font-size: 0.78rem; line-height: 1.5; }
+.terms-wrap input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; flex: none; margin-top: 2px; }
+.terms-wrap a { color: var(--primary-light); font-weight: 700; text-decoration: none; transition: color 0.3s; }
+.terms-wrap a:hover { color: #fff; text-decoration: underline; }
 
-/* ─── Checkbox ─── */
-.checkbox-wrap {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  cursor: pointer;
-  user-select: none;
-}
-
-.checkbox-wrap input[type="checkbox"] {
-  width: 17px;
-  height: 17px;
-  accent-color: var(--primary);
-  cursor: pointer;
-  flex: none;
-}
-
-.terms-wrap {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.55rem;
-  color: var(--text-muted);
-  font-size: 0.78rem;
-  line-height: 1.5;
-}
-
-.terms-wrap input[type="checkbox"] {
-  width: 17px;
-  height: 17px;
-  accent-color: var(--primary);
-  cursor: pointer;
-  flex: none;
-  margin-top: 2px;
-}
-
-.terms-wrap a {
-  color: var(--primary-light);
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-.terms-wrap a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* ─── Submit Button ─── */
 .btn-submit {
   width: 100%;
   padding: 0.95rem;
@@ -488,8 +235,7 @@ body::before {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-              box-shadow 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
   box-shadow: 0 4px 24px rgba(45, 151, 13, 0.3);
   display: flex;
   align-items: center;
@@ -497,187 +243,44 @@ body::before {
   gap: 0.6rem;
   margin-top: 0.2rem;
 }
-
-.btn-submit::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent);
-  opacity: 0;
-  transition: opacity 0.4s;
-}
-
+.btn-submit::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent); opacity: 0; transition: opacity 0.4s; }
 .btn-submit:hover::before { opacity: 1; }
-
-.btn-submit:hover {
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 8px 40px rgba(45, 151, 13, 0.45);
-}
-
-.btn-submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none !important;
-}
-
-.btn-submit .spinner {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  border: 2.5px solid rgba(255, 255, 255, 0.2);
-  border-top-color: #fff;
-  animation: spin 0.7s linear infinite;
-  display: none;
-}
-
+.btn-submit:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 8px 40px rgba(45, 151, 13, 0.45); }
+.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
+.btn-submit .spinner { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(255, 255, 255, 0.2); border-top-color: #fff; animation: spin 0.7s linear infinite; display: none; }
 .btn-submit.loading .spinner { display: block; }
 .btn-submit.loading .btn-text { opacity: 0.8; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+.auth-switch { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem; }
+.auth-switch button { background: none; border: none; color: var(--primary-light); font-weight: 700; cursor: pointer; font-size: inherit; transition: color 0.3s; }
+.auth-switch button:hover { color: #fff; text-decoration: underline; }
 
-/* ─── Switch Link ─── */
-.auth-switch {
-  text-align: center;
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 0.8rem;
-}
-
-.auth-switch button {
-  background: none;
-  border: none;
-  color: var(--primary-light);
-  font-weight: 700;
-  cursor: pointer;
-  font-size: inherit;
-  transition: color 0.3s;
-}
-
-.auth-switch button:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* ─── Forgot Link ─── */
-.forgot-link {
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  font-size: 0.82rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
+.forgot-link { background: none; border: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: color 0.3s; }
 .forgot-link:hover { color: var(--primary-light); }
 
-/* ─── Banner ─── */
-.form-banner {
-  display: none;
-  align-items: flex-start;
-  gap: 0.6rem;
-  padding: 0.85rem 1rem;
-  border-radius: 12px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 0.8rem;
-  animation: bannerIn 0.4s ease;
-}
-
+.form-banner { display: none; align-items: flex-start; gap: 0.6rem; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.8rem; animation: bannerIn 0.4s ease; }
 .form-banner.show { display: flex; }
+.form-banner.success { background: rgba(79, 240, 84, 0.08); border: 1px solid rgba(79, 240, 84, 0.15); color: var(--primary-light); }
+.form-banner.error { background: rgba(255, 107, 107, 0.08); border: 1px solid rgba(255, 107, 107, 0.15); color: #ff6b6b; }
+@keyframes bannerIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
 
-.form-banner.success {
-  background: rgba(79, 240, 84, 0.08);
-  border: 1px solid rgba(79, 240, 84, 0.15);
-  color: var(--primary-light);
-}
-
-.form-banner.error {
-  background: rgba(255, 107, 107, 0.08);
-  border: 1px solid rgba(255, 107, 107, 0.15);
-  color: #ff6b6b;
-}
-
-@keyframes bannerIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ─── Success State ─── */
-.success-state {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 1.5rem 0 0.5rem;
-}
-
+.success-state { display: none; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem 0 0.5rem; }
 .success-state.show { display: flex; }
+.success-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(79, 240, 84, 0.08); border: 1px solid rgba(79, 240, 84, 0.15); color: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 0.8rem; animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.success-state h3 { font-size: 1.2rem; font-weight: 800; }
+.success-state p { color: var(--text-muted); font-size: 0.88rem; max-width: 320px; }
 
-.success-icon {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: rgba(79, 240, 84, 0.08);
-  border: 1px solid rgba(79, 240, 84, 0.15);
-  color: var(--primary-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
-  animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes popIn {
-  from { transform: scale(0.5); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.success-state h3 {
-  font-size: 1.2rem;
-  font-weight: 800;
-}
-
-.success-state p {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  max-width: 320px;
-}
-
-/* ─── Back Link ─── */
-.back-link {
-  display: none;
-  align-items: center;
-  gap: 0.4rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: color 0.3s;
-  margin-bottom: 1rem;
-  background: none;
-  border: none;
-}
-
+.back-link { display: none; align-items: center; gap: 0.4rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: color 0.3s; margin-bottom: 1rem; background: none; border: none; }
 .back-link:hover { color: var(--primary-light); }
 
-/* ─── Responsive ─── */
 @media (max-width: 540px) {
-  .auth-container {
-    padding: 2rem 1.4rem 1.6rem;
-    border-radius: 20px;
-    max-height: 96vh;
-  }
-
+  .auth-container { padding: 2rem 1.4rem 1.6rem; border-radius: 20px; max-height: 96vh; }
   .auth-title { font-size: 1.4rem; }
   .form-row { grid-template-columns: 1fr; }
-
   .auth-logo span { font-size: 0.85rem; }
 }
-
 @media (max-width: 400px) {
   .auth-container { padding: 1.6rem 1rem 1.2rem; }
   .auth-tab { font-size: 0.78rem; padding: 0.6rem 0.5rem; }
@@ -686,17 +289,12 @@ body::before {
 </head>
 <body>
 
-<!-- ─── Floating Orbs ─── -->
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
 <div class="orb orb-3"></div>
 
-<!-- ════════════════════════════════════════
-     MAIN AUTH CARD
-════════════════════════════════════════ -->
 <div class="auth-container" role="main">
 
-  <!-- ─── Header ─── -->
   <div class="auth-header">
     <a href="index.html" class="auth-logo">
       <img src="images/Lab Logo.png" alt="The Medicare Laboratory">
@@ -706,24 +304,19 @@ body::before {
     <p class="auth-sub">Secure access to your health records</p>
   </div>
 
-  <!-- ─── Tabs ─── -->
   <div class="auth-tabs" id="authTabs">
     <button type="button" class="auth-tab active" data-view="login">Log In</button>
     <button type="button" class="auth-tab" data-view="signup">Sign Up</button>
     <div class="auth-tab-glider" id="tabGlider"></div>
   </div>
 
-  <!-- ════════════════════════════════════════
-       LOGIN VIEW
-  ════════════════════════════════════════ -->
+  <!-- LOGIN VIEW -->
   <div class="auth-view active" id="loginView">
     <div class="view-head">
       <h2>Welcome Back</h2>
       <p>Log in to access your reports and appointments</p>
     </div>
-
     <div class="form-banner" id="loginBanner"></div>
-
     <form id="loginForm" novalidate>
       <div class="form-group">
         <label for="loginEmail">Email Address <span class="req">*</span></label>
@@ -733,187 +326,114 @@ body::before {
         </div>
         <div class="field-error" id="loginEmailError">Please enter a valid email address</div>
       </div>
-
       <div class="form-group">
         <label for="loginPassword">Password <span class="req">*</span></label>
         <div class="input-wrap">
           <i class="fas fa-lock icon"></i>
           <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
-          <button type="button" class="pass-toggle" data-target="loginPassword">
-            <i class="fas fa-eye"></i>
-          </button>
+          <button type="button" class="pass-toggle" data-target="loginPassword"><i class="fas fa-eye"></i></button>
         </div>
         <div class="field-error" id="loginPassError">Password is required</div>
       </div>
-
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-        <label class="checkbox-wrap">
-          <input type="checkbox" id="rememberMe">
-          Remember me
-        </label>
+        <label class="checkbox-wrap"><input type="checkbox" id="rememberMe"> Remember me</label>
         <button type="button" class="forgot-link" id="gotoForgot">Forgot password?</button>
       </div>
-
-      <button type="submit" class="btn-submit" id="loginSubmit">
-        <span class="btn-text">Log In</span>
-        <span class="spinner"></span>
-      </button>
-
-      <p class="auth-switch">
-        Don't have an account? <button type="button" data-switch="signup">Sign up</button>
-      </p>
+      <button type="submit" class="btn-submit" id="loginSubmit"><span class="btn-text">Log In</span><span class="spinner"></span></button>
+      <p class="auth-switch">Don't have an account? <button type="button" data-switch="signup">Sign up</button></p>
     </form>
   </div>
 
-  <!-- ════════════════════════════════════════
-       SIGNUP VIEW
-  ════════════════════════════════════════ -->
+  <!-- SIGNUP VIEW -->
   <div class="auth-view" id="signupView">
     <div class="view-head">
       <h2>Create Account</h2>
       <p>Sign up to book tests and manage your health</p>
     </div>
-
     <div class="form-banner" id="signupBanner"></div>
-
     <form id="signupForm" novalidate>
       <div class="form-row">
         <div class="form-group">
           <label for="fullName">Full Name <span class="req">*</span></label>
-          <div class="input-wrap">
-            <i class="fas fa-user icon"></i>
-            <input type="text" id="fullName" placeholder="John Doe" autocomplete="name" required>
-          </div>
+          <div class="input-wrap"><i class="fas fa-user icon"></i><input type="text" id="fullName" placeholder="Enter your Name" autocomplete="name" required></div>
           <div class="field-error" id="fullNameError">Please enter your full name</div>
         </div>
-
         <div class="form-group">
           <label for="fatherName">Father's Name <span class="req">*</span></label>
-          <div class="input-wrap">
-            <i class="fas fa-user-tie icon"></i>
-            <input type="text" id="fatherName" placeholder="Father's name" required>
-          </div>
+          <div class="input-wrap"><i class="fas fa-user-tie icon"></i><input type="text" id="fatherName" placeholder="Enter your Father's name" required></div>
           <div class="field-error" id="fatherNameError">Please enter father's name</div>
         </div>
       </div>
-
       <div class="form-row">
         <div class="form-group">
           <label for="cellNo">Cell Number <span class="req">*</span></label>
-          <div class="input-wrap">
-            <i class="fas fa-mobile-screen-button icon"></i>
-            <input type="tel" id="cellNo" placeholder="03XX-XXXXXXX" autocomplete="tel" required>
-          </div>
+          <div class="input-wrap"><i class="fas fa-mobile-screen-button icon"></i><input type="tel" id="cellNo" placeholder="03XX-XXXXXXX" autocomplete="tel" required></div>
           <div class="field-error" id="cellError">Enter a valid 11-digit cell number</div>
         </div>
-
         <div class="form-group">
           <label for="signupEmail">Email Address <span class="req">*</span></label>
-          <div class="input-wrap">
-            <i class="fas fa-envelope icon"></i>
-            <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" required>
-          </div>
+          <div class="input-wrap"><i class="fas fa-envelope icon"></i><input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" required></div>
           <div class="field-error" id="signupEmailError">Enter a valid email address</div>
         </div>
       </div>
-
       <div class="form-group">
         <label for="address">Home Address <span class="req">*</span></label>
-        <div class="input-wrap">
-          <i class="fas fa-location-dot icon" style="top:14px;transform:none;"></i>
-          <textarea id="address" placeholder="House #, street, area, city" required></textarea>
-        </div>
+        <div class="input-wrap"><i class="fas fa-location-dot icon" style="top:14px;transform:none;"></i><textarea id="address" placeholder="House #, street, area, city" required></textarea></div>
         <div class="field-error" id="addressError">Please enter your home address</div>
       </div>
-
       <div class="form-group">
         <label for="signupPassword">Password <span class="req">*</span></label>
         <div class="input-wrap">
           <i class="fas fa-lock icon"></i>
           <input type="password" id="signupPassword" placeholder="Create a strong password" autocomplete="new-password" required>
-          <button type="button" class="pass-toggle" data-target="signupPassword">
-            <i class="fas fa-eye"></i>
-          </button>
+          <button type="button" class="pass-toggle" data-target="signupPassword"><i class="fas fa-eye"></i></button>
         </div>
-        <div class="pw-strength" id="pwStrength">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
+        <div class="pw-strength" id="pwStrength"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
         <div class="pw-strength-label" id="pwStrengthLabel">Use 8+ characters with numbers &amp; symbols</div>
         <div class="field-error" id="signupPassError">Password must be at least 8 characters</div>
       </div>
-
       <div class="form-group">
         <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
         <div class="input-wrap">
           <i class="fas fa-lock icon"></i>
           <input type="password" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
-          <button type="button" class="pass-toggle" data-target="confirmPassword">
-            <i class="fas fa-eye"></i>
-          </button>
+          <button type="button" class="pass-toggle" data-target="confirmPassword"><i class="fas fa-eye"></i></button>
         </div>
         <div class="field-error" id="confirmPassError">Passwords do not match</div>
       </div>
-
       <label class="terms-wrap">
         <input type="checkbox" id="agreeTerms" required>
         <span>I agree to the <a href="pages/terms.html">Terms of Service</a> and <a href="pages/privacy.html">Privacy Policy</a>, and consent to the processing of my medical data.</span>
       </label>
-
-      <button type="submit" class="btn-submit" id="signupSubmit">
-        <span class="btn-text">Create Account</span>
-        <span class="spinner"></span>
-      </button>
-
-      <p class="auth-switch">
-        Already have an account? <button type="button" data-switch="login">Log in</button>
-      </p>
+      <button type="submit" class="btn-submit" id="signupSubmit"><span class="btn-text">Create Account</span><span class="spinner"></span></button>
+      <p class="auth-switch">Already have an account? <button type="button" data-switch="login">Log in</button></p>
     </form>
   </div>
 
-  <!-- ════════════════════════════════════════
-       FORGOT PASSWORD VIEW
-  ════════════════════════════════════════ -->
+  <!-- FORGOT VIEW -->
   <div class="auth-view" id="forgotView">
-    <button type="button" class="back-link" id="forgotBack">
-      <i class="fas fa-arrow-left"></i> Back to log in
-    </button>
-
+    <button type="button" class="back-link" id="forgotBack"><i class="fas fa-arrow-left"></i> Back to log in</button>
     <div id="forgotStep1">
       <div class="view-head">
         <h2>Reset Password</h2>
         <p>Enter your email to receive a reset link</p>
       </div>
-
       <div class="form-banner" id="forgotBanner"></div>
-
       <form id="forgotForm" novalidate>
         <div class="form-group">
           <label for="forgotEmail">Email Address <span class="req">*</span></label>
-          <div class="input-wrap">
-            <i class="fas fa-envelope icon"></i>
-            <input type="email" id="forgotEmail" placeholder="you@example.com" autocomplete="email" required>
-          </div>
+          <div class="input-wrap"><i class="fas fa-envelope icon"></i><input type="email" id="forgotEmail" placeholder="you@example.com" autocomplete="email" required></div>
           <div class="field-error" id="forgotEmailError">Enter a valid email address</div>
         </div>
-
-        <button type="submit" class="btn-submit" id="forgotSubmit">
-          <span class="btn-text">Send Reset Link</span>
-          <span class="spinner"></span>
-        </button>
+        <button type="submit" class="btn-submit" id="forgotSubmit"><span class="btn-text">Send Reset Link</span><span class="spinner"></span></button>
       </form>
     </div>
-
     <div id="forgotStep2" style="display:none;">
       <div class="success-state show">
         <div class="success-icon"><i class="fas fa-circle-check"></i></div>
         <h3>Check Your Email</h3>
         <p>We've sent a password reset link to <strong id="forgotEmailShown">your email</strong>. Please click the link to reset your password.</p>
-        <button type="button" class="btn-submit" id="backToLoginBtn" style="max-width:200px;margin-top:0.8rem;">
-          <span class="btn-text">Back to Log In</span>
-        </button>
+        <button type="button" class="btn-submit" id="backToLoginBtn" style="max-width:200px;margin-top:0.8rem;"><span class="btn-text">Back to Log In</span></button>
       </div>
     </div>
   </div>
@@ -921,24 +441,17 @@ body::before {
 </div>
 
 <!-- ════════════════════════════════════════
-     JAVASCRIPT — PHP BACKEND (PATHS CORRECTED)
+     JAVASCRIPT — PHP BACKEND (PATHS: includes/)
 ════════════════════════════════════════ -->
 <script>
-/* ══════════════════════════════════════════
-   DOM REFS
-══════════════════════════════════════════ */
 const loginView = document.getElementById('loginView');
 const signupView = document.getElementById('signupView');
 const forgotView = document.getElementById('forgotView');
 const tabs = document.querySelectorAll('.auth-tab');
 const glider = document.getElementById('tabGlider');
 
-/* ══════════════════════════════════════════
-   VIEW SWITCHING
-══════════════════════════════════════════ */
 function switchView(view) {
   document.querySelectorAll('.auth-view').forEach(el => el.classList.remove('active'));
-  
   if (view === 'login') {
     loginView.classList.add('active');
     tabs.forEach(t => t.classList.toggle('active', t.dataset.view === 'login'));
@@ -954,25 +467,12 @@ function switchView(view) {
   }
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', function() {
-    switchView(this.dataset.view);
-  });
-});
-
-document.querySelectorAll('[data-switch]').forEach(btn => {
-  btn.addEventListener('click', function() {
-    switchView(this.dataset.switch);
-  });
-});
-
+tabs.forEach(tab => { tab.addEventListener('click', function() { switchView(this.dataset.view); }); });
+document.querySelectorAll('[data-switch]').forEach(btn => { btn.addEventListener('click', function() { switchView(this.dataset.switch); }); });
 document.getElementById('gotoForgot').addEventListener('click', () => switchView('forgot'));
 document.getElementById('forgotBack').addEventListener('click', () => switchView('login'));
 document.getElementById('backToLoginBtn').addEventListener('click', () => switchView('login'));
 
-/* ══════════════════════════════════════════
-   PASSWORD TOGGLE
-══════════════════════════════════════════ */
 document.querySelectorAll('.pass-toggle').forEach(btn => {
   btn.addEventListener('click', function() {
     const input = document.getElementById(this.dataset.target);
@@ -984,48 +484,28 @@ document.querySelectorAll('.pass-toggle').forEach(btn => {
   });
 });
 
-/* ══════════════════════════════════════════
-   UTILITY FUNCTIONS
-══════════════════════════════════════════ */
 function showBanner(id, type, msg) {
   const el = document.getElementById(id);
   el.className = `form-banner show ${type}`;
   el.innerHTML = `<i class="fas fa-${type === 'success' ? 'circle-check' : 'circle-exclamation'}"></i><span>${msg}</span>`;
 }
-
-function hideBanner(id) {
-  document.getElementById(id).className = 'form-banner';
-}
-
+function hideBanner(id) { document.getElementById(id).className = 'form-banner'; }
 function setFieldError(inputId, errorId, hasError) {
   const input = document.getElementById(inputId);
   const error = document.getElementById(errorId);
   const wrap = input?.closest('.form-group')?.querySelector('.input-wrap');
-  
   if (wrap) wrap.classList.toggle('input-error', hasError);
   if (error) error.classList.toggle('show', hasError);
 }
+function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
+function isValidPhone(phone) { return /^0\d{10}$/.test(phone.replace(/[-\s]/g, '')); }
 
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function isValidPhone(phone) {
-  return /^0\d{10}$/.test(phone.replace(/[-\s]/g, ''));
-}
-
-/* ══════════════════════════════════════════
-   CELL PHONE FORMATTING
-══════════════════════════════════════════ */
 document.getElementById('cellNo')?.addEventListener('input', function() {
   let v = this.value.replace(/\D/g, '').slice(0, 11);
   if (v.length > 4) v = v.slice(0, 4) + '-' + v.slice(4);
   this.value = v;
 });
 
-/* ══════════════════════════════════════════
-   PASSWORD STRENGTH
-══════════════════════════════════════════ */
 const pwInput = document.getElementById('signupPassword');
 const pwBars = document.querySelectorAll('#pwStrength .bar');
 const pwLabel = document.getElementById('pwStrengthLabel');
@@ -1039,25 +519,14 @@ pwInput?.addEventListener('input', function() {
   if (/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
   if (/\d/.test(v)) score++;
   if (/[^A-Za-z0-9]/.test(v)) score++;
-  
-  pwBars.forEach((bar, i) => {
-    bar.style.background = i < score ? colors[Math.min(score - 1, 3)] : 'rgba(255,255,255,0.06)';
-  });
-  
-  pwLabel.textContent = v.length === 0 
-    ? 'Use 8+ characters with numbers & symbols' 
-    : labels[Math.min(score - 1, 3)] + ' password';
+  pwBars.forEach((bar, i) => { bar.style.background = i < score ? colors[Math.min(score - 1, 3)] : 'rgba(255,255,255,0.06)'; });
+  pwLabel.textContent = v.length === 0 ? 'Use 8+ characters with numbers & symbols' : labels[Math.min(score - 1, 3)] + ' password';
 });
 
-/* ══════════════════════════════════════════
-   AJAX HELPER — PHP BACKEND
-══════════════════════════════════════════ */
 function ajaxRequest(url, data, callback) {
   fetch(url, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: new URLSearchParams(data)
   })
   .then(response => response.json())
@@ -1068,77 +537,41 @@ function ajaxRequest(url, data, callback) {
   });
 }
 
-/* ══════════════════════════════════════════
-   LOGIN FORM — PHP BACKEND ✅ PATH: includes/login.php
-══════════════════════════════════════════ */
+// ── LOGIN FORM ──
 document.getElementById('loginForm').addEventListener('submit', function(e) {
   e.preventDefault();
   hideBanner('loginBanner');
-
   const email = document.getElementById('loginEmail');
   const pass = document.getElementById('loginPassword');
   const remember = document.getElementById('rememberMe');
   let valid = true;
-
-  if (!isValidEmail(email.value)) {
-    setFieldError('loginEmail', 'loginEmailError', true);
-    valid = false;
-  } else {
-    setFieldError('loginEmail', 'loginEmailError', false);
-  }
-
-  if (pass.value.length === 0) {
-    setFieldError('loginPassword', 'loginPassError', true);
-    valid = false;
-  } else {
-    setFieldError('loginPassword', 'loginPassError', false);
-  }
-
+  if (!isValidEmail(email.value)) { setFieldError('loginEmail', 'loginEmailError', true); valid = false; } else { setFieldError('loginEmail', 'loginEmailError', false); }
+  if (pass.value.length === 0) { setFieldError('loginPassword', 'loginPassError', true); valid = false; } else { setFieldError('loginPassword', 'loginPassError', false); }
   if (!valid) return;
-
   const btn = document.getElementById('loginSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
-
-  const data = {
-    email: email.value.trim(),
-    password: pass.value,
-    remember: remember.checked ? '1' : '0'
-  };
-
-  // ✅ CORRECT PATH: includes/login.php
-  ajaxRequest('includes/login.php', data, function(result) {
+  btn.classList.add('loading'); btn.disabled = true;
+  ajaxRequest('includes/login.php', { email: email.value.trim(), password: pass.value, remember: remember.checked ? '1' : '0' }, function(result) {
     if (result.success) {
       showBanner('loginBanner', 'success', result.message);
-      setTimeout(() => {
-        window.location.replace('home.php');
-      }, 1000);
+      setTimeout(() => { window.location.replace('home.php'); }, 1000);
     } else {
       if (result.data && result.data.errors) {
         const errors = result.data.errors;
-        if (errors.email) {
-          setFieldError('loginEmail', 'loginEmailError', true);
-        }
-        if (errors.password) {
-          setFieldError('loginPassword', 'loginPassError', true);
-        }
+        if (errors.email) setFieldError('loginEmail', 'loginEmailError', true);
+        if (errors.password) setFieldError('loginPassword', 'loginPassError', true);
         showBanner('loginBanner', 'error', 'Please fix the errors above.');
       } else {
-        showBanner('loginBanner', 'error', result.message || 'Login failed. Please try again.');
+        showBanner('loginBanner', 'error', result.message || 'Login failed.');
       }
-      btn.classList.remove('loading');
-      btn.disabled = false;
+      btn.classList.remove('loading'); btn.disabled = false;
     }
   });
 });
 
-/* ══════════════════════════════════════════
-   SIGNUP FORM — PHP BACKEND ✅ PATH: includes/signup.php
-══════════════════════════════════════════ */
+// ── SIGNUP FORM ──
 document.getElementById('signupForm').addEventListener('submit', function(e) {
   e.preventDefault();
   hideBanner('signupBanner');
-
   const fullName = document.getElementById('fullName');
   const fatherName = document.getElementById('fatherName');
   const cellNo = document.getElementById('cellNo');
@@ -1147,56 +580,19 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
   const pass = document.getElementById('signupPassword');
   const confirm = document.getElementById('confirmPassword');
   const terms = document.getElementById('agreeTerms');
-
   let valid = true;
-
-  if (fullName.value.trim().length < 2) {
-    setFieldError('fullName', 'fullNameError', true);
-    valid = false;
-  } else setFieldError('fullName', 'fullNameError', false);
-
-  if (fatherName.value.trim().length < 2) {
-    setFieldError('fatherName', 'fatherNameError', true);
-    valid = false;
-  } else setFieldError('fatherName', 'fatherNameError', false);
-
-  if (!isValidPhone(cellNo.value)) {
-    setFieldError('cellNo', 'cellError', true);
-    valid = false;
-  } else setFieldError('cellNo', 'cellError', false);
-
-  if (!isValidEmail(email.value)) {
-    setFieldError('signupEmail', 'signupEmailError', true);
-    valid = false;
-  } else setFieldError('signupEmail', 'signupEmailError', false);
-
-  if (address.value.trim().length < 5) {
-    setFieldError('address', 'addressError', true);
-    valid = false;
-  } else setFieldError('address', 'addressError', false);
-
-  if (pass.value.length < 8) {
-    setFieldError('signupPassword', 'signupPassError', true);
-    valid = false;
-  } else setFieldError('signupPassword', 'signupPassError', false);
-
-  if (confirm.value !== pass.value || confirm.value === '') {
-    setFieldError('confirmPassword', 'confirmPassError', true);
-    valid = false;
-  } else setFieldError('confirmPassword', 'confirmPassError', false);
-
-  if (!terms.checked) {
-    showBanner('signupBanner', 'error', 'Please agree to the Terms of Service and Privacy Policy.');
-    valid = false;
-  }
-
+  if (fullName.value.trim().length < 2) { setFieldError('fullName', 'fullNameError', true); valid = false; } else { setFieldError('fullName', 'fullNameError', false); }
+  if (fatherName.value.trim().length < 2) { setFieldError('fatherName', 'fatherNameError', true); valid = false; } else { setFieldError('fatherName', 'fatherNameError', false); }
+  if (!isValidPhone(cellNo.value)) { setFieldError('cellNo', 'cellError', true); valid = false; } else { setFieldError('cellNo', 'cellError', false); }
+  if (!isValidEmail(email.value)) { setFieldError('signupEmail', 'signupEmailError', true); valid = false; } else { setFieldError('signupEmail', 'signupEmailError', false); }
+  if (address.value.trim().length < 5) { setFieldError('address', 'addressError', true); valid = false; } else { setFieldError('address', 'addressError', false); }
+  if (pass.value.length < 8) { setFieldError('signupPassword', 'signupPassError', true); valid = false; } else { setFieldError('signupPassword', 'signupPassError', false); }
+  if (confirm.value !== pass.value || confirm.value === '') { setFieldError('confirmPassword', 'confirmPassError', true); valid = false; } else { setFieldError('confirmPassword', 'confirmPassError', false); }
+  if (!terms.checked) { showBanner('signupBanner', 'error', 'Please agree to Terms.'); valid = false; }
   if (!valid) return;
-
   const btn = document.getElementById('signupSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
-
-  const data = {
+  btn.classList.add('loading'); btn.disabled = true;
+  ajaxRequest('includes/signup.php', {
     full_name: fullName.value.trim(),
     father_name: fatherName.value.trim(),
     cell_number: cellNo.value.trim(),
@@ -1204,82 +600,56 @@ document.getElementById('signupForm').addEventListener('submit', function(e) {
     address: address.value.trim(),
     password: pass.value,
     confirm_password: confirm.value
-  };
-
-  // ✅ CORRECT PATH: includes/signup.php
-  ajaxRequest('includes/signup.php', data, function(result) {
+  }, function(result) {
     if (result.success) {
       showBanner('signupBanner', 'success', result.message);
-      setTimeout(() => {
-        window.location.replace('home.php');
-      }, 1500);
+      setTimeout(() => { window.location.replace('home.php'); }, 1500);
     } else {
       if (result.data && result.data.errors) {
         const errors = result.data.errors;
+        const errorMap = {
+          'full_name': ['fullName', 'fullNameError'],
+          'father_name': ['fatherName', 'fatherNameError'],
+          'cell_number': ['cellNo', 'cellError'],
+          'email': ['signupEmail', 'signupEmailError'],
+          'address': ['address', 'addressError'],
+          'password': ['signupPassword', 'signupPassError'],
+          'confirm_password': ['confirmPassword', 'confirmPassError']
+        };
         for (const [field, message] of Object.entries(errors)) {
-          const errorMap = {
-            'full_name': ['fullName', 'fullNameError'],
-            'father_name': ['fatherName', 'fatherNameError'],
-            'cell_number': ['cellNo', 'cellError'],
-            'email': ['signupEmail', 'signupEmailError'],
-            'address': ['address', 'addressError'],
-            'password': ['signupPassword', 'signupPassError'],
-            'confirm_password': ['confirmPassword', 'confirmPassError']
-          };
-          if (errorMap[field]) {
-            const [inputId, errorId] = errorMap[field];
-            setFieldError(inputId, errorId, true);
-          }
+          if (errorMap[field]) { const [inputId, errorId] = errorMap[field]; setFieldError(inputId, errorId, true); }
         }
         showBanner('signupBanner', 'error', 'Please fix the errors above.');
       } else {
-        showBanner('signupBanner', 'error', result.message || 'Registration failed. Please try again.');
+        showBanner('signupBanner', 'error', result.message || 'Registration failed.');
       }
-      btn.classList.remove('loading');
-      btn.disabled = false;
+      btn.classList.remove('loading'); btn.disabled = false;
     }
   });
 });
 
-/* ══════════════════════════════════════════
-   FORGOT PASSWORD FORM — PHP BACKEND ✅ PATH: includes/forgot.php
-══════════════════════════════════════════ */
+// ── FORGOT PASSWORD ──
 document.getElementById('forgotForm').addEventListener('submit', function(e) {
   e.preventDefault();
   hideBanner('forgotBanner');
-
   const email = document.getElementById('forgotEmail');
-  
-  if (!isValidEmail(email.value)) {
-    setFieldError('forgotEmail', 'forgotEmailError', true);
-    return;
-  }
+  if (!isValidEmail(email.value)) { setFieldError('forgotEmail', 'forgotEmailError', true); return; }
   setFieldError('forgotEmail', 'forgotEmailError', false);
-
   const btn = document.getElementById('forgotSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
-
-  const data = {
-    email: email.value.trim()
-  };
-
-  // ✅ CORRECT PATH: includes/forgot.php
-  ajaxRequest('includes/forgot.php', data, function(result) {
+  btn.classList.add('loading'); btn.disabled = true;
+  ajaxRequest('includes/forgot.php', { email: email.value.trim() }, function(result) {
     if (result.success) {
       document.getElementById('forgotEmailShown').textContent = email.value;
       document.getElementById('forgotStep1').style.display = 'none';
       document.getElementById('forgotStep2').style.display = 'block';
       showBanner('forgotBanner', 'success', result.message);
     } else {
-      showBanner('forgotBanner', 'error', result.message || 'Email not found. Please check your email address.');
+      showBanner('forgotBanner', 'error', result.message || 'Email not found.');
     }
-    btn.classList.remove('loading');
-    btn.disabled = false;
+    btn.classList.remove('loading'); btn.disabled = false;
   });
 });
 
-// ── URL se logout success check ──
 window.addEventListener('load', function() {
   const params = new URLSearchParams(window.location.search);
   if (params.get('logout') === 'success') {
