@@ -1,877 +1,1265 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Medicare Laboratory - Patient Portal</title>
-<meta name="description" content="Secure patient portal for The Medicare Laboratory & Diagnostic Center." />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <title>The Medicare Laboratory & Diagnostic Center</title>
+    <meta name="description" content="The Medicare Laboratory & Diagnostic Center provides reliable diagnostic reports and medical lab services." />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="The Medicare Laboratory & Diagnostic Center - Diagnostic Services" />
+    <meta property="og:description" content="Reliable medical lab testing and reports." />
+    <meta property="og:image" content="https://the-medi-lab.vercel.app/logo.png" />
+    <meta property="og:url" content="https://the-medi-lab.vercel.app/" />
 
-<link rel="icon" type="image/png" sizes="any" href="images/logo-icon.png" />
-<link rel="icon" type="image/x-icon" href="images/logo-icon.png" />
-<link rel="apple-touch-icon" href="images/logo-icon.png" />
+    <meta name="google-site-verification" content="UttZrFIUuZTdt7b16Ezd-H5rTEt0HkCd8CuT2qq_Pu8" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Arabic Font Support -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- ═══ FAVICON ═══ -->
+    <link rel="icon" type="image/png" sizes="any" href="images/logo-icon.png" />
+    <link rel="icon" type="image/x-icon" href="images/logo-icon.png" />
+    <link rel="apple-touch-icon" href="images/logo-icon.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/logo-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo-icon.png" />
 
 <style>
 /* ═══════════════════════════════════════════
    ULTRA PREMIUM — RESET & VARIABLES
 ═══════════════════════════════════════════ */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 
-:root {
-  --primary: #2d970d;
-  --primary-dark: #1f6e09;
-  --primary-light: #4ff054;
-  --accent: #0f550b;
-  --bg-dark: #080f07;
-  --bg-card: rgba(255, 255, 255, 0.04);
-  --text-white: #ffffff;
-  --text-muted: rgba(255, 255, 255, 0.6);
-  --text-light: rgba(255, 255, 255, 0.85);
-  --border-glass: rgba(255, 255, 255, 0.06);
-  --shadow-glow: 0 30px 80px rgba(0, 0, 0, 0.6);
-  --radius: 24px;
-  --transition: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+:root{
+  --primary:#2d970d;
+  --primary-dark:#1f6e09;
+  --primary-light:#4ff054;
+  --primary-glow:rgba(79,240,84,0.3);
+  --accent:#0f550b;
+  --dark:#080f07;
+  --light:#ffffff;
+  --text-dark:#1a1a1a;
+  --text-muted:rgba(255,255,255,0.65);
+  --text-light:#666666;
+  --border-glass:rgba(255,255,255,0.06);
+  --shadow:0 8px 40px rgba(45,151,13,0.25);
+  --shadow-hover:0 16px 60px rgba(45,151,13,0.35);
+  --radius:20px;
+  --transition:0.5s cubic-bezier(0.34,1.56,0.64,1);
 }
 
-html { scroll-behavior: smooth; }
+html{scroll-behavior:smooth;}
 
-body {
-  font-family: 'Inter', 'Segoe UI', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-white);
-  min-height: 100vh;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  background-image: 
-    radial-gradient(ellipse at 20% 50%, rgba(45, 151, 13, 0.08) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 50%, rgba(79, 240, 84, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(45, 151, 13, 0.04) 0%, transparent 40%);
+body{
+  font-family:'Inter','Segoe UI',sans-serif;
+  background:var(--light);
+  color:var(--text-dark);
+  line-height:1.6;
+  overflow-x:hidden;
 }
 
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  background-image: 
-    linear-gradient(rgba(79, 240, 84, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(79, 240, 84, 0.02) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: gridMove 20s linear infinite;
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* ═══════════════════════════════════════════
+   PAGE REVEAL — ULTRA SMOOTH
+═══════════════════════════════════════════ */
+#pageReveal{
+  position:fixed;inset:0;z-index:99999;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  transform-origin:top;
+  animation:revealSweep 1s cubic-bezier(0.77,0,0.18,1) 0.05s forwards;
+}
+@keyframes revealSweep{
+  0%  {transform:scaleY(1);}
+  100%{transform:scaleY(0);}
 }
 
-@keyframes gridMove {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(60px, 60px); }
+/* ═══════════════════════════════════════════
+   SCROLL-TO-TOP — PREMIUM
+═══════════════════════════════════════════ */
+#scrollTopBtn{
+  position:fixed;bottom:2rem;right:2rem;z-index:900;
+  width:54px;height:54px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  color:#fff;border:none;cursor:pointer;font-size:1.2rem;
+  box-shadow:0 8px 32px rgba(45,151,13,0.4);
+  opacity:0;transform:translateY(20px) scale(0.85);
+  transition:opacity 0.4s var(--transition),transform 0.4s var(--transition),box-shadow 0.4s;
+  display:flex;align-items:center;justify-content:center;
+}
+#scrollTopBtn::after{
+  content:'';position:absolute;inset:-4px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary),var(--primary-light));
+  opacity:0.2;filter:blur(16px);z-index:-1;
+  transition:opacity 0.4s;
+}
+#scrollTopBtn.show{opacity:1;transform:translateY(0) scale(1);}
+#scrollTopBtn:hover{
+  transform:translateY(-4px) scale(1.1) !important;
+  box-shadow:0 12px 48px rgba(79,240,84,0.5) !important;
+}
+#scrollTopBtn:hover::after{opacity:0.5;}
+
+/* ═══════════════════════════════════════════
+   NAVBAR — ORDER NOW REMOVED
+═══════════════════════════════════════════ */
+nav{
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  padding:1rem 0;
+  position:fixed;width:100%;top:0;z-index:1000;
+  box-shadow:var(--shadow);
+  transition:background 0.5s,padding 0.5s,box-shadow 0.5s,backdrop-filter 0.5s;
+}
+nav.nav-scrolled{
+  background:rgba(8,15,7,0.92);
+  backdrop-filter:blur(28px);
+  -webkit-backdrop-filter:blur(28px);
+  padding:0.5rem 0;
+  box-shadow:0 4px 48px rgba(0,0,0,0.5),0 1px 0 rgba(79,240,84,0.06) inset;
+  border-bottom:1px solid rgba(79,240,84,0.06);
 }
 
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  animation: orbFloat 12s ease-in-out infinite alternate;
-}
-.orb-1 { width: 400px; height: 400px; background: rgba(45, 151, 13, 0.12); top: -100px; right: -100px; animation-delay: 0s; }
-.orb-2 { width: 300px; height: 300px; background: rgba(79, 240, 84, 0.08); bottom: -50px; left: -50px; animation-delay: 4s; }
-.orb-3 { width: 200px; height: 200px; background: rgba(45, 151, 13, 0.06); top: 50%; left: 50%; transform: translate(-50%, -50%); animation-delay: 8s; }
-
-@keyframes orbFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(40px, -40px) scale(1.2); }
+.nav-container{
+  max-width:1200px;margin:0 auto;padding:0 2rem;
+  display:flex;justify-content:space-between;align-items:center;
 }
 
-.auth-container {
+.logo{
+  display:flex;align-items:center;gap:0.7rem;
+  color:#fff;font-size:1.4rem;font-weight:800;
+  animation:slideInDown 0.6s ease;
+}
+.logo-img{
+  width:54px;height:54px;object-fit:contain;border-radius:50%;
+  border:2px solid rgba(79,240,84,0.5);
+  box-shadow:0 0 24px rgba(79,240,84,0.2);
+  transition:transform 0.6s var(--transition),box-shadow 0.6s var(--transition);
+}
+.logo:hover .logo-img{
+  transform:rotate(5deg) scale(1.08);
+  box-shadow:0 0 48px rgba(79,240,84,0.5);
+}
+.logo span{
+  background:linear-gradient(135deg,#fff,rgba(255,255,255,0.7));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+nav ul{list-style:none;display:flex;gap:2.5rem;align-items:center;}
+
+nav ul a{
+  color:rgba(255,255,255,0.85);
+  font-weight:600;font-size:0.92rem;
+  transition:color 0.3s;position:relative;
+}
+nav ul a::after{
+  content:'';position:absolute;bottom:-4px;left:0;
+  width:0;height:2.5px;
+  background:linear-gradient(90deg,var(--primary-light),var(--primary));
+  border-radius:4px;
+  transition:width 0.4s var(--transition);
+}
+nav ul a:hover{color:#fff;}
+nav ul a:hover::after{width:100%;}
+
+/* ORDER NOW BUTTON REMOVED */
+.cta-btn {
+  display: none !important;
+}
+
+/* ─── Hamburger ─── */
+.nav-hamburger{
+  display:none;flex-direction:column;gap:5px;cursor:pointer;
+  background:none;border:none;padding:0.4rem;
+}
+.nav-hamburger span{
+  display:block;width:26px;height:2.5px;
+  background:#fff;border-radius:4px;
+  transition:transform 0.3s,opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+
+/* ─── Mobile Drawer ─── */
+.nav-drawer{
+  display:none;
+  position:fixed;top:0;left:0;right:0;bottom:0;
+  background:rgba(8,15,7,0.97);
+  backdrop-filter:blur(20px);
+  z-index:999;
+  flex-direction:column;justify-content:center;align-items:center;gap:2.5rem;
+}
+.nav-drawer.open{display:flex;animation:fadeIn 0.3s ease;}
+.nav-drawer a{
+  color:#fff;font-size:1.5rem;font-weight:700;
+  transition:color 0.3s,transform 0.3s;
+}
+.nav-drawer a:hover{
+  color:var(--primary-light);
+  transform:translateX(6px);
+}
+.nav-drawer .cta-btn {
+  display: none !important;
+}
+
+/* ═══════════════════════════════════════════
+   HERO — ULTRA PREMIUM
+═══════════════════════════════════════════ */
+.hero{
+  background:linear-gradient(145deg,var(--primary) 0%,#4a8a3a 40%,var(--primary-dark) 100%);
+  color:#fff;
+  padding:140px 2rem 100px;
+  text-align:center;
+  margin-top:0;
+  position:relative;overflow:hidden;
+  min-height:95vh;
+  display:flex;align-items:center;justify-content:center;
+}
+
+/* animated gradient overlay */
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(79,240,84,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 50%,rgba(79,240,84,0.06) 0%,transparent 60%),
+    radial-gradient(ellipse at 50% 100%,rgba(45,151,13,0.04) 0%,transparent 40%);
+  z-index:1;
+}
+.hero-content{position:relative;z-index:2;max-width:860px;margin:0 auto;}
+
+/* ─── Hero Badge ─── */
+.hero-badge{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15);
+  padding:0.4rem 1.4rem;border-radius:60px;
+  font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.95);
+  margin-bottom:1.2rem;
+  backdrop-filter:blur(8px);
+  animation:fadeInDown 0.7s ease 0.3s both;
+}
+.hero-badge i{color:var(--primary-light);}
+
+/* ─── Typed Line ─── */
+.hero-typed-line{
+  font-size:1.2rem;font-weight:500;
+  min-height:1.8em;margin-bottom:0.6rem;
+  color:rgba(255,255,255,0.85);
+  animation:heroFadeUp 0.9s ease 0.55s both;
+}
+.typed-cursor-custom{
+  display:inline-block;width:2.5px;height:1.2em;
+  background:var(--primary-light);margin-left:2px;vertical-align:middle;
+  animation:cursorBlink 0.75s step-end infinite;
+}
+@keyframes cursorBlink{0%,100%{opacity:1;}50%{opacity:0;}}
+
+/* ─── H1 ─── */
+.hero h1{
+  font-size:clamp(2.4rem,6vw,4.2rem);
+  font-weight:900;line-height:1.1;
+  margin-bottom:1rem;letter-spacing:-0.03em;
+  animation:heroFadeUp 0.9s ease 0.4s both;
+}
+.hero h1 span{
+  background:linear-gradient(135deg,var(--primary-light),#9eff94);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+/* ═══════════════════════════════════════════
+   QURANIC VERSE — PREMIUM STYLING
+═══════════════════════════════════════════ */
+.quranic-verse {
+  margin: 1.5rem auto 1.8rem;
+  padding: 1.2rem 2rem;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
   position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 500px;
-  background: var(--bg-card);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid var(--border-glass);
-  border-radius: var(--radius);
-  padding: 2.8rem 2.4rem 2.4rem;
-  box-shadow: var(--shadow-glow), 0 0 0 1px rgba(79, 240, 84, 0.04) inset;
-  animation: cardIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  max-height: 98vh;
-  overflow-y: auto;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
+  animation: verseGlow 4s ease-in-out infinite alternate;
 }
 
-.auth-container::-webkit-scrollbar { width: 4px; }
-.auth-container::-webkit-scrollbar-track { background: transparent; }
-.auth-container::-webkit-scrollbar-thumb { background: rgba(79, 240, 84, 0.3); border-radius: 10px; }
-
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(30px) scale(0.96); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.auth-container::before {
-  content: '';
+.quranic-verse::before {
+  content: '✦';
   position: absolute;
-  inset: -1px;
-  border-radius: var(--radius);
-  padding: 1px;
-  background: linear-gradient(135deg, rgba(79, 240, 84, 0.15), transparent 50%, rgba(79, 240, 84, 0.05));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary-light);
+  font-size: 1.2rem;
+  background: var(--primary);
+  padding: 0 0.6rem;
+  border-radius: 20px;
 }
 
-.auth-header { text-align: center; margin-bottom: 2rem; }
-.auth-logo { display: inline-flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; transition: transform var(--transition); }
-.auth-logo:hover { transform: scale(1.02); }
-.auth-logo img { width: 48px; height: 48px; border-radius: 50%; border: 2px solid rgba(79, 240, 84, 0.4); box-shadow: 0 0 30px rgba(79, 240, 84, 0.15); transition: box-shadow var(--transition); }
-.auth-logo:hover img { box-shadow: 0 0 50px rgba(79, 240, 84, 0.3); }
-.auth-logo span { font-weight: 800; font-size: 1rem; letter-spacing: -0.02em; background: linear-gradient(135deg, #ffffff, rgba(255, 255, 255, 0.7)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.auth-title { font-size: 1.8rem; font-weight: 900; letter-spacing: -0.04em; line-height: 1.2; margin-bottom: 0.3rem; }
-.auth-title .highlight { background: linear-gradient(135deg, var(--primary-light), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.auth-sub { color: var(--text-muted); font-size: 0.9rem; font-weight: 400; }
-
-.auth-tabs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 60px;
-  padding: 4px;
-  margin-bottom: 1.8rem;
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-.auth-tab {
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  border-radius: 60px;
+.verse-arabic {
+  font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
   font-weight: 700;
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  position: relative;
-  z-index: 2;
-  transition: color 0.4s ease;
-}
-.auth-tab.active { color: #fff; }
-.auth-tab-glider {
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: calc(50% - 4px);
-  height: calc(100% - 8px);
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  border-radius: 60px;
-  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 24px rgba(45, 151, 13, 0.35);
-}
-.auth-tab-glider.pos-1 { transform: translateX(100%); }
-
-.auth-view { display: none; animation: viewIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1); }
-.auth-view.active { display: block; }
-@keyframes viewIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-
-.view-head { margin-bottom: 1.4rem; }
-.view-head h2 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; }
-.view-head p { color: var(--text-muted); font-size: 0.88rem; margin-top: 0.2rem; }
-
-.form-group { margin-bottom: 1.1rem; }
-.form-group label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-light); margin-bottom: 0.35rem; letter-spacing: 0.02em; }
-.form-group label .req { color: #ff6b6b; }
-.input-wrap { position: relative; display: flex; align-items: center; }
-.input-wrap .icon { position: absolute; left: 14px; color: var(--text-muted); font-size: 0.9rem; pointer-events: none; transition: color 0.3s; }
-.input-wrap input, .input-wrap textarea {
-  width: 100%; padding: 0.85rem 0.9rem 0.85rem 2.6rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1.5px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  font-size: 0.92rem;
   color: #fff;
-  font-family: inherit;
-  transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+  text-align: center;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
 }
-.input-wrap textarea { resize: vertical; min-height: 60px; padding-top: 0.85rem; }
-.input-wrap input:focus, .input-wrap textarea:focus { outline: none; border-color: var(--primary-light); background: rgba(255, 255, 255, 0.06); box-shadow: 0 0 0 4px rgba(79, 240, 84, 0.06); }
-.input-wrap input::placeholder, .input-wrap textarea::placeholder { color: rgba(255, 255, 255, 0.25); }
-.input-wrap input:focus + .icon, .input-wrap textarea:focus + .icon { color: var(--primary-light); }
 
-.field-error { color: #ff6b6b; font-size: 0.74rem; font-weight: 600; margin-top: 0.3rem; display: none; }
-.field-error.show { display: block; }
-.input-wrap.input-error input, .input-wrap.input-error textarea { border-color: #ff6b6b; box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.08); }
-
-.pass-toggle { position: absolute; right: 14px; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.9rem; padding: 0.2rem; transition: color 0.3s; }
-.pass-toggle:hover { color: var(--primary-light); }
-
-.pw-strength { display: flex; gap: 4px; margin-top: 0.4rem; }
-.pw-strength .bar { flex: 1; height: 3px; border-radius: 3px; background: rgba(255, 255, 255, 0.06); transition: background 0.3s; }
-.pw-strength-label { font-size: 0.72rem; color: var(--text-muted); margin-top: 0.25rem; font-weight: 500; }
-
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
-
-.checkbox-wrap { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.82rem; cursor: pointer; user-select: none; }
-.checkbox-wrap input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; flex: none; }
-
-.terms-wrap { display: flex; align-items: flex-start; gap: 0.55rem; color: var(--text-muted); font-size: 0.78rem; line-height: 1.5; }
-.terms-wrap input[type="checkbox"] { width: 17px; height: 17px; accent-color: var(--primary); cursor: pointer; flex: none; margin-top: 2px; }
-.terms-wrap a { color: var(--primary-light); font-weight: 700; text-decoration: none; transition: color 0.3s; }
-.terms-wrap a:hover { color: #fff; text-decoration: underline; }
-
-.btn-submit {
-  width: 100%;
-  padding: 0.95rem;
-  border: none;
-  border-radius: 60px;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: #fff;
-  font-weight: 800;
-  font-size: 0.95rem;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
-  box-shadow: 0 4px 24px rgba(45, 151, 13, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 0.2rem;
+.verse-translation {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  margin-top: 0.3rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
 }
-.btn-submit::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), transparent); opacity: 0; transition: opacity 0.4s; }
-.btn-submit:hover::before { opacity: 1; }
-.btn-submit:hover { transform: translateY(-2px) scale(1.01); box-shadow: 0 8px 40px rgba(45, 151, 13, 0.45); }
-.btn-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none !important; }
-.btn-submit .spinner { width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid rgba(255, 255, 255, 0.2); border-top-color: #fff; animation: spin 0.7s linear infinite; display: none; }
-.btn-submit.loading .spinner { display: block; }
-.btn-submit.loading .btn-text { opacity: 0.8; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
-.auth-switch { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 0.8rem; }
-.auth-switch button { background: none; border: none; color: var(--primary-light); font-weight: 700; cursor: pointer; font-size: inherit; transition: color 0.3s; }
-.auth-switch button:hover { color: #fff; text-decoration: underline; }
-
-.forgot-link { background: none; border: none; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: color 0.3s; }
-.forgot-link:hover { color: var(--primary-light); }
-
-.form-banner { display: none; align-items: flex-start; gap: 0.6rem; padding: 0.85rem 1rem; border-radius: 12px; font-size: 0.85rem; font-weight: 600; margin-bottom: 0.8rem; animation: bannerIn 0.4s ease; }
-.form-banner.show { display: flex; }
-.form-banner.success { background: rgba(79, 240, 84, 0.08); border: 1px solid rgba(79, 240, 84, 0.15); color: var(--primary-light); }
-.form-banner.error { background: rgba(255, 107, 107, 0.08); border: 1px solid rgba(255, 107, 107, 0.15); color: #ff6b6b; }
-@keyframes bannerIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
-
-.success-state { display: none; flex-direction: column; align-items: center; text-align: center; padding: 1.5rem 0 0.5rem; }
-.success-state.show { display: flex; }
-.success-icon { width: 72px; height: 72px; border-radius: 50%; background: rgba(79, 240, 84, 0.08); border: 1px solid rgba(79, 240, 84, 0.15); color: var(--primary-light); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 0.8rem; animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
-@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-.success-state h3 { font-size: 1.2rem; font-weight: 800; }
-.success-state p { color: var(--text-muted); font-size: 0.88rem; max-width: 320px; }
-
-.back-link { display: none; align-items: center; gap: 0.4rem; color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: color 0.3s; margin-bottom: 1rem; background: none; border: none; }
-.back-link:hover { color: var(--primary-light); }
-
-@media (max-width: 540px) {
-  .auth-container { padding: 2rem 1.4rem 1.6rem; border-radius: 20px; max-height: 96vh; }
-  .auth-title { font-size: 1.4rem; }
-  .form-row { grid-template-columns: 1fr; }
-  .auth-logo span { font-size: 0.85rem; }
+.verse-reference {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+  margin-top: 0.15rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
-@media (max-width: 400px) {
-  .auth-container { padding: 1.6rem 1rem 1.2rem; }
-  .auth-tab { font-size: 0.78rem; padding: 0.6rem 0.5rem; }
+
+@keyframes verseGlow {
+  0% {
+    border-color: rgba(79, 240, 84, 0.08);
+    box-shadow: 0 0 20px rgba(79, 240, 84, 0.02);
+  }
+  100% {
+    border-color: rgba(79, 240, 84, 0.2);
+    box-shadow: 0 0 40px rgba(79, 240, 84, 0.06);
+  }
+}
+
+/* ─── Paragraph ─── */
+.hero p{
+  font-size:1.25rem;line-height:1.7;
+  opacity:0.92;margin-bottom:2.2rem;
+  max-width:700px;margin-left:auto;margin-right:auto;
+  animation:heroFadeUp 0.9s ease 0.65s both;
+}
+
+/* ─── Buttons ─── */
+.hero-buttons{
+  display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;
+  animation:heroFadeUp 0.9s ease 0.75s both;
+}
+.btn-primary,.btn-secondary{
+  padding:1rem 2.4rem;font-size:1.05rem;
+  border:none;border-radius:60px;cursor:pointer;
+  font-weight:700;transition:all 0.4s var(--transition);
+  position:relative;overflow:hidden;
+}
+.btn-primary::before,.btn-secondary::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.2) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform 0.6s;
+}
+.btn-primary:hover::before,.btn-secondary:hover::before{transform:translateX(100%);}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--primary-light),#1a7a0a);
+  color:#fff;
+  box-shadow:0 4px 28px rgba(79,240,84,0.4);
+}
+.btn-primary:hover{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 12px 44px rgba(79,240,84,0.55);
+}
+
+.btn-secondary{
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(8px);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff;
+}
+.btn-secondary:hover{
+  background:rgba(255,255,255,0.2);
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 10px 32px rgba(0,0,0,0.15);
+}
+
+/* ─── Scroll Hint ─── */
+.scroll-hint{
+  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,0.35);font-size:0.75rem;
+  display:flex;flex-direction:column;align-items:center;gap:0.4rem;
+  z-index:2;animation:bounce 2s infinite;
+}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* ─── Floating Orbs ─── */
+.hero-orb{
+  position:absolute;border-radius:50%;pointer-events:none;
+  animation:orbFloat 12s ease-in-out infinite alternate;
+}
+.hero-orb-1{
+  width:500px;height:500px;
+  background:radial-gradient(circle,rgba(79,240,84,0.08),transparent 70%);
+  top:-200px;right:-150px;
+  animation-delay:0s;
+}
+.hero-orb-2{
+  width:350px;height:350px;
+  background:radial-gradient(circle,rgba(255,255,255,0.04),transparent 70%);
+  bottom:-100px;left:-100px;
+  animation-delay:4s;
+}
+@keyframes orbFloat{
+  0%{transform:translate(0,0) scale(1);}
+  100%{transform:translate(30px,-30px) scale(1.15);}
+}
+
+/* ═══════════════════════════════════════════
+   TRUST BAR — PREMIUM
+═══════════════════════════════════════════ */
+.trust-bar{
+  background:var(--accent);
+  padding:0.85rem 0;
+  overflow:hidden;
+  white-space:nowrap;
+  border-bottom:1px solid rgba(79,240,84,0.06);
+}
+.marquee-inner{
+  display:inline-block;
+  animation:marquee 28s linear infinite;
+}
+.marquee-inner span{
+  display:inline-block;
+  color:rgba(255,255,255,0.9);
+  font-size:0.85rem;font-weight:600;
+  padding:0 2.8rem;
+  letter-spacing:0.02em;
+}
+.marquee-inner span i{
+  color:var(--primary-light);
+  margin-right:0.5rem;
+}
+@keyframes marquee{
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
+}
+
+/* ═══════════════════════════════════════════
+   SECTION TITLE — PREMIUM
+═══════════════════════════════════════════ */
+.section-title{
+  text-align:center;
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:800;
+  margin-bottom:3rem;
+  position:relative;
+}
+.section-title::after{
+  content:'';display:block;
+  width:70px;height:4px;
+  background:linear-gradient(90deg,var(--primary),var(--primary-light),var(--primary));
+  background-size:200% 100%;
+  border-radius:4px;
+  margin:0.7rem auto 0;
+  animation:shimmerLine 3s ease-in-out infinite;
+}
+@keyframes shimmerLine{
+  0%,100%{background-position:0% 0%;}
+  50%{background-position:100% 0%;}
+}
+
+/* ═══════════════════════════════════════════
+   FEATURES — ULTRA PREMIUM CARDS
+═══════════════════════════════════════════ */
+.features{
+  padding:90px 2rem;
+  background:linear-gradient(180deg,#f0faf0,#ffffff);
+}
+
+.features-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem;
+}
+
+.feature-card{
+  display:block;background:#fff;padding:2.2rem 1.8rem;
+  border-radius:var(--radius);
+  text-align:center;
+  box-shadow:0 4px 28px rgba(45,151,13,0.06);
+  border:1px solid rgba(45,151,13,0.04);
+  text-decoration:none;color:inherit;cursor:pointer;
+  position:relative;overflow:hidden;
+  transition:transform 0.5s var(--transition),box-shadow 0.5s, border-color 0.5s;
+}
+.feature-card::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(45,151,13,0.03),transparent);
+  opacity:0;transition:opacity 0.5s;
+}
+.feature-card:hover::before{opacity:1;}
+.feature-card:hover{
+  transform:translateY(-14px) scale(1.02);
+  box-shadow:0 24px 64px rgba(45,151,13,0.12),0 0 0 1px rgba(79,240,84,0.06);
+  border-color:rgba(79,240,84,0.1);
+}
+
+.feature-icon{
+  width:76px;height:76px;
+  background:linear-gradient(145deg,var(--primary),var(--primary-dark));
+  border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.2rem;margin:0 auto 1.4rem;color:#fff;
+  box-shadow:0 8px 28px rgba(45,151,13,0.3);
+  transition:transform 0.5s var(--transition),box-shadow 0.5s;
+}
+.feature-card:hover .feature-icon{
+  transform:scale(1.12) rotate(-6deg);
+  box-shadow:0 14px 40px rgba(45,151,13,0.4);
+}
+.feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:0.8rem;}
+.feature-card p{color:var(--text-light);font-size:0.92rem;line-height:1.65;}
+
+/* ═══════════════════════════════════════════
+   SERVICES — PREMIUM
+═══════════════════════════════════════════ */
+.services{
+  padding:90px 2rem;
+  background:var(--light);
+}
+
+.services-grid{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.8rem;
+}
+
+.service-item{
+  background:linear-gradient(145deg,rgba(45,151,13,0.04),rgba(79,240,84,0.04));
+  padding:2.2rem;
+  border-radius:var(--radius);
+  border-left:5px solid var(--primary);
+  transition:all 0.5s var(--transition);
+  box-shadow:0 2px 16px rgba(45,151,13,0.04);
+  position:relative;overflow:hidden;
+}
+.service-item::after{
+  content:'';position:absolute;right:-30px;bottom:-30px;
+  width:100px;height:100px;border-radius:50%;
+  background:rgba(45,151,13,0.03);
+  transition:transform 0.6s;
+}
+.service-item:hover::after{transform:scale(3);}
+.service-item:hover{
+  border-left-color:var(--primary-light);
+  background:linear-gradient(145deg,rgba(79,240,84,0.08),rgba(45,151,13,0.04));
+  transform:translateX(10px) scale(1.01);
+  box-shadow:0 12px 40px rgba(45,151,13,0.1);
+}
+.service-item h4{
+  color:var(--primary);
+  margin-bottom:0.5rem;
+  font-size:1.12rem;font-weight:700;
+}
+.service-item p{color:var(--text-light);font-size:0.92rem;}
+
+/* ═══════════════════════════════════════════
+   STATS — PREMIUM
+═══════════════════════════════════════════ */
+.stats{
+  background:linear-gradient(145deg,var(--primary),var(--primary-dark));
+  color:#fff;padding:80px 2rem;
+  position:relative;overflow:hidden;
+}
+.stats::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 20% 50%,rgba(79,240,84,0.06),transparent 60%),
+    radial-gradient(ellipse at 80% 50%,rgba(79,240,84,0.04),transparent 60%);
+}
+.stats-container{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:2.5rem;text-align:center;position:relative;z-index:1;
+}
+.stat{animation:countUp 2s ease;}
+.stat-icon-lbl{font-size:2.4rem;margin-bottom:0.4rem;display:block;}
+.stat-number{
+  font-size:3.4rem;font-weight:900;
+  margin-bottom:0.3rem;
+  text-shadow:0 2px 20px rgba(0,0,0,0.1);
+}
+.stat-label{font-size:1rem;opacity:0.9;font-weight:500;}
+
+/* ═══════════════════════════════════════════
+   ABOUT — PREMIUM
+═══════════════════════════════════════════ */
+.about{
+  padding:90px 2rem;
+  background:linear-gradient(180deg,#ffffff,#f0faf0);
+}
+
+.about-container{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
+}
+
+.about-content h2{
+  font-size:2.2rem;font-weight:800;
+  margin-bottom:1.5rem;
+}
+.about-content p{
+  margin-bottom:1rem;
+  color:var(--text-light);
+  line-height:1.85;
+  font-size:0.97rem;
+}
+
+.story-image-wrap{position:relative;}
+.story-image{
+  width:100%;overflow:hidden;border-radius:20px;
+  box-shadow:0 20px 60px rgba(45,151,13,0.12);
+  transition:transform 0.6s,box-shadow 0.6s;
+}
+.story-image:hover{
+  transform:scale(1.02);
+  box-shadow:0 30px 80px rgba(45,151,13,0.18);
+}
+.story-image img{width:100%;height:100%;object-fit:fill;display:block;}
+
+.about-float-badge{
+  position:absolute;bottom:-18px;right:-18px;
+  background:linear-gradient(145deg,var(--primary),var(--primary-dark));
+  color:#fff;
+  border-radius:16px;padding:1.2rem 1.6rem;text-align:center;
+  box-shadow:0 12px 40px rgba(45,151,13,0.4);
+  animation:floatBadge 3.5s ease-in-out infinite;
+}
+@keyframes floatBadge{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+.about-float-badge .bf-num{font-size:2rem;font-weight:900;line-height:1;}
+.about-float-badge .bf-lbl{font-size:0.72rem;opacity:0.88;margin-top:0.15rem;}
+
+/* ═══════════════════════════════════════════
+   CTA — PREMIUM
+═══════════════════════════════════════════ */
+.cta-section{
+  background:linear-gradient(145deg,var(--primary),var(--primary-dark));
+  color:#fff;padding:90px 2rem;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse at 30% 30%,rgba(79,240,84,0.06),transparent 50%),
+    radial-gradient(ellipse at 70% 70%,rgba(79,240,84,0.04),transparent 50%);
+}
+.cta-section h2{
+  font-size:clamp(2rem,3.5vw,2.8rem);
+  font-weight:900;margin-bottom:1rem;position:relative;
+}
+.cta-section p{
+  font-size:1.15rem;margin-bottom:2.2rem;
+  opacity:0.92;position:relative;
+}
+.cta-section .btn-primary{
+  font-size:1.1rem;padding:1.1rem 3rem;
+  box-shadow:0 8px 36px rgba(0,0,0,0.2);
+  position:relative;
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER — PREMIUM
+═══════════════════════════════════════════ */
+footer{
+  background:var(--dark);
+  color:#fff;padding:55px 2rem 28px;
+}
+
+.footer-content{
+  max-width:1200px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:2.5rem;text-align:left;margin-bottom:2rem;
+}
+.footer-section h4{
+  margin-bottom:1rem;
+  color:var(--primary-light);
+  font-weight:700;font-size:0.95rem;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.footer-section ul{list-style:none;}
+.footer-section li{margin-bottom:0.5rem;}
+.footer-section a{
+  color:rgba(255,255,255,0.5);
+  font-size:0.88rem;
+  transition:color 0.3s,padding-left 0.3s;
+  display:inline-block;
+}
+.footer-section a:hover{
+  color:var(--primary-light);
+  padding-left:6px;
+}
+
+.footer-bottom{
+  border-top:1px solid rgba(79,240,84,0.08);
+  padding-top:1.5rem;text-align:center;
+  color:rgba(255,255,255,0.3);
+  font-size:0.83rem;
+  max-width:1200px;margin:0 auto;
+}
+
+/* ═══════════════════════════════════════════
+   KEYFRAMES
+═══════════════════════════════════════════ */
+@keyframes slideInDown{from{opacity:0;transform:translateY(-22px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-14px);}to{opacity:1;transform:translateY(0);}}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+
+/* ═══════════════════════════════════════════
+   SCROLL-FADE
+═══════════════════════════════════════════ */
+.scroll-fade{
+  opacity:0;
+  transform:translateY(36px) scale(0.98);
+  transition:opacity 0.8s var(--transition),transform 0.8s var(--transition);
+}
+.scroll-fade.visible{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════ */
+@media(max-width:960px){
+  .about-container{grid-template-columns:1fr;}
+  .about-float-badge{display:none;}
+}
+@media(max-width:768px){
+  .hero h1{font-size:2.2rem;}
+  .section-title{font-size:1.9rem;}
+  .hero p{font-size:1.05rem;}
+  nav ul{display:none;}
+  .nav-hamburger{display:flex;}
+  .hero-buttons{flex-direction:column;align-items:center;}
+  .btn-primary,.btn-secondary{width:100%;max-width:320px;}
+  .logo span{display:none;}
+  .cta-section h2{font-size:1.9rem;}
+  .about-container{gap:2rem;}
+  
+  /* Quranic Verse Mobile */
+  .quranic-verse {
+    padding: 1rem 1.2rem;
+    margin: 1.2rem auto 1.4rem;
+  }
+  .verse-arabic {
+    font-size: 1.3rem;
+  }
+  .verse-translation {
+    font-size: 0.8rem;
+  }
+}
+@media(max-width:480px){
+  .features-grid,.services-grid{grid-template-columns:1fr;}
+  .stats-container{grid-template-columns:1fr 1fr;}
+  .hero{padding:120px 1.2rem 80px;}
+  
+  /* Quranic Verse Mobile Small */
+  .quranic-verse {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+  }
+  .verse-arabic {
+    font-size: 1.1rem;
+  }
+  .quranic-verse::before {
+    font-size: 0.8rem;
+    top: -10px;
+    padding: 0 0.4rem;
+  }
 }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
+<!-- Mobile CSS -->
+<link rel="stylesheet" href="css/mobile-responsive.css">
+<link rel="stylesheet" href="css/mobile-nav.css">
 </head>
 <body>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
+<!-- ── PAGE REVEAL ── -->
+<div id="pageReveal"></div>
 
-<div class="auth-container" role="main">
+<!-- ── SCROLL-TO-TOP ── -->
+<button id="scrollTopBtn" title="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-  <div class="auth-header">
-    <a href="index.html" class="auth-logo">
-      <img src="images/Lab Logo.png" alt="The Medicare Laboratory">
-      <span>The Medicare Laboratory</span>
+<!-- ══════════════════════════════════════════
+     NAVIGATION — ORDER NOW REMOVED
+══════════════════════════════════════════ -->
+<nav id="mainNav">
+  <div class="nav-container">
+    <a href="home.html" class="logo">
+      <img src="images/Lab Logo.png" alt="Lab Logo" class="logo-img">
+      <span>The Medicare Laboratory &amp; Diagnostic Center</span>
     </a>
-    <h1 class="auth-title">Patient <span class="highlight">Portal</span></h1>
-    <p class="auth-sub">Secure access to your health records</p>
+    <ul id="navLinks">
+      <li><a href="pages/service.html">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+      <!-- ORDER NOW BUTTON REMOVED -->
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
 
-  <div class="auth-tabs" id="authTabs">
-    <button type="button" class="auth-tab active" data-view="login">Log In</button>
-    <button type="button" class="auth-tab" data-view="signup">Sign Up</button>
-    <div class="auth-tab-glider" id="tabGlider"></div>
-  </div>
-
-  <!-- LOGIN VIEW -->
-  <div class="auth-view active" id="loginView">
-    <div class="view-head">
-      <h2>Welcome Back</h2>
-      <p>Log in to access your reports and appointments</p>
-    </div>
-    <div class="form-banner" id="loginBanner"></div>
-    <form id="loginForm" novalidate>
-      <div class="form-group">
-        <label for="loginEmail">Email Address <span class="req">*</span></label>
-        <div class="input-wrap">
-          <i class="fas fa-envelope icon"></i>
-          <input type="email" id="loginEmail" placeholder="you@example.com" autocomplete="email" required>
-        </div>
-        <div class="field-error" id="loginEmailError">Please enter a valid email address</div>
-      </div>
-      <div class="form-group">
-        <label for="loginPassword">Password <span class="req">*</span></label>
-        <div class="input-wrap">
-          <i class="fas fa-lock icon"></i>
-          <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password" required>
-          <button type="button" class="pass-toggle" data-target="loginPassword"><i class="fas fa-eye"></i></button>
-        </div>
-        <div class="field-error" id="loginPassError">Password is required</div>
-      </div>
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;">
-        <label class="checkbox-wrap"><input type="checkbox" id="rememberMe"> Remember me</label>
-        <button type="button" class="forgot-link" id="gotoForgot">Forgot password?</button>
-      </div>
-      <button type="submit" class="btn-submit" id="loginSubmit"><span class="btn-text">Log In</span><span class="spinner"></span></button>
-      <p class="auth-switch">Don't have an account? <button type="button" data-switch="signup">Sign up</button></p>
-    </form>
-  </div>
-
-  <!-- SIGNUP VIEW -->
-  <div class="auth-view" id="signupView">
-    <div class="view-head">
-      <h2>Create Account</h2>
-      <p>Sign up to book tests and manage your health</p>
-    </div>
-    <div class="form-banner" id="signupBanner"></div>
-    <form id="signupForm" novalidate>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="fullName">Full Name <span class="req">*</span></label>
-          <div class="input-wrap"><i class="fas fa-user icon"></i><input type="text" id="fullName" placeholder="Enter your Name" autocomplete="name" required></div>
-          <div class="field-error" id="fullNameError">Please enter your full name</div>
-        </div>
-        <div class="form-group">
-          <label for="fatherName">Father's Name <span class="req">*</span></label>
-          <div class="input-wrap"><i class="fas fa-user-tie icon"></i><input type="text" id="fatherName" placeholder="Enter your Father's name" required></div>
-          <div class="field-error" id="fatherNameError">Please enter father's name</div>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label for="cellNo">Cell Number <span class="req">*</span></label>
-          <div class="input-wrap"><i class="fas fa-mobile-screen-button icon"></i><input type="tel" id="cellNo" placeholder="03XX-XXXXXXX" autocomplete="tel" required></div>
-          <div class="field-error" id="cellError">Enter a valid 11-digit cell number</div>
-        </div>
-        <div class="form-group">
-          <label for="signupEmail">Email Address <span class="req">*</span></label>
-          <div class="input-wrap"><i class="fas fa-envelope icon"></i><input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email" required></div>
-          <div class="field-error" id="signupEmailError">Enter a valid email address</div>
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="address">Home Address <span class="req">*</span></label>
-        <div class="input-wrap"><i class="fas fa-location-dot icon" style="top:14px;transform:none;"></i><textarea id="address" placeholder="House #, street, area, city" required></textarea></div>
-        <div class="field-error" id="addressError">Please enter your home address</div>
-      </div>
-      <div class="form-group">
-        <label for="signupPassword">Password <span class="req">*</span></label>
-        <div class="input-wrap">
-          <i class="fas fa-lock icon"></i>
-          <input type="password" id="signupPassword" placeholder="Create a strong password" autocomplete="new-password" required>
-          <button type="button" class="pass-toggle" data-target="signupPassword"><i class="fas fa-eye"></i></button>
-        </div>
-        <div class="pw-strength" id="pwStrength"><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
-        <div class="pw-strength-label" id="pwStrengthLabel">Use 8+ characters with numbers &amp; symbols</div>
-        <div class="field-error" id="signupPassError">Password must be at least 8 characters</div>
-      </div>
-      <div class="form-group">
-        <label for="confirmPassword">Confirm Password <span class="req">*</span></label>
-        <div class="input-wrap">
-          <i class="fas fa-lock icon"></i>
-          <input type="password" id="confirmPassword" placeholder="Re-enter your password" autocomplete="new-password" required>
-          <button type="button" class="pass-toggle" data-target="confirmPassword"><i class="fas fa-eye"></i></button>
-        </div>
-        <div class="field-error" id="confirmPassError">Passwords do not match</div>
-      </div>
-      <label class="terms-wrap">
-        <input type="checkbox" id="agreeTerms" required>
-        <span>I agree to the <a href="pages/terms.html">Terms of Service</a> and <a href="pages/privacy.html">Privacy Policy</a>, and consent to the processing of my medical data.</span>
-      </label>
-      <button type="submit" class="btn-submit" id="signupSubmit"><span class="btn-text">Create Account</span><span class="spinner"></span></button>
-      <p class="auth-switch">Already have an account? <button type="button" data-switch="login">Log in</button></p>
-    </form>
-  </div>
-
-  <!-- FORGOT VIEW -->
-  <div class="auth-view" id="forgotView">
-    <button type="button" class="back-link" id="forgotBack"><i class="fas fa-arrow-left"></i> Back to log in</button>
-    <div id="forgotStep1">
-      <div class="view-head">
-        <h2>Reset Password</h2>
-        <p>Enter your email to receive a reset link</p>
-      </div>
-      <div class="form-banner" id="forgotBanner"></div>
-      <form id="forgotForm" novalidate>
-        <div class="form-group">
-          <label for="forgotEmail">Email Address <span class="req">*</span></label>
-          <div class="input-wrap"><i class="fas fa-envelope icon"></i><input type="email" id="forgotEmail" placeholder="you@example.com" autocomplete="email" required></div>
-          <div class="field-error" id="forgotEmailError">Enter a valid email address</div>
-        </div>
-        <button type="submit" class="btn-submit" id="forgotSubmit"><span class="btn-text">Send Reset Link</span><span class="spinner"></span></button>
-      </form>
-    </div>
-    <div id="forgotStep2" style="display:none;">
-      <div class="success-state show">
-        <div class="success-icon"><i class="fas fa-circle-check"></i></div>
-        <h3>Check Your Email</h3>
-        <p>We've sent a password reset link to <strong id="forgotEmailShown">your email</strong>. Please click the link to reset your password.</p>
-        <button type="button" class="btn-submit" id="backToLoginBtn" style="max-width:200px;margin-top:0.8rem;"><span class="btn-text">Back to Log In</span></button>
-      </div>
-    </div>
-  </div>
-
+<!-- Mobile Drawer — order now removed -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="pages/service.html">Services</a>
+  <a href="#about" id="drawerAbout">About</a>
+  <a href="pages/contact.html">Contact</a>
+  <!-- ORDER NOW BUTTON REMOVED -->
 </div>
 
-<!-- ════════════════════════════════════════
-     JAVASCRIPT — SUPABASE (FULLY WORKING)
-════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════
+     HERO — ULTRA PREMIUM WITH QURANIC VERSE
+══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-certificate"></i>
+      Patient Trusted · 15+ Years of Excellence
+    </div>
+
+    <div class="hero-typed-line">
+      <span id="typedText"></span><span class="typed-cursor-custom"></span>
+    </div>
+
+    <h1>Your Trusted Partner in <span>Health &amp; Wellness</span></h1>
+
+    <!-- ─── QURANIC VERSE ─── -->
+    <div class="quranic-verse" data-aos="fade-up" data-aos-delay="200">
+      <div class="verse-arabic">وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ</div>
+      <div class="verse-translation">"And when I am ill, it is He who cures me"</div>
+      <div class="verse-reference">— Surah Ash-Shu'ara (26:80)</div>
+    </div>
+
+    <p>Advanced diagnostic services with state-of-the-art technology and expert medical professionals committed to your health</p>
+
+    <div class="hero-buttons">
+      <a href="#" class="btn-primary" onclick="alert('⚠️ Service Unavailable\n\nThis feature is currently under development and will be launched very soon.\n\nThank you for your understanding!'); return false;">Schedule Appointment</a>
+      <button class="btn-secondary">Learn More</button>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Scroll Down</span>
+    <i class="fas fa-chevron-down"></i>
+  </div>
+</section>
+
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="marquee-inner">
+    <span><i class="fas fa-check-circle"></i>Patient Trusted Lab</span>
+    <span><i class="fas fa-flask"></i>Advanced Diagnostics</span>
+    <span><i class="fas fa-home"></i>Free Home Collection</span>
+    <span><i class="fas fa-bolt"></i>24-Hour Results</span>
+    <span><i class="fas fa-shield-alt"></i>100% Accurate Reports</span>
+    <span><i class="fas fa-users"></i>Expert Medical Team</span>
+    <span><i class="fas fa-heart"></i>Compassionate Care</span>
+    <span><i class="fas fa-check-circle"></i>Patient Trusted Lab</span>
+    <span><i class="fas fa-flask"></i>Advanced Diagnostics</span>
+    <span><i class="fas fa-home"></i>Free Home Collection</span>
+    <span><i class="fas fa-bolt"></i>24-Hour Results</span>
+    <span><i class="fas fa-shield-alt"></i>100% Accurate Reports</span>
+    <span><i class="fas fa-users"></i>Expert Medical Team</span>
+    <span><i class="fas fa-heart"></i>Compassionate Care</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FEATURES — SAME CONTENT
+══════════════════════════════════════════ -->
+<section class="features" id="features">
+  <h2 class="section-title" data-aos="fade-up">Why Choose Us?</h2>
+  <div class="features-grid" id="featuresGrid">
+
+    <a href="pages/advancetech.html" class="feature-card scroll-fade" data-aos="fade-up" data-aos-delay="0">
+      <div class="feature-icon">🔬</div>
+      <h3>Advanced Technology</h3>
+      <p>Latest laboratory equipment and automated systems for accurate and fast results</p>
+    </a>
+
+    <a href="pages/expertteam.html" class="feature-card scroll-fade" data-aos="fade-up" data-aos-delay="80">
+      <div class="feature-icon">👨‍⚕️</div>
+      <h3>Expert Team</h3>
+      <p>Highly qualified technicians with years of experience</p>
+    </a>
+
+    <a href="pages/fastresult.html" class="feature-card scroll-fade" data-aos="fade-up" data-aos-delay="160">
+      <div class="feature-icon">⚡</div>
+      <h3>Fast Results</h3>
+      <p>Quick turnaround time with accurate and reliable diagnostic reports</p>
+    </a>
+
+    <a href="pages/affordablepricing.html" class="feature-card scroll-fade" data-aos="fade-up" data-aos-delay="240">
+      <div class="feature-icon">💳</div>
+      <h3>Affordable Pricing</h3>
+      <p>Competitive rates with flexible payment options for all patients</p>
+    </a>
+
+    <a href="pages/homecollection.html" class="feature-card scroll-fade" data-aos="fade-up" data-aos-delay="320">
+      <div class="feature-icon">🏠</div>
+      <h3>Home Collection</h3>
+      <p>Free sample collection at your doorstep for your convenience</p>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SERVICES — SAME CONTENT
+══════════════════════════════════════════ -->
+<section class="services">
+  <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+  <div class="services-grid" id="servicesGrid">
+
+    <div class="service-item scroll-fade" data-aos="fade-right" data-aos-delay="0">
+      <h4>🩸 Blood Tests</h4>
+      <p>Complete blood count, biochemistry, hormones, and infectious disease screening</p>
+    </div>
+
+    <div class="service-item scroll-fade" data-aos="fade-up" data-aos-delay="100">
+      <h4>🦠 Microbiology</h4>
+      <p>Culture sensitivity, bacterial identification, and antimicrobial testing</p>
+    </div>
+
+    <div class="service-item scroll-fade" data-aos="fade-left" data-aos-delay="200">
+      <h4>💪 Health Checkups</h4>
+      <p>Comprehensive health packages for preventive care</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     STATS — SAME CONTENT
+══════════════════════════════════════════ -->
+<section class="stats">
+  <div class="stats-container">
+
+    <div class="stat" data-aos="zoom-in" data-aos-delay="0">
+      <span class="stat-icon-lbl">🧪</span>
+      <div class="stat-number" data-raw="10000" data-suffix="+">10,000+</div>
+      <div class="stat-label">Tests Conducted Monthly</div>
+    </div>
+
+    <div class="stat" data-aos="zoom-in" data-aos-delay="120">
+      <span class="stat-icon-lbl">😊</span>
+      <div class="stat-number" data-raw="98" data-suffix="%">98%</div>
+      <div class="stat-label">Customer Satisfaction</div>
+    </div>
+
+    <div class="stat" data-aos="zoom-in" data-aos-delay="240">
+      <span class="stat-icon-lbl">🏆</span>
+      <div class="stat-number" data-raw="15" data-suffix="+">15+</div>
+      <div class="stat-label">Years of Excellence</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     ABOUT — SAME CONTENT
+══════════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="about-container">
+
+    <div class="about-content" data-aos="fade-right">
+      <h2>About The Medicare &amp; Diagnostic Laboratory</h2>
+      <p>With over 15 years of experience, The Medicare &amp; Diagnostic Laboratory has been a beacon of trust in the healthcare community. We combine cutting-edge technology with compassionate care to deliver accurate and timely diagnostic solutions.</p>
+      <p>Our state-of-the-art facility is equipped with the latest diagnostic equipment and staffed by highly skilled professionals who are committed to providing the best quality of service to every patient.</p>
+      <p>We believe in making healthcare accessible and affordable while maintaining the highest standards of quality and accuracy in all our tests and reports.</p>
+      <a href="pages/about.html" class="btn-primary" style="margin-top:1.5rem;display:inline-block;text-align:center;color:#fff;">Read More</a>
+    </div>
+
+    <div class="story-image-wrap" data-aos="fade-left">
+      <div class="story-image">
+        <a href="images/about%20image%20pic.png" target="_blank">
+          <img src="images/about%20image%20pic.png" alt="about image pic">
+        </a>
+      </div>
+      <div class="about-float-badge">
+        <div class="bf-num">15+</div>
+        <div class="bf-lbl">Years Trusted</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     CTA — SAME CONTENT
+══════════════════════════════════════════ -->
+<section class="cta-section" id="contact" data-aos="zoom-in">
+  <h2>Ready to Get Your Tests Done?</h2>
+  <p>Book your appointment today and take the first step towards better health</p>
+  <a href="#" class="btn-primary" onclick="alert('⚠️ Service Unavailable\n\nThis feature is currently under development and will be launched very soon.\n\nThank you for your understanding!'); return false;">Schedule Appointment</a>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER — SAME CONTENT
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-content">
+
+    <div class="footer-section">
+      <h4>About Us</h4>
+      <ul>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="pages/expertteam.html">Team</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Services</h4>
+      <ul>
+        <li>
+          <a href="#" onclick="alert('This service is currently unavailable. It will be launched very soon. Thank you for your patience!'); return false;">Blood Tests</a>
+        </li>
+        <li><a href="pages/healthcheckup.html">Health Packages</a></li>
+        <li><a href="pages/homecollection.html">Home Collection</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contact Us</h4>
+      <ul>
+        <li><a href="tel:+92300123456">📞 +92 (300) 123-456</a></li>
+        <li><a href="mailto:info@medicare.com">📧 info@medicare.com</a></li>
+        <li><a href="pages/contact.html">📍 123 Medical Street</a></li>
+        <li><a href="pages/contact.html">Karachi, Pakistan</a></li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p id="footerCopy">&copy; 2026 The Medicare Laboratory &amp; Diagnostic Center. All rights reserved. | Designed by Tahami Tech for your health</p>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════════ -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
 <script>
-// =============================================
-// SUPABASE INITIALIZATION
-// =============================================
+/* ── AOS ── */
+AOS.init({ duration: 720, once: true, easing: 'ease-out-cubic', offset: 55 });
 
-const SUPABASE_URL = 'https://kkqezznsyejmpsdetmnf.supabase.co';
-const SUPABASE_ANON_KEY = 'sb_publishable_XB_hY2IpTPOXigr3gCqhaw_N8UjRmzz';
+/* ── GSAP + ScrollTrigger ── */
+gsap.registerPlugin(ScrollTrigger);
 
-const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+/* Hero content stagger */
+gsap.fromTo('.hero-content > *',
+  { y: 40, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.9, stagger: 0.12, ease: 'power3.out', delay: 0.5 }
+);
 
-// =============================================
-// UI FUNCTIONS
-// =============================================
-
-const loginView = document.getElementById('loginView');
-const signupView = document.getElementById('signupView');
-const forgotView = document.getElementById('forgotView');
-const tabs = document.querySelectorAll('.auth-tab');
-const glider = document.getElementById('tabGlider');
-
-function switchView(view) {
-  document.querySelectorAll('.auth-view').forEach(el => el.classList.remove('active'));
-  
-  if (view === 'login') {
-    loginView.classList.add('active');
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.view === 'login'));
-    glider.classList.remove('pos-1');
-    document.getElementById('forgotStep1').style.display = 'block';
-    document.getElementById('forgotStep2').style.display = 'none';
-  } else if (view === 'signup') {
-    signupView.classList.add('active');
-    tabs.forEach(t => t.classList.toggle('active', t.dataset.view === 'signup'));
-    glider.classList.add('pos-1');
-  } else if (view === 'forgot') {
-    forgotView.classList.add('active');
-    document.getElementById('forgotStep1').style.display = 'block';
-    document.getElementById('forgotStep2').style.display = 'none';
+/* Feature cards stagger */
+gsap.fromTo('.feature-card',
+  { y: 50, opacity: 0 },
+  {
+    y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power2.out',
+    scrollTrigger: { trigger: '.features-grid', start: 'top 80%', once: true }
   }
+);
+
+/* Service items slide in */
+gsap.fromTo('.service-item',
+  { x: -40, opacity: 0 },
+  {
+    x: 0, opacity: 1, duration: 0.7, stagger: 0.15, ease: 'power2.out',
+    scrollTrigger: { trigger: '.services-grid', start: 'top 82%', once: true }
+  }
+);
+
+/* Stats scale-in */
+gsap.fromTo('.stat',
+  { scale: 0.7, opacity: 0 },
+  {
+    scale: 1, opacity: 1, duration: 0.65, stagger: 0.12, ease: 'back.out(1.7)',
+    scrollTrigger: { trigger: '.stats', start: 'top 80%', once: true }
+  }
+);
+
+/* About image parallax */
+ScrollTrigger.create({
+  trigger: '.about',
+  start: 'top bottom',
+  end: 'bottom top',
+  onUpdate: self => {
+    gsap.set('.story-image', { y: self.progress * -30 });
+  }
+});
+
+/* CTA heading */
+gsap.fromTo('.cta-section h2',
+  { y: 30, opacity: 0 },
+  {
+    y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+    scrollTrigger: { trigger: '.cta-section', start: 'top 80%', once: true }
+  }
+);
+
+/* ── Custom Typed ── */
+(function(){
+  var el = document.getElementById('typedText');
+  if(!el) return;
+  var phrases = ['Advanced Blood Tests','Free Home Collection','24-Hour Fast Results','Affordable Health Packages','Expert Medical Care'];
+  var pi = 0, ci = 0, del = false;
+  function tick(){
+    var p = phrases[pi];
+    if(!del){
+      ci++;
+      el.textContent = p.slice(0, ci);
+      if(ci === p.length){ del = true; setTimeout(tick, 1700); return; }
+      setTimeout(tick, 52);
+    } else {
+      ci--;
+      el.textContent = p.slice(0, ci);
+      if(ci === 0){ del = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 420); return; }
+      setTimeout(tick, 26);
+    }
+  }
+  setTimeout(tick, 900);
+})();
+
+/* ── Navbar scroll + scroll-top btn ── */
+var nav = document.getElementById('mainNav');
+var stb = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll', function(){
+  nav.classList.toggle('nav-scrolled', window.scrollY > 60);
+  stb.classList.toggle('show', window.scrollY > 420);
+}, { passive: true });
+stb.addEventListener('click', function(){ window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+/* ── Hamburger ── */
+function closeDrawer(){
+  var hbg = document.getElementById('hamburger');
+  var drw = document.getElementById('navDrawer');
+  if(hbg) hbg.classList.remove('open');
+  if(drw) drw.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', function(e) {
-    e.preventDefault();
-    switchView(this.dataset.view);
+/* Mobile nav is handled by javascript/mobile-nav.js */
+
+/* ── Smooth hash scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click', function(e){
+    var h = this.getAttribute('href');
+    if(h !== '#'){
+      var t = document.querySelector(h);
+      if(t){ e.preventDefault(); closeDrawer(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
   });
 });
 
-document.querySelectorAll('[data-switch]').forEach(btn => {
-  btn.addEventListener('click', function(e) {
-    e.preventDefault();
-    switchView(this.dataset.switch);
+/* ── Scroll-fade ── */
+var sfObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){ e.target.classList.add('visible'); sfObs.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -70px 0px' });
+document.querySelectorAll('.scroll-fade').forEach(function(el){ sfObs.observe(el); });
+
+/* ── Stats counter ── */
+function animCount(el, target, suffix){
+  var v = 0, step = Math.ceil(target / 100);
+  var t = setInterval(function(){
+    v = Math.min(v + step, target);
+    el.textContent = v.toLocaleString() + suffix;
+    if(v >= target) clearInterval(t);
+  }, 18);
+}
+var scObs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.stat-number').forEach(function(el){
+        animCount(el,
+          parseInt(el.getAttribute('data-raw') || '0'),
+          el.getAttribute('data-suffix') || ''
+        );
+      });
+      scObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+var ss = document.querySelector('.stats');
+if(ss) scObs.observe(ss);
+
+/* ── Button ripple ── */
+document.querySelectorAll('.btn-primary, .btn-secondary, .cta-btn').forEach(function(btn){
+  btn.addEventListener('click', function(e){
+    var r = document.createElement('span');
+    var rc = btn.getBoundingClientRect();
+    var sz = Math.max(rc.width, rc.height);
+    r.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rc.left-sz/2)+'px;top:'+(e.clientY-rc.top-sz/2)+'px;transform:scale(0);animation:ripple 0.6s cubic-bezier(.34,1.56,.64,1);pointer-events:none;';
+    btn.style.position = 'relative'; btn.style.overflow = 'hidden';
+    btn.appendChild(r);
+    setTimeout(function(){ r.remove(); }, 620);
   });
 });
 
-document.getElementById('gotoForgot').addEventListener('click', function(e) {
-  e.preventDefault();
-  switchView('forgot');
-});
-
-document.getElementById('forgotBack').addEventListener('click', function(e) {
-  e.preventDefault();
-  switchView('login');
-});
-
-document.getElementById('backToLoginBtn').addEventListener('click', function(e) {
-  e.preventDefault();
-  switchView('login');
-});
-
-document.querySelectorAll('.pass-toggle').forEach(btn => {
-  btn.addEventListener('click', function() {
-    const input = document.getElementById(this.dataset.target);
-    if (!input) return;
-    const icon = this.querySelector('i');
-    const isPass = input.type === 'password';
-    input.type = isPass ? 'text' : 'password';
-    icon.className = isPass ? 'fas fa-eye-slash' : 'fas fa-eye';
+/* ── Learn More → scroll to features ── */
+document.querySelectorAll('.btn-secondary').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    var f = document.getElementById('features');
+    if(f) f.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-function showBanner(id, type, msg) {
-  const el = document.getElementById(id);
-  el.className = `form-banner show ${type}`;
-  el.innerHTML = `<i class="fas fa-${type === 'success' ? 'circle-check' : 'circle-exclamation'}"></i><span>${msg}</span>`;
-}
-function hideBanner(id) { document.getElementById(id).className = 'form-banner'; }
-function setFieldError(inputId, errorId, hasError) {
-  const input = document.getElementById(inputId);
-  const error = document.getElementById(errorId);
-  const wrap = input?.closest('.form-group')?.querySelector('.input-wrap');
-  if (wrap) wrap.classList.toggle('input-error', hasError);
-  if (error) error.classList.toggle('show', hasError);
-}
-function isValidEmail(email) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email); }
-function isValidPhone(phone) { return /^0\d{10}$/.test(phone.replace(/[-\s]/g, '')); }
+/* ── Dynamic year ── */
+var fc = document.getElementById('footerCopy');
+if(fc) fc.innerHTML = fc.innerHTML.replace('2026', new Date().getFullYear());
 
-document.getElementById('cellNo')?.addEventListener('input', function() {
-  let v = this.value.replace(/\D/g, '').slice(0, 11);
-  if (v.length > 4) v = v.slice(0, 4) + '-' + v.slice(4);
-  this.value = v;
-});
-
-const pwInput = document.getElementById('signupPassword');
-const pwBars = document.querySelectorAll('#pwStrength .bar');
-const pwLabel = document.getElementById('pwStrengthLabel');
-const colors = ['#ff6b6b', '#ffa94d', '#ffd93d', '#4ff054'];
-const labels = ['Weak', 'Fair', 'Good', 'Strong'];
-
-pwInput?.addEventListener('input', function() {
-  const v = this.value;
-  let score = 0;
-  if (v.length >= 8) score++;
-  if (/[A-Z]/.test(v) && /[a-z]/.test(v)) score++;
-  if (/\d/.test(v)) score++;
-  if (/[^A-Za-z0-9]/.test(v)) score++;
-  pwBars.forEach((bar, i) => { bar.style.background = i < score ? colors[Math.min(score - 1, 3)] : 'rgba(255,255,255,0.06)'; });
-  pwLabel.textContent = v.length === 0 ? 'Use 8+ characters with numbers & symbols' : labels[Math.min(score - 1, 3)] + ' password';
-});
-
-// =============================================
-// LOGIN FORM - SUPABASE
-// =============================================
-
-document.getElementById('loginForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  hideBanner('loginBanner');
-  
-  const email = document.getElementById('loginEmail');
-  const pass = document.getElementById('loginPassword');
-  
-  let valid = true;
-  
-  if (!isValidEmail(email.value)) { 
-    setFieldError('loginEmail', 'loginEmailError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('loginEmail', 'loginEmailError', false); 
-  }
-  
-  if (pass.value.length === 0) { 
-    setFieldError('loginPassword', 'loginPassError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('loginPassword', 'loginPassError', false); 
-  }
-  
-  if (!valid) return;
-  
-  const btn = document.getElementById('loginSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
-  
-  try {
-    const { data, error } = await _supabase.auth.signInWithPassword({
-      email: email.value.trim(),
-      password: pass.value
-    });
-    
-    if (error) {
-      showBanner('loginBanner', 'error', '❌ Invalid email or password. Please try again.');
-      btn.classList.remove('loading');
-      btn.disabled = false;
-      return;
-    }
-    
-    if (data.user) {
-      showBanner('loginBanner', 'success', '✅ Login successful! Redirecting...');
-      setTimeout(() => { 
-        window.location.replace('home.html');
-      }, 1000);
-    }
-  } catch (err) {
-    showBanner('loginBanner', 'error', 'Network error. Please try again.');
-    btn.classList.remove('loading');
-    btn.disabled = false;
-  }
-});
-
-// =============================================
-// SIGNUP FORM - SUPABASE (FULLY WORKING)
-// =============================================
-
-document.getElementById('signupForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  hideBanner('signupBanner');
-  
-  const fullName = document.getElementById('fullName');
-  const fatherName = document.getElementById('fatherName');
-  const cellNo = document.getElementById('cellNo');
-  const email = document.getElementById('signupEmail');
-  const address = document.getElementById('address');
-  const pass = document.getElementById('signupPassword');
-  const confirm = document.getElementById('confirmPassword');
-  const terms = document.getElementById('agreeTerms');
-  
-  let valid = true;
-  
-  if (fullName.value.trim().length < 2) { 
-    setFieldError('fullName', 'fullNameError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('fullName', 'fullNameError', false); 
-  }
-  
-  if (fatherName.value.trim().length < 2) { 
-    setFieldError('fatherName', 'fatherNameError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('fatherName', 'fatherNameError', false); 
-  }
-  
-  if (!isValidPhone(cellNo.value)) { 
-    setFieldError('cellNo', 'cellError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('cellNo', 'cellError', false); 
-  }
-  
-  if (!isValidEmail(email.value)) { 
-    setFieldError('signupEmail', 'signupEmailError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('signupEmail', 'signupEmailError', false); 
-  }
-  
-  if (address.value.trim().length < 5) { 
-    setFieldError('address', 'addressError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('address', 'addressError', false); 
-  }
-  
-  if (pass.value.length < 8) { 
-    setFieldError('signupPassword', 'signupPassError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('signupPassword', 'signupPassError', false); 
-  }
-  
-  if (confirm.value !== pass.value || confirm.value === '') { 
-    setFieldError('confirmPassword', 'confirmPassError', true); 
-    valid = false; 
-  } else { 
-    setFieldError('confirmPassword', 'confirmPassError', false); 
-  }
-  
-  if (!terms.checked) { 
-    showBanner('signupBanner', 'error', 'Please agree to Terms.'); 
-    valid = false; 
-  }
-  
-  if (!valid) return;
-  
-  const btn = document.getElementById('signupSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
-  
-  try {
-    // Step 1: Auth mein user create karo
-    const { data: authData, error: authError } = await _supabase.auth.signUp({
-      email: email.value.trim(),
-      password: pass.value,
-      options: {
-        data: {
-          full_name: fullName.value.trim(),
-          father_name: fatherName.value.trim(),
-          cell_number: cellNo.value.trim(),
-          address: address.value.trim()
-        }
-      }
-    });
-    
-    if (authError) {
-      if (authError.message.includes('already registered')) {
-        showBanner('signupBanner', 'error', '❌ Email already registered. Please login instead.');
-      } else {
-        showBanner('signupBanner', 'error', '❌ ' + authError.message);
-      }
-      btn.classList.remove('loading');
-      btn.disabled = false;
-      return;
-    }
-    
-    // Step 2: Patients table mein data insert karo
-    try {
-      const { data: existing } = await _supabase
-        .from('patients')
-        .select('id')
-        .eq('id', authData.user.id)
-        .maybeSingle();
-      
-      if (!existing) {
-        const { error: insertError } = await _supabase
-          .from('patients')
-          .insert([
-            {
-              id: authData.user.id,
-              full_name: fullName.value.trim(),
-              father_name: fatherName.value.trim(),
-              cell_number: cellNo.value.trim(),
-              email: email.value.trim(),
-              address: address.value.trim()
-            }
-          ]);
-        
-        if (insertError) {
-          console.error('Insert Error:', insertError);
-          showBanner('signupBanner', 'error', '⚠️ ' + insertError.message);
-          btn.classList.remove('loading');
-          btn.disabled = false;
-          return;
-        }
-      }
-    } catch (tableError) {
-      console.error('Table Error:', tableError);
-      showBanner('signupBanner', 'error', '⚠️ Database error. Please contact support.');
-      btn.classList.remove('loading');
-      btn.disabled = false;
-      return;
-    }
-    
-    // Success!
-    showBanner('signupBanner', 'success', '✅ Account created successfully! Please check your email for verification.');
-    
-    setTimeout(() => { 
-      switchView('login');
-      btn.classList.remove('loading');
-      btn.disabled = false;
-    }, 2500);
-    
-  } catch (err) {
-    console.error('Signup Error:', err);
-    showBanner('signupBanner', 'error', '❌ Network error. Please try again.');
-    btn.classList.remove('loading');
-    btn.disabled = false;
-  }
-});
-
-// =============================================
-// FORGOT PASSWORD - SUPABASE
-// =============================================
-
-document.getElementById('forgotForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  hideBanner('forgotBanner');
-  
-  const email = document.getElementById('forgotEmail');
-  
-  if (!isValidEmail(email.value)) { 
-    setFieldError('forgotEmail', 'forgotEmailError', true); 
-    return; 
-  }
-  setFieldError('forgotEmail', 'forgotEmailError', false);
-  
-  const btn = document.getElementById('forgotSubmit');
-  btn.classList.add('loading');
-  btn.disabled = true;
-  
-  try {
-    const { data, error } = await _supabase.auth.resetPasswordForEmail(
-      email.value.trim(),
-      {
-        redirectTo: window.location.origin + '/reset-password.html',
-      }
-    );
-    
-    if (error) {
-      showBanner('forgotBanner', 'error', error.message || 'Email not found.');
-      btn.classList.remove('loading');
-      btn.disabled = false;
-      return;
-    }
-    
-    document.getElementById('forgotEmailShown').textContent = email.value;
-    document.getElementById('forgotStep1').style.display = 'none';
-    document.getElementById('forgotStep2').style.display = 'block';
-    showBanner('forgotBanner', 'success', '✅ Reset link sent to your email');
-    
-    btn.classList.remove('loading');
-    btn.disabled = false;
-    
-  } catch (err) {
-    showBanner('forgotBanner', 'error', 'Network error. Please try again.');
-    btn.classList.remove('loading');
-    btn.disabled = false;
-  }
-});
-
-// =============================================
-// LOGOUT
-// =============================================
-
-async function logout() {
-  try {
-    const { error } = await _supabase.auth.signOut();
-    if (error) throw error;
-    window.location.href = 'index.html?logout=success';
-  } catch (err) {
-    console.error('Logout error:', err);
-  }
-}
-
-// =============================================
-// ON PAGE LOAD - ⚠️ FIXED: NO AUTO REDIRECT
-// =============================================
-
-window.addEventListener('load', function() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('logout') === 'success') {
-    showBanner('loginBanner', 'success', 'You have been logged out successfully.');
-  }
-  
-  // ⚠️ YAHAN CHANGE KIYA - Auto redirect REMOVE kiya
-  // Ab user ko manually login/signup karna parega
-  
-  // Sirf auth state change listen karo (login/signup ke baad redirect)
-  _supabase.auth.onAuthStateChange((event, session) => {
-    if (event === 'SIGNED_IN') {
-      window.location.replace('home.html');
-    }
+/* ── Auth-aware CTAs ── */
+(function(){
+  var hasSession = !!(localStorage.getItem('authSession') || localStorage.getItem('userData'));
+  if(!hasSession) return;
+  document.querySelectorAll('a[href*="index.html?view=signup"]').forEach(function(link){
+    link.setAttribute('href', 'home.html');
   });
-});
+})();
 </script>
+
+<!-- Ripple keyframe -->
+<style>
+@keyframes ripple{
+  0%{transform:scale(0);opacity:0.5;}
+  100%{transform:scale(3.5);opacity:0;}
+}
+</style>
+
+<script src="javascript/loader-nav.js"></script>
+<script src="javascript/mobile-nav.js" defer></script>
 </body>
 </html>

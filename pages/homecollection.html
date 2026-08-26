@@ -215,15 +215,21 @@ nav ul a.active::after{width:100% !important;}
 .nav-drawer .cta-btn{font-size:1.1rem;padding:0.9rem 2.5rem;}
 
 /* ═══════════════════════════════════════════
-   PAGE HEADER — HEIGHT KAM
+   PAGE HEADER — MINIMAL TOP SPACE + CENTERED
 ═══════════════════════════════════════════ */
 .page-header{
   background:linear-gradient(145deg,var(--primary) 0%,#4a8a3a 40%,var(--primary-dark) 100%);
   color:#fff;
-  padding:40px 2rem 20px;
+  padding:12px 2rem 10px;
   text-align:center;
   margin-top:0;
-  position:relative;overflow:hidden;
+  position:relative;
+  overflow:hidden;
+  min-height:8vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
 }
 
 .page-header::before{
@@ -235,31 +241,49 @@ nav ul a.active::after{width:100% !important;}
   z-index:1;
 }
 
+.header-content{
+  position:relative;
+  z-index:2;
+  max-width:800px;
+  margin:0 auto;
+  text-align:center;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
+
 /* ─── Page Header Badge ─── */
 .page-header .badge{
-  display:inline-flex;align-items:center;gap:0.3rem;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:0.4rem;
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.15);
-  padding:0.15rem 0.9rem;
+  padding:0.15rem 0.8rem;
   border-radius:60px;
-  font-size:0.6rem;
+  font-size:0.55rem;
   font-weight:600;
   color:rgba(255,255,255,0.95);
-  margin-bottom:0.3rem;
+  margin:0 auto 0.2rem auto;
   backdrop-filter:blur(8px);
-  position:relative;z-index:2;
   animation:fadeInDown 0.7s ease 0.3s both;
+  width:fit-content;
 }
 .page-header .badge i{color:var(--primary-light);}
 
 /* ─── HEADING ─── */
 .page-header h1{
-  font-size:clamp(2rem,4vw,3rem);
+  font-size:clamp(1.4rem,2.8vw,2.2rem);
   font-weight:900;
   letter-spacing:-0.03em;
-  line-height:1.1;
-  margin-bottom:0.2rem;
-  position:relative;z-index:2;
+  line-height:1.2;
+  margin:0 auto 0.1rem auto;
+  text-align:center;
+  display:block;
+  width:100%;
   animation:heroFadeUp 0.9s ease 0.4s both;
 }
 .page-header h1 span{
@@ -269,37 +293,46 @@ nav ul a.active::after{width:100% !important;}
   background-clip:text;
 }
 
-.page-header p{
-  font-size:0.7rem;
+/* ─── Page Header Sub Text ─── */
+.page-header .sub-text{
+  font-size:0.6rem;
   opacity:0.9;
   max-width:550px;
   margin:0 auto;
   line-height:1.3;
-  position:relative;z-index:2;
+  text-align:center;
+  display:block;
+  width:100%;
   animation:heroFadeUp 0.9s ease 0.55s both;
 }
 
 /* ─── Floating Orbs ─── */
 .page-orb{
-  position:absolute;border-radius:50%;pointer-events:none;
+  position:absolute;
+  border-radius:50%;
+  pointer-events:none;
   animation:orbFloat 14s ease-in-out infinite alternate;
   z-index:0;
 }
 .page-orb-1{
-  width:120px;height:120px;
+  width:60px;
+  height:60px;
   background:radial-gradient(circle,rgba(79,240,84,0.06),transparent 70%);
-  top:-40px;right:-30px;
+  top:-15px;
+  right:-10px;
   animation-delay:0s;
 }
 .page-orb-2{
-  width:80px;height:80px;
+  width:40px;
+  height:40px;
   background:radial-gradient(circle,rgba(255,255,255,0.04),transparent 70%);
-  bottom:-20px;left:-20px;
+  bottom:-10px;
+  left:-10px;
   animation-delay:4s;
 }
 @keyframes orbFloat{
   0%{transform:translate(0,0) scale(1);}
-  100%{transform:translate(15px,-15px) scale(1.15);}
+  100%{transform:translate(10px,-10px) scale(1.15);}
 }
 @keyframes fadeInDown{
   from{opacity:0;transform:translateY(-6px);}
@@ -314,23 +347,23 @@ nav ul a.active::after{width:100% !important;}
    MAIN CONTENT
 ═══════════════════════════════════════════ */
 .home-container{
-  max-width:1200px;margin:0 auto;padding:2rem;
+  max-width:1200px;margin:0 auto;padding:1.5rem 2rem 2rem;
 }
 
 /* ── Hero Section ── */
 .home-hero{
   display:grid;grid-template-columns:1fr 1fr;gap:3rem;
   align-items:center;
-  padding:1.5rem 0 1rem;
+  padding:1rem 0 0.5rem;
 }
 .home-hero-content h1{
   font-size:2.4rem;font-weight:900;line-height:1.1;
-  letter-spacing:-0.03em;margin-bottom:1rem;
+  letter-spacing:-0.03em;margin-bottom:0.8rem;
 }
 .home-hero-content h1 span{color:var(--primary);}
 .home-hero-content p{
-  color:var(--text-muted);font-size:1.02rem;line-height:1.8;
-  margin-bottom:1.2rem;
+  color:var(--text-muted);font-size:1rem;line-height:1.8;
+  margin-bottom:1rem;
 }
 .home-hero-image{
   overflow:hidden;border-radius:20px;
@@ -346,12 +379,12 @@ nav ul a.active::after{width:100% !important;}
 /* ── Cards Grid ── */
 .home-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:1.8rem;
-  padding:2rem 0 1.5rem;
+  gap:1.5rem;
+  padding:1.5rem 0 1rem;
 }
 .home-card{
   background:#fff;
-  padding:2rem;
+  padding:1.8rem;
   border-radius:var(--radius);
   border:1px solid rgba(45,151,13,0.04);
   box-shadow:0 4px 24px rgba(45,151,13,0.04);
@@ -362,14 +395,14 @@ nav ul a.active::after{width:100% !important;}
   box-shadow:0 16px 48px rgba(45,151,13,0.08);
   border-color:rgba(45,151,13,0.08);
 }
-.home-card .icon{font-size:2.5rem;margin-bottom:0.8rem;display:block;}
-.home-card h3{font-size:1.15rem;font-weight:700;margin-bottom:0.6rem;}
-.home-card p{color:var(--text-muted);font-size:0.95rem;line-height:1.7;}
+.home-card .icon{font-size:2.5rem;margin-bottom:0.6rem;display:block;}
+.home-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;}
+.home-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.7;}
 
 /* ── Section Title ── */
 .section-title{
   font-size:1.8rem;font-weight:800;
-  margin-bottom:1rem;
+  margin-bottom:0.8rem;
   position:relative;
 }
 .section-title::after{
@@ -377,18 +410,18 @@ nav ul a.active::after{width:100% !important;}
   width:60px;height:4px;
   background:linear-gradient(90deg,var(--primary),var(--primary-light));
   border-radius:4px;
-  margin-top:0.4rem;
+  margin-top:0.3rem;
 }
 
 /* ── How It Works ── */
 .how-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:1.8rem;
-  padding:1.5rem 0;
+  gap:1.5rem;
+  padding:1.2rem 0;
 }
 .how-card{
   background:linear-gradient(145deg,#f5faf5,#ffffff);
-  padding:1.8rem;
+  padding:1.5rem;
   border-radius:var(--radius);
   border-left:4px solid var(--primary);
   transition:transform 0.5s var(--transition),box-shadow 0.5s;
@@ -398,22 +431,22 @@ nav ul a.active::after{width:100% !important;}
   box-shadow:0 12px 36px rgba(45,151,13,0.06);
 }
 .how-card .step{
-  font-size:2.5rem;font-weight:900;
+  font-size:2.2rem;font-weight:900;
   color:var(--primary-light);
-  margin-bottom:0.3rem;
+  margin-bottom:0.2rem;
 }
-.how-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.4rem;}
-.how-card p{color:var(--text-muted);font-size:0.92rem;line-height:1.7;}
+.how-card h3{font-size:1.05rem;font-weight:700;margin-bottom:0.3rem;}
+.how-card p{color:var(--text-muted);font-size:0.9rem;line-height:1.7;}
 
 /* ── Stats ── */
 .stats-grid{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-  gap:1.8rem;
-  padding:2rem 0;
+  gap:1.5rem;
+  padding:1.5rem 0;
 }
 .stat-box{
   background:linear-gradient(145deg,#f5faf5,#ffffff);
-  padding:1.8rem;
+  padding:1.5rem;
   border-radius:var(--radius);
   text-align:center;
   border:1px solid rgba(45,151,13,0.04);
@@ -424,17 +457,17 @@ nav ul a.active::after{width:100% !important;}
   box-shadow:0 12px 36px rgba(45,151,13,0.06);
 }
 .stat-number{
-  font-size:2.6rem;font-weight:900;
+  font-size:2.4rem;font-weight:900;
   color:var(--primary);
-  margin-bottom:0.3rem;
+  margin-bottom:0.2rem;
 }
-.stat-label{color:var(--text-muted);font-size:0.95rem;}
+.stat-label{color:var(--text-muted);font-size:0.9rem;}
 
 /* ── Gallery ── */
 .home-gallery{
   display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:1.5rem;
-  padding:2rem 0 2.5rem;
+  gap:1.2rem;
+  padding:1.5rem 0 2rem;
 }
 .gallery-item{
   overflow:hidden;border-radius:16px;
@@ -495,23 +528,25 @@ footer{
   .home-hero{grid-template-columns:1fr;gap:2rem;}
 }
 @media(max-width:768px){
-  .page-header{padding:30px 1.5rem 15px;}
-  .page-header h1{font-size:clamp(1.6rem,3.5vw,2.2rem);}
-  .page-header p{font-size:0.6rem;}
-  .page-header .badge{font-size:0.5rem;padding:0.1rem 0.6rem;}
+  .page-header{padding:10px 1.5rem 8px;min-height:6vh;}
+  .page-header h1{font-size:clamp(1.2rem,2.5vw,1.6rem);}
+  .page-header .sub-text{font-size:0.5rem;}
+  .page-header .badge{font-size:0.45rem;padding:0.1rem 0.6rem;}
   nav ul{display:none;}
   .nav-hamburger{display:flex;}
   .logo span{display:none;}
   .home-hero-content h1{font-size:2rem;}
-  .home-card{padding:1.5rem;}
+  .home-card{padding:1.2rem;}
+  .home-container{padding:1rem 1.2rem 1.5rem;}
 }
 @media(max-width:480px){
-  .page-header{padding:22px 1rem 12px;}
-  .page-header h1{font-size:clamp(1.3rem,3vw,1.6rem);}
-  .page-header p{font-size:0.5rem;}
+  .page-header{padding:8px 1rem 6px;min-height:5vh;}
+  .page-header h1{font-size:clamp(1rem,2vw,1.3rem);}
+  .page-header .sub-text{font-size:0.45rem;}
   .home-hero-content h1{font-size:1.6rem;}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .home-gallery{grid-template-columns:1fr 1fr;}
+  .home-container{padding:0.8rem 1rem 1.2rem;}
 }
 </style>
 
@@ -558,19 +593,21 @@ footer{
 </div>
 
 <!-- ══════════════════════════════════════════
-     PAGE HEADER — HEIGHT KAM
+     PAGE HEADER — REDUCED HEIGHT
 ══════════════════════════════════════════ -->
 <section class="page-header">
   <div class="page-orb page-orb-1"></div>
   <div class="page-orb page-orb-2"></div>
   
-  <div class="badge">
-    <i class="fas fa-certificate"></i>
-    At Your Doorstep
+  <div class="header-content">
+    <div class="badge">
+      <i class="fas fa-certificate"></i>
+      At Your Doorstep
+    </div>
+    
+    <h1>Home <span>Collection</span> Services</h1>
+    <p class="sub-text">Certified technicians, safe transport, and convenient scheduling.</p>
   </div>
-  
-  <h1>Home <span>Collection</span> Services</h1>
-  <p>Certified technicians, safe transport, and convenient scheduling.</p>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -584,14 +621,14 @@ footer{
       <h1>Home <span>Collection</span> Services</h1>
       <p>Reliable home sample collection from certified technicians, with safe pickup, professional handling and fast lab delivery for accurate results.</p>
       <p>We make diagnostic testing comfortable and convenient by collecting samples at your doorstep, whether at home, work or in the community. Enjoy a seamless service experience with strong safety standards and clear communication.</p>
-      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.5rem;">
-        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.9rem;">
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:0.3rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.85rem;">
           <i class="fas fa-check-circle" style="color:var(--primary-light);"></i> Certified technicians
         </div>
-        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.9rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.85rem;">
           <i class="fas fa-check-circle" style="color:var(--primary-light);"></i> Safe transport
         </div>
-        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.9rem;">
+        <div style="display:flex;align-items:center;gap:0.5rem;color:var(--text-muted);font-size:0.85rem;">
           <i class="fas fa-check-circle" style="color:var(--primary-light);"></i> 24/7 scheduling
         </div>
       </div>
@@ -735,9 +772,9 @@ AOS.init({ duration: 720, once: true, easing: 'ease-out-cubic', offset: 55 });
 gsap.registerPlugin(ScrollTrigger);
 
 /* Page header stagger */
-gsap.fromTo('.page-header .badge, .page-header h1, .page-header p',
-  { y: 20, opacity: 0 },
-  { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.1 }
+gsap.fromTo('.page-header .badge, .page-header h1, .page-header .sub-text',
+  { y: 15, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.4, stagger: 0.06, ease: 'power3.out', delay: 0.05 }
 );
 
 /* Hero stagger */
