@@ -627,30 +627,36 @@ footer{
 .scroll-fade.visible{opacity:1;transform:translateY(0) scale(1);}
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE (aligned with reference pages)
 ═══════════════════════════════════════════ */
 @media(max-width:960px){
-  .checkup-grid{grid-template-columns:1fr;}
+  .checkup-grid, .premium-grid{grid-template-columns:1fr;}
   .price-sidebar{position:static;}
 }
 @media(max-width:768px){
   .page-header{padding:10px 1.5rem 8px;min-height:6vh;}
-  .page-header h1{font-size:clamp(1.2rem,2.5vw,1.6rem);}
+  .page-header h1{font-size:clamp(1.2rem,2.5vw,1.6rem);}  
   .page-header .sub-text{font-size:0.5rem;}
   .page-header .badge{font-size:0.45rem;padding:0.1rem 0.6rem;}
   nav ul{display:none;}
   .nav-hamburger{display:flex;}
   .logo span{display:none;}
-  .card-header{padding:1.8rem 1.5rem;}
-  .card-header h1{font-size:1.6rem;}
-  .card-body{padding:1.5rem;}
+  .card-header{padding:1.5rem 1.2rem;}
+  .card-header h1{font-size:1.5rem;}
+  .card-body{padding:1.2rem;}
   .benefits-grid{grid-template-columns:1fr 1fr;}
+  .checkup-grid{padding:1rem 0;}
+  .checkup-container, .premium-container{padding:0 1.2rem;}
 }
 @media(max-width:480px){
   .page-header{padding:8px 1rem 6px;min-height:5vh;}
   .page-header h1{font-size:clamp(1rem,2vw,1.3rem);}
   .page-header .sub-text{font-size:0.45rem;}
   .benefits-grid{grid-template-columns:1fr;}
+  .checkup-grid{padding:0.8rem 0;}
+  .checkup-container, .premium-container{padding:0 1rem;}
+  .card-body{padding:1rem;}
+  .card-header{padding:1.2rem 1rem;}
 }
 </style>
 
@@ -670,13 +676,13 @@ footer{
 ══════════════════════════════════════════ -->
 <nav id="mainNav">
   <div class="nav-container">
-    <a href="../home.html" class="logo">
+    <a href="../index.html" class="logo">
       <img src="../images/Lab%20Logo.png" alt="Lab Logo" class="logo-img">
       <span>The Medicare Laboratory &amp; Diagnostic Center</span>
     </a>
     <ul id="navLinks">
       <li><a href="service.html" class="nav-link">Services</a></li>
-      <li><a href="../home.html#about" class="nav-link">About</a></li>
+      <li><a href="../index.html#about" class="nav-link">About</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
       <!-- ORDER NOW BUTTON REMOVED -->
     </ul>
@@ -689,7 +695,7 @@ footer{
 <!-- Mobile Drawer — order now removed -->
 <div class="nav-drawer" id="navDrawer">
   <a href="service.html">Services</a>
-  <a href="../home.html#about">About</a>
+  <a href="../index.html#about">About</a>
   <a href="contact.html">Contact</a>
   <!-- ORDER NOW BUTTON REMOVED -->
 </div>
