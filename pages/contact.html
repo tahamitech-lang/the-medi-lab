@@ -215,7 +215,7 @@ nav ul a.active::after{width:100% !important;}
 .nav-drawer .cta-btn{font-size:1.1rem;padding:0.9rem 2.5rem;}
 
 /* ═══════════════════════════════════════════
-   PAGE HEADER — HEIGHT REDUCED
+   PAGE HEADER — SIMPLE (NO QURANIC VERSE)
 ═══════════════════════════════════════════ */
 .page-header{
   background:linear-gradient(145deg,var(--primary) 0%,#4a8a3a 40%,var(--primary-dark) 100%);
@@ -224,6 +224,10 @@ nav ul a.active::after{width:100% !important;}
   text-align:center;
   margin-top:0;
   position:relative;overflow:hidden;
+  min-height:25vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .page-header::before{
@@ -235,31 +239,33 @@ nav ul a.active::after{width:100% !important;}
   z-index:1;
 }
 
+.header-content{
+  position:relative;z-index:2;max-width:800px;margin:0 auto;
+}
+
 /* ─── Page Header Badge ─── */
 .page-header .badge{
-  display:inline-flex;align-items:center;gap:0.3rem;
+  display:inline-flex;align-items:center;gap:0.5rem;
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.15);
-  padding:0.15rem 0.9rem;
+  padding:0.3rem 1.2rem;
   border-radius:60px;
-  font-size:0.6rem;
+  font-size:0.75rem;
   font-weight:600;
   color:rgba(255,255,255,0.95);
-  margin-bottom:0.3rem;
+  margin-bottom:0.8rem;
   backdrop-filter:blur(8px);
-  position:relative;z-index:2;
   animation:fadeInDown 0.7s ease 0.3s both;
 }
 .page-header .badge i{color:var(--primary-light);}
 
 /* ─── HEADING ─── */
 .page-header h1{
-  font-size:clamp(2rem,4vw,3rem);
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
   font-weight:900;
   letter-spacing:-0.03em;
   line-height:1.1;
-  margin-bottom:0.2rem;
-  position:relative;z-index:2;
+  margin-bottom:0.5rem;
   animation:heroFadeUp 0.9s ease 0.4s both;
 }
 .page-header h1 span{
@@ -269,13 +275,13 @@ nav ul a.active::after{width:100% !important;}
   background-clip:text;
 }
 
-.page-header p{
-  font-size:0.7rem;
+/* ─── Page Header Sub Text ─── */
+.page-header .sub-text{
+  font-size:0.85rem;
   opacity:0.9;
   max-width:550px;
   margin:0 auto;
-  line-height:1.3;
-  position:relative;z-index:2;
+  line-height:1.5;
   animation:heroFadeUp 0.9s ease 0.55s both;
 }
 
@@ -620,10 +626,10 @@ footer{
   .contact-grid{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
-  .page-header{padding:30px 1.5rem 15px;}
+  .page-header{padding:30px 1.5rem 15px;min-height:20vh;}
   .page-header h1{font-size:clamp(1.6rem,3.5vw,2.2rem);}
-  .page-header p{font-size:0.6rem;}
-  .page-header .badge{font-size:0.5rem;padding:0.1rem 0.6rem;}
+  .page-header .sub-text{font-size:0.7rem;}
+  .page-header .badge{font-size:0.6rem;padding:0.2rem 0.8rem;}
   nav ul{display:none;}
   .nav-hamburger{display:flex;}
   .logo span{display:none;}
@@ -633,9 +639,9 @@ footer{
   .map-container{height:250px;}
 }
 @media(max-width:480px){
-  .page-header{padding:22px 1rem 12px;}
+  .page-header{padding:22px 1rem 12px;min-height:15vh;}
   .page-header h1{font-size:clamp(1.3rem,3vw,1.6rem);}
-  .page-header p{font-size:0.5rem;}
+  .page-header .sub-text{font-size:0.6rem;}
 }
 </style>
 
@@ -682,20 +688,23 @@ footer{
 </div>
 
 <!-- ══════════════════════════════════════════
-     PAGE HEADER — HEIGHT REDUCED
+     PAGE HEADER — NO QURANIC VERSE
 ══════════════════════════════════════════ -->
 <section class="page-header">
   <div class="page-orb page-orb-1"></div>
   <div class="page-orb page-orb-2"></div>
   <div class="sec-bubbles" id="conHeaderBubbles"></div>
   
-  <div class="badge">
-    <i class="fas fa-certificate"></i>
-    Get in Touch
+  <div class="header-content">
+    <!-- Professional Badge -->
+    <div class="badge">
+      <i class="fas fa-certificate"></i>
+      Get in Touch
+    </div>
+    
+    <h1>Contact <span>Us</span></h1>
+    <p class="sub-text">Get in touch with our team for inquiries, appointments, and support.</p>
   </div>
-  
-  <h1>Contact <span>Us</span></h1>
-  <p>Get in touch with our team for inquiries, appointments, and support.</p>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -955,10 +964,10 @@ AOS.init({ duration: 720, once: true, easing: 'ease-out-cubic', offset: 55 });
 /* ── GSAP ── */
 gsap.registerPlugin(ScrollTrigger);
 
-/* Page header stagger */
-gsap.fromTo('.page-header .badge, .page-header h1, .page-header p',
-  { y: 20, opacity: 0 },
-  { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.1 }
+/* Page header stagger with badge */
+gsap.fromTo('.page-header .badge, .page-header h1, .page-header .sub-text',
+  { y: 15, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
 );
 
 /* ── NAVBAR — SCROLL & ACTIVE LINK ── */

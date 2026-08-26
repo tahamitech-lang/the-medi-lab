@@ -215,7 +215,7 @@ nav ul a.active::after{width:100% !important;}
 .nav-drawer .cta-btn{font-size:1.1rem;padding:0.9rem 2.5rem;}
 
 /* ═══════════════════════════════════════════
-   PAGE HEADER — HEIGHT KAM
+   PAGE HEADER — SIMPLE (NO QURANIC VERSE)
 ═══════════════════════════════════════════ */
 .page-header{
   background:linear-gradient(145deg,var(--primary) 0%,#4a8a3a 40%,var(--primary-dark) 100%);
@@ -224,6 +224,10 @@ nav ul a.active::after{width:100% !important;}
   text-align:center;
   margin-top:0;
   position:relative;overflow:hidden;
+  min-height:25vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .page-header::before{
@@ -235,31 +239,33 @@ nav ul a.active::after{width:100% !important;}
   z-index:1;
 }
 
+.header-content{
+  position:relative;z-index:2;max-width:800px;margin:0 auto;
+}
+
 /* ─── Page Header Badge ─── */
 .page-header .badge{
-  display:inline-flex;align-items:center;gap:0.3rem;
+  display:inline-flex;align-items:center;gap:0.5rem;
   background:rgba(255,255,255,0.08);
   border:1px solid rgba(255,255,255,0.15);
-  padding:0.15rem 0.9rem;
+  padding:0.3rem 1.2rem;
   border-radius:60px;
-  font-size:0.6rem;
+  font-size:0.75rem;
   font-weight:600;
   color:rgba(255,255,255,0.95);
-  margin-bottom:0.3rem;
+  margin-bottom:0.8rem;
   backdrop-filter:blur(8px);
-  position:relative;z-index:2;
   animation:fadeInDown 0.7s ease 0.3s both;
 }
 .page-header .badge i{color:var(--primary-light);}
 
 /* ─── HEADING ─── */
 .page-header h1{
-  font-size:clamp(2rem,4vw,3rem);
+  font-size:clamp(2.2rem,4.5vw,3.4rem);
   font-weight:900;
   letter-spacing:-0.03em;
   line-height:1.1;
-  margin-bottom:0.2rem;
-  position:relative;z-index:2;
+  margin-bottom:0.5rem;
   animation:heroFadeUp 0.9s ease 0.4s both;
 }
 .page-header h1 span{
@@ -269,13 +275,13 @@ nav ul a.active::after{width:100% !important;}
   background-clip:text;
 }
 
-.page-header p{
-  font-size:0.7rem;
+/* ─── Page Header Sub Text ─── */
+.page-header .sub-text{
+  font-size:0.85rem;
   opacity:0.9;
   max-width:550px;
   margin:0 auto;
-  line-height:1.3;
-  position:relative;z-index:2;
+  line-height:1.5;
   animation:heroFadeUp 0.9s ease 0.55s both;
 }
 
@@ -614,10 +620,10 @@ footer{
   .price-sidebar{position:static;}
 }
 @media(max-width:768px){
-  .page-header{padding:30px 1.5rem 15px;}
+  .page-header{padding:30px 1.5rem 15px;min-height:20vh;}
   .page-header h1{font-size:clamp(1.6rem,3.5vw,2.2rem);}
-  .page-header p{font-size:0.6rem;}
-  .page-header .badge{font-size:0.5rem;padding:0.1rem 0.6rem;}
+  .page-header .sub-text{font-size:0.7rem;}
+  .page-header .badge{font-size:0.6rem;padding:0.2rem 0.8rem;}
   nav ul{display:none;}
   .nav-hamburger{display:flex;}
   .logo span{display:none;}
@@ -627,9 +633,9 @@ footer{
   .benefits-grid{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:480px){
-  .page-header{padding:22px 1rem 12px;}
+  .page-header{padding:22px 1rem 12px;min-height:15vh;}
   .page-header h1{font-size:clamp(1.3rem,3vw,1.6rem);}
-  .page-header p{font-size:0.5rem;}
+  .page-header .sub-text{font-size:0.6rem;}
   .benefits-grid{grid-template-columns:1fr;}
 }
 </style>
@@ -677,19 +683,23 @@ footer{
 </div>
 
 <!-- ══════════════════════════════════════════
-     PAGE HEADER — HEIGHT KAM
+     PAGE HEADER — NO QURANIC VERSE
 ══════════════════════════════════════════ -->
 <section class="page-header">
   <div class="page-orb page-orb-1"></div>
   <div class="page-orb page-orb-2"></div>
+  <div class="sec-bubbles" id="checkupHeaderBubbles"></div>
   
-  <div class="badge">
-    <i class="fas fa-certificate"></i>
-    Basic Package
+  <div class="header-content">
+    <!-- Professional Badge -->
+    <div class="badge">
+      <i class="fas fa-certificate"></i>
+      Basic Package
+    </div>
+    
+    <h1>Basic <span>Checkup</span></h1>
+    <p class="sub-text">Entry-level health screening — CBC, Blood Sugar &amp; Blood Pressure.</p>
   </div>
-  
-  <h1>Basic <span>Checkup</span></h1>
-  <p>Entry-level health screening — CBC, Blood Sugar &amp; Blood Pressure.</p>
 </section>
 
 <!-- ══════════════════════════════════════════
@@ -986,10 +996,10 @@ AOS.init({ duration: 720, once: true, easing: 'ease-out-cubic', offset: 55 });
 /* ── GSAP ── */
 gsap.registerPlugin(ScrollTrigger);
 
-/* Page header stagger */
-gsap.fromTo('.page-header .badge, .page-header h1, .page-header p',
-  { y: 20, opacity: 0 },
-  { y: 0, opacity: 1, duration: 0.5, stagger: 0.06, ease: 'power3.out', delay: 0.1 }
+/* Page header stagger with badge */
+gsap.fromTo('.page-header .badge, .page-header h1, .page-header .sub-text',
+  { y: 15, opacity: 0 },
+  { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
 );
 
 /* ── NAVBAR — SCROLL & ACTIVE LINK ── */
@@ -1122,6 +1132,75 @@ function bookPackage() {
   100%{transform:scale(3.5);opacity:0;}
 }
 </style>
+
+<!-- ═══ SECTION BUBBLES ═══ -->
+<style>
+.sec-bubbles{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:1;}
+.sb{position:absolute;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(255,255,255,.52) 0%,rgba(255,255,255,.16) 40%,rgba(255,255,255,.04) 70%,transparent 100%);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);box-shadow:inset 0 0 10px rgba(255,255,255,.14),0 0 14px rgba(79,240,84,.14);will-change:transform;pointer-events:auto;transition:box-shadow .3s,border-color .3s,transform .3s;}
+.sb::before{content:'';position:absolute;top:18%;left:20%;width:28%;height:17%;background:rgba(255,255,255,.5);border-radius:50%;filter:blur(2px);}
+.sb:hover{box-shadow:inset 0 0 22px rgba(255,255,255,.45),0 0 32px rgba(79,240,84,.55);border-color:rgba(79,240,84,.75);transform:scale(1.18) !important;z-index:3;}
+@keyframes sbFloat{0%{transform:translateY(0) translateX(0) scale(1);}25%{transform:translateY(-18px) translateX(6px) scale(1.03);}50%{transform:translateY(-8px) translateX(-8px) scale(.97);}75%{transform:translateY(-24px) translateX(4px) scale(1.04);}100%{transform:translateY(0) translateX(0) scale(1);}}
+.page-header>*:not(.sec-bubbles){position:relative;z-index:2;}
+@media(max-width:600px){.sec-bubbles{display:none;}}
+</style>
+
+<script>
+(function(){
+  function rnd(a,b){return a+Math.random()*(b-a);}
+  var bands=[[8,16,.4,.65],[17,30,.28,.5],[31,48,.16,.36],[49,70,.1,.24]];
+  var cnts=[8,6,4,2];
+  function seedBubbles(cid){
+    var wrap=document.getElementById(cid); if(!wrap)return;
+    var section=wrap.parentElement;
+    var bubs=[],raf=false,mX=-9999,mY=-9999;
+    var REPEL=100,FORCE=38;
+    bands.forEach(function(b,bi){
+      for(var i=0;i<cnts[bi];i++){
+        var sz=rnd(b[0],b[1]),op=rnd(b[2],b[3]);
+        var dur=rnd(5,18),del=rnd(0,dur);
+        var lx=rnd(2,97),ly=rnd(3,94);
+        var el=document.createElement('div');el.className='sb';
+        el.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+lx+'%;top:'+ly+'%;opacity:'+op+';animation:sbFloat '+dur+'s ease-in-out -'+del+'s infinite';
+        wrap.appendChild(el);
+        bubs.push({el:el,lx:lx,ly:ly,ox:0,oy:0});
+      }
+    });
+    section.addEventListener('mousemove',function(e){
+      var r=section.getBoundingClientRect();
+      mX=e.clientX-r.left; mY=e.clientY-r.top;
+      if(!raf){raf=true;requestAnimationFrame(rep);} 
+    },{passive:true});
+    section.addEventListener('mouseleave',function(){mX=-9999;mY=-9999;});
+    function rep(){
+      raf=false;
+      var W=section.offsetWidth,H=section.offsetHeight;
+      bubs.forEach(function(b){
+        var bx=(b.lx/100)*W,by=(b.ly/100)*H;
+        var dx=bx-mX,dy=by-mY;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        var tx=0,ty=0;
+        if(d<REPEL&&d>0){
+          var rv=1-d/REPEL;
+          var p=FORCE*rv*rv;
+          tx=(dx/d)*p; ty=(dy/d)*p;
+        }
+        b.ox+=(tx-b.ox)*.18; b.oy+=(ty-b.oy)*.18;
+        b.el.style.transform='translate('+b.ox.toFixed(1)+'px,'+b.oy.toFixed(1)+'px)';
+      });
+    }
+    (function drift(){
+      bubs.forEach(function(b){
+        if(Math.abs(b.ox)>.05||Math.abs(b.oy)>.05){
+          b.ox*=.94; b.oy*=.94;
+          b.el.style.transform='translate('+b.ox.toFixed(1)+'px,'+b.oy.toFixed(1)+'px)';
+        }
+      });
+      requestAnimationFrame(drift);
+    })();
+  }
+  seedBubbles('checkupHeaderBubbles');
+})();
+</script>
 
 <script src="../javascript/loader-nav.js"></script>
 <script src="../javascript/mobile-nav.js" defer></script>

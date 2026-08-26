@@ -27,11 +27,11 @@ if ($pdo) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Meta Tags -->
-    <title>Tahami Lab - Diagnostic & Medical Testing Services</title>
-    <meta name="description" content="Tahami Lab provides reliable diagnostic reports and medical lab services." />
+    <title>The Medicare Laboratory & Diagnostic Center</title>
+    <meta name="description" content="The Medicare Laboratory & Diagnostic Center provides reliable diagnostic reports and medical lab services." />
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Tahami Lab - Diagnostic Services" />
+    <meta property="og:title" content="The Medicare Laboratory & Diagnostic Center - Diagnostic Services" />
     <meta property="og:description" content="Reliable medical lab testing and reports." />
     <meta property="og:image" content="https://the-medi-lab.vercel.app/logo.png" />
     <meta property="og:url" content="https://the-medi-lab.vercel.app/" />
@@ -40,6 +40,8 @@ if ($pdo) {
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Arabic Font Support -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet">
     <!-- AOS -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -310,6 +312,76 @@ nav ul a:hover::after{width:100%;}
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
   background-clip:text;
+}
+
+/* ═══════════════════════════════════════════
+   QURANIC VERSE — PREMIUM STYLING
+═══════════════════════════════════════════ */
+.quranic-verse {
+  margin: 1.5rem auto 1.8rem;
+  padding: 1.2rem 2rem;
+  max-width: 650px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  position: relative;
+  animation: verseGlow 4s ease-in-out infinite alternate;
+}
+
+.quranic-verse::before {
+  content: '✦';
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary-light);
+  font-size: 1.2rem;
+  background: var(--primary);
+  padding: 0 0.6rem;
+  border-radius: 20px;
+}
+
+.verse-arabic {
+  font-family: 'Amiri', 'Noto Naskh Arabic', serif;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+}
+
+.verse-translation {
+  font-size: clamp(0.85rem, 1.2vw, 1rem);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  margin-top: 0.3rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.verse-reference {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+  margin-top: 0.15rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@keyframes verseGlow {
+  0% {
+    border-color: rgba(79, 240, 84, 0.08);
+    box-shadow: 0 0 20px rgba(79, 240, 84, 0.02);
+  }
+  100% {
+    border-color: rgba(79, 240, 84, 0.2);
+    box-shadow: 0 0 40px rgba(79, 240, 84, 0.06);
+  }
 }
 
 /* ─── Paragraph ─── */
@@ -721,12 +793,38 @@ footer{
   .logo span{display:none;}
   .cta-section h2{font-size:1.9rem;}
   .about-container{gap:2rem;}
+  
+  /* Quranic Verse Mobile */
+  .quranic-verse {
+    padding: 1rem 1.2rem;
+    margin: 1.2rem auto 1.4rem;
+  }
+  .verse-arabic {
+    font-size: 1.3rem;
+  }
+  .verse-translation {
+    font-size: 0.8rem;
+  }
 }
 @media(max-width:480px){
   .features-grid,.services-grid{grid-template-columns:1fr;}
   .stats-container{grid-template-columns:1fr 1fr;}
   .hero{padding:120px 1.2rem 80px;}
   .auth-card{padding:1.8rem 1.4rem;}
+  
+  /* Quranic Verse Mobile Small */
+  .quranic-verse {
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+  }
+  .verse-arabic {
+    font-size: 1.1rem;
+  }
+  .quranic-verse::before {
+    font-size: 0.8rem;
+    top: -10px;
+    padding: 0 0.4rem;
+  }
 }
 </style>
 
@@ -774,7 +872,7 @@ footer{
 </div>
 
 <!-- ══════════════════════════════════════════
-     HERO — SAME CONTENT
+     HERO — ULTRA PREMIUM WITH QURANIC VERSE
 ══════════════════════════════════════════ -->
 <section class="hero">
   <div class="hero-orb hero-orb-1"></div>
@@ -791,6 +889,13 @@ footer{
     </div>
 
     <h1>Your Trusted Partner in <span>Health &amp; Wellness</span></h1>
+
+    <!-- ─── QURANIC VERSE ─── -->
+    <div class="quranic-verse" data-aos="fade-up" data-aos-delay="200">
+      <div class="verse-arabic">وَإِذَا مَرِضْتُ فَهُوَ يَشْفِينِ</div>
+      <div class="verse-translation">"And when I am ill, it is He who cures me"</div>
+      <div class="verse-reference">— Surah Ash-Shu'ara (26:80)</div>
+    </div>
 
     <p>Advanced diagnostic services with state-of-the-art technology and expert medical professionals committed to your health</p>
 

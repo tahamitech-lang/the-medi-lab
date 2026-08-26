@@ -618,7 +618,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     if (data.user) {
       showBanner('loginBanner', 'success', '✅ Login successful! Redirecting...');
       setTimeout(() => { 
-        window.location.replace('pages/dashboard.html');
+        window.location.replace('home.html');
       }, 1000);
     }
   } catch (err) {
@@ -733,9 +733,8 @@ document.getElementById('signupForm').addEventListener('submit', async function(
       return;
     }
     
-    // Step 2: Patients table mein data insert karo (bina password ke)
+    // Step 2: Patients table mein data insert karo
     try {
-      // Check if record already exists
       const { data: existing } = await _supabase
         .from('patients')
         .select('id')
@@ -854,7 +853,7 @@ async function logout() {
 }
 
 // =============================================
-// ON PAGE LOAD
+// ON PAGE LOAD - ⚠️ FIXED: NO AUTO REDIRECT
 // =============================================
 
 window.addEventListener('load', function() {
@@ -863,12 +862,10 @@ window.addEventListener('load', function() {
     showBanner('loginBanner', 'success', 'You have been logged out successfully.');
   }
   
-  _supabase.auth.getSession().then(({ data: { session } }) => {
-    if (session) {
-      window.location.replace('home.html');
-    }
-  });
+  // ⚠️ YAHAN CHANGE KIYA - Auto redirect REMOVE kiya
+  // Ab user ko manually login/signup karna parega
   
+  // Sirf auth state change listen karo (login/signup ke baad redirect)
   _supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_IN') {
       window.location.replace('home.html');
