@@ -161,9 +161,7 @@ nav ul a.active{color:#fff !important;}
 nav ul a.active::after{width:100% !important;}
 
 /* ORDER NOW BUTTON REMOVED */
-.cta-btn {
-  display: none !important;
-}
+.cta-btn { display: none !important; }
 
 /* ─── Hamburger ─── */
 .nav-hamburger{
@@ -197,9 +195,7 @@ nav ul a.active::after{width:100% !important;}
   color:var(--primary-light);
   transform:translateX(6px);
 }
-.nav-drawer .cta-btn {
-  display: none !important;
-}
+.nav-drawer .cta-btn { display: none !important; }
 
 /* ═══════════════════════════════════════════
    PAGE HEADER — BASIC CHECKUP STYLE
@@ -218,7 +214,6 @@ nav ul a.active::after{width:100% !important;}
   align-items:center;
   justify-content:center;
 }
-
 .page-header::before{
   content:'';position:absolute;inset:0;pointer-events:none;
   background:
@@ -227,128 +222,64 @@ nav ul a.active::after{width:100% !important;}
     radial-gradient(ellipse at 50% 100%,rgba(45,151,13,0.04),transparent 40%);
   z-index:1;
 }
-
 .header-content{
-  position:relative;
-  z-index:2;
-  max-width:800px;
-  margin:0 auto;
-  text-align:center;
-  width:100%;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
+  position:relative;z-index:2;max-width:800px;
+  margin:0 auto;text-align:center;width:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
 }
 
 .page-header .badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.4rem;
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.15);
-  padding:0.15rem 0.8rem;
-  border-radius:60px;
-  font-size:0.55rem;
-  font-weight:600;
-  color:rgba(255,255,255,0.95);
-  margin:0 auto 0.2rem auto;
-  backdrop-filter:blur(8px);
-  animation:fadeInDown 0.7s ease 0.3s both;
-  width:fit-content;
+  display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  padding:0.15rem 0.8rem;border-radius:60px;font-size:0.55rem;font-weight:600;
+  color:rgba(255,255,255,0.95);margin:0 auto 0.2rem auto;
+  backdrop-filter:blur(8px);animation:fadeInDown 0.7s ease 0.3s both;width:fit-content;
 }
 .page-header .badge i{color:var(--primary-light);}
 
 .page-header h1{
-  font-size:clamp(1.4rem,2.8vw,2.2rem);
-  font-weight:900;
-  letter-spacing:-0.03em;
-  line-height:1.2;
-  margin:0 auto 0.1rem auto;
-  text-align:center;
-  display:block;
-  width:100%;
+  font-size:clamp(1.4rem,2.8vw,2.2rem);font-weight:900;
+  letter-spacing:-0.03em;line-height:1.2;
+  margin:0 auto 0.1rem auto;text-align:center;display:block;width:100%;
   animation:heroFadeUp 0.9s ease 0.4s both;
 }
 .page-header h1 span{
   background:linear-gradient(135deg,var(--primary-light),#9eff94);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
 }
 
 .page-header .sub-text{
-  font-size:0.6rem;
-  opacity:0.9;
-  max-width:550px;
-  margin:0 auto;
-  line-height:1.3;
-  text-align:center;
-  display:block;
-  width:100%;
+  font-size:0.6rem;opacity:0.9;max-width:550px;margin:0 auto;
+  line-height:1.3;text-align:center;display:block;width:100%;
   animation:heroFadeUp 0.9s ease 0.55s both;
 }
 
 .page-orb{
-  position:absolute;
-  border-radius:50%;
-  pointer-events:none;
-  animation:orbFloat 14s ease-in-out infinite alternate;
-  z-index:0;
+  position:absolute;border-radius:50%;pointer-events:none;
+  animation:orbFloat 14s ease-in-out infinite alternate;z-index:0;
 }
-.page-orb-1{
-  width:60px;height:60px;
-  background:radial-gradient(circle,rgba(79,240,84,0.06),transparent 70%);
-  top:-15px;right:-10px;
-  animation-delay:0s;
-}
-.page-orb-2{
-  width:40px;height:40px;
-  background:radial-gradient(circle,rgba(255,255,255,0.04),transparent 70%);
-  bottom:-10px;left:-10px;
-  animation-delay:4s;
-}
-@keyframes orbFloat{
-  0%{transform:translate(0,0) scale(1);}
-  100%{transform:translate(10px,-10px) scale(1.15);}
-}
-@keyframes fadeInDown{
-  from{opacity:0;transform:translateY(-6px);}
-  to{opacity:1;transform:translateY(0);}
-}
-@keyframes heroFadeUp{
-  from{opacity:0;transform:translateY(12px);}
-  to{opacity:1;transform:translateY(0);}
-}
+.page-orb-1{width:60px;height:60px;background:radial-gradient(circle,rgba(79,240,84,0.06),transparent 70%);top:-15px;right:-10px;animation-delay:0s;}
+.page-orb-2{width:40px;height:40px;background:radial-gradient(circle,rgba(255,255,255,0.04),transparent 70%);bottom:-10px;left:-10px;animation-delay:4s;}
+
+@keyframes orbFloat{0%{transform:translate(0,0) scale(1);}100%{transform:translate(10px,-10px) scale(1.15);}}
+@keyframes fadeInDown{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:translateY(0);}}
+@keyframes heroFadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
 
 /* ═══════════════════════════════════════════
    MAIN CONTENT — BASIC CHECKUP
 ═══════════════════════════════════════════ */
-.checkup-container{
-  max-width:1200px;margin:0 auto;padding:0 2rem;
-}
-
-.checkup-grid{
-  display:grid;grid-template-columns:1fr 340px;gap:2.5rem;
-  padding:2.5rem 0;
-}
+.checkup-container{max-width:1200px;margin:0 auto;padding:0 2rem;}
+.checkup-grid{display:grid;grid-template-columns:1fr 340px;gap:2.5rem;padding:2.5rem 0;}
 
 .checkup-card{
-  background:#fff;
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:0 12px 48px rgba(45,151,13,0.06);
-  border:1px solid rgba(45,151,13,0.04);
+  background:#fff;border-radius:var(--radius);overflow:hidden;
+  box-shadow:0 12px 48px rgba(45,151,13,0.06);border:1px solid rgba(45,151,13,0.04);
 }
 
 .card-header{
   background:linear-gradient(145deg,var(--primary),var(--primary-dark));
-  color:#fff;
-  padding:2.5rem 2.5rem 2rem;
-  text-align:center;
-  position:relative;
-  overflow:hidden;
+  color:#fff;padding:2.5rem 2.5rem 2rem;text-align:center;
+  position:relative;overflow:hidden;
 }
 .card-header::before{
   content:'';position:absolute;inset:0;
@@ -356,60 +287,31 @@ nav ul a.active::after{width:100% !important;}
 }
 .card-header>*{position:relative;z-index:1;}
 .card-header .badge{
-  display:inline-block;
-  background:rgba(255,255,255,0.12);
-  padding:0.2rem 1rem;
-  border-radius:60px;
-  font-size:0.7rem;
-  font-weight:700;
-  letter-spacing:0.05em;
-  text-transform:uppercase;
-  margin-bottom:0.5rem;
+  display:inline-block;background:rgba(255,255,255,0.12);
+  padding:0.2rem 1rem;border-radius:60px;font-size:0.7rem;font-weight:700;
+  letter-spacing:0.05em;text-transform:uppercase;margin-bottom:0.5rem;
   border:1px solid rgba(255,255,255,0.1);
 }
-.card-header h1{
-  font-size:2.2rem;font-weight:800;
-  margin-bottom:0.3rem;
-}
-.card-header p{
-  opacity:0.85;font-size:1rem;
-}
+.card-header h1{font-size:2.2rem;font-weight:800;margin-bottom:0.3rem;}
+.card-header p{opacity:0.85;font-size:1rem;}
 
 .card-body{padding:2.5rem;}
 .card-body h2{
-  font-size:1.6rem;font-weight:800;
-  color:var(--primary);
-  margin-bottom:1rem;
-  padding-bottom:0.8rem;
-  border-bottom:3px solid var(--primary-light);
+  font-size:1.6rem;font-weight:800;color:var(--primary);
+  margin-bottom:1rem;padding-bottom:0.8rem;border-bottom:3px solid var(--primary-light);
 }
-.card-body h3{
-  font-size:1.2rem;font-weight:700;
-  color:var(--primary);
-  margin-top:2rem;margin-bottom:1rem;
-}
-.card-body p{
-  color:var(--text-muted);
-  font-size:0.98rem;line-height:1.8;
-  margin-bottom:1rem;
-}
+.card-body h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-top:2rem;margin-bottom:1rem;}
+.card-body p{color:var(--text-muted);font-size:0.98rem;line-height:1.8;margin-bottom:1rem;}
 
 /* ── Tests List ── */
 .tests-list{list-style:none;padding:0;}
 .test-item{
-  display:grid;grid-template-columns:1fr auto;
-  gap:1rem;padding:0.8rem 1rem;
-  margin-bottom:0.6rem;
-  background:#f8faf8;
-  border-radius:12px;
-  border-left:4px solid var(--primary);
-  align-items:center;
-  transition:all 0.3s;
+  display:grid;grid-template-columns:1fr auto;gap:1rem;
+  padding:0.8rem 1rem;margin-bottom:0.6rem;
+  background:#f8faf8;border-radius:12px;border-left:4px solid var(--primary);
+  align-items:center;transition:all 0.3s;
 }
-.test-item:hover{
-  background:#f0f8f0;
-  transform:translateX(5px);
-}
+.test-item:hover{background:#f0f8f0;transform:translateX(5px);}
 .test-name{font-weight:500;color:var(--text-dark);}
 .test-price{font-weight:700;color:var(--primary);}
 
@@ -417,9 +319,7 @@ nav ul a.active::after{width:100% !important;}
 .info-box{
   background:linear-gradient(145deg,#f5faf5,#ffffff);
   border-left:4px solid var(--primary-light);
-  padding:1.2rem 1.5rem;
-  margin:1.2rem 0;
-  border-radius:12px;
+  padding:1.2rem 1.5rem;margin:1.2rem 0;border-radius:12px;
 }
 .info-box h3{color:var(--primary);margin-top:0;margin-bottom:0.6rem;font-size:1rem;}
 .info-box ul{list-style:none;padding:0;margin:0;}
@@ -433,110 +333,74 @@ nav ul a.active::after{width:100% !important;}
 
 /* ── Sidebar ── */
 .price-sidebar{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:1.8rem;
+  background:#fff;border-radius:var(--radius);padding:1.8rem;
   box-shadow:0 12px 48px rgba(45,151,13,0.06);
   border:1px solid rgba(45,151,13,0.04);
-  height:fit-content;
-  position:sticky;top:90px;
+  height:fit-content;position:sticky;top:90px;
 }
 .price-sidebar h3{
-  font-size:1.1rem;font-weight:700;
-  color:var(--primary);
-  text-align:center;
-  padding-bottom:1rem;
-  border-bottom:2px solid var(--primary-light);
-  margin-bottom:1.2rem;
+  font-size:1.1rem;font-weight:700;color:var(--primary);
+  text-align:center;padding-bottom:1rem;
+  border-bottom:2px solid var(--primary-light);margin-bottom:1.2rem;
 }
 .individual-prices{list-style:none;padding:0;}
 .individual-prices li{
   display:grid;grid-template-columns:1fr auto;
   padding:0.5rem 0;font-size:0.9rem;
-  border-bottom:1px solid rgba(0,0,0,0.03);
-  color:var(--text-muted);
+  border-bottom:1px solid rgba(0,0,0,0.03);color:var(--text-muted);
 }
 .individual-prices li:last-child{border-bottom:none;}
 .individual-price{font-weight:600;color:var(--text-dark);}
 
 .total-section{
   background:linear-gradient(145deg,#f0f8f0,#ffffff);
-  padding:1.2rem;
-  border-radius:12px;
-  border:2px solid var(--primary-light);
-  margin-top:0.5rem;
+  padding:1.2rem;border-radius:12px;
+  border:2px solid var(--primary-light);margin-top:0.5rem;
 }
 .total-label{font-size:0.8rem;color:var(--text-muted);}
-.total-price{
-  font-size:2.2rem;font-weight:900;
-  color:var(--primary);
-  text-align:center;
-}
+.total-price{font-size:2.2rem;font-weight:900;color:var(--primary);text-align:center;}
 .total-unit{text-align:center;color:var(--text-muted);font-size:0.8rem;}
 
 .book-btn{
   width:100%;padding:0.9rem;
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;border:none;border-radius:60px;
-  font-size:1rem;font-weight:700;
-  cursor:pointer;margin-top:1rem;
+  font-size:1rem;font-weight:700;cursor:pointer;margin-top:1rem;
   transition:transform 0.3s,box-shadow 0.3s;
   box-shadow:0 4px 20px rgba(45,151,13,0.3);
 }
-.book-btn:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 32px rgba(45,151,13,0.4);
-}
+.book-btn:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(45,151,13,0.4);}
 
 /* ── Benefits Section ── */
 .benefits-section{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:2.5rem;
+  background:#fff;border-radius:var(--radius);padding:2.5rem;
   box-shadow:0 12px 48px rgba(45,151,13,0.06);
-  border:1px solid rgba(45,151,13,0.04);
-  margin-top:2rem;
+  border:1px solid rgba(45,151,13,0.04);margin-top:2rem;
 }
 .benefits-section h2{
-  font-size:1.6rem;font-weight:800;
-  color:var(--primary);
-  margin-bottom:1.5rem;
-  padding-bottom:0.8rem;
-  border-bottom:3px solid var(--primary-light);
+  font-size:1.6rem;font-weight:800;color:var(--primary);
+  margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:3px solid var(--primary-light);
 }
-.benefits-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;
-}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;}
 .benefit-card{
   background:linear-gradient(145deg,#f5faf5,#ffffff);
-  padding:1.2rem;
-  border-radius:12px;
-  border-left:4px solid var(--primary);
+  padding:1.2rem;border-radius:12px;border-left:4px solid var(--primary);
   transition:transform 0.3s,box-shadow 0.3s;
 }
-.benefit-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 8px 24px rgba(45,151,13,0.06);
-}
+.benefit-card:hover{transform:translateY(-5px);box-shadow:0 8px 24px rgba(45,151,13,0.06);}
 .benefit-icon{font-size:2.2rem;margin-bottom:0.3rem;}
 .benefit-title{font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
 .benefit-desc{font-size:0.85rem;color:var(--text-muted);}
 
 /* ── Comparison Table ── */
 .comparison-section{
-  background:#fff;
-  border-radius:var(--radius);
-  padding:2.5rem;
+  background:#fff;border-radius:var(--radius);padding:2.5rem;
   box-shadow:0 12px 48px rgba(45,151,13,0.06);
-  border:1px solid rgba(45,151,13,0.04);
-  margin-top:2rem;
+  border:1px solid rgba(45,151,13,0.04);margin-top:2rem;
 }
 .comparison-section h2{
-  font-size:1.6rem;font-weight:800;
-  color:var(--primary);
-  margin-bottom:1.5rem;
-  padding-bottom:0.8rem;
-  border-bottom:3px solid var(--primary-light);
+  font-size:1.6rem;font-weight:800;color:var(--primary);
+  margin-bottom:1.5rem;padding-bottom:0.8rem;border-bottom:3px solid var(--primary-light);
 }
 .table-wrapper{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
@@ -550,12 +414,8 @@ tr:hover{background:#f8faf8;}
 /* ── CTA Section ── */
 .cta-section{
   background:linear-gradient(145deg,var(--primary),var(--primary-dark));
-  color:#fff;
-  padding:3rem 2.5rem;
-  border-radius:var(--radius);
-  text-align:center;
-  margin-top:2rem;
-  position:relative;overflow:hidden;
+  color:#fff;padding:3rem 2.5rem;border-radius:var(--radius);
+  text-align:center;margin-top:2rem;position:relative;overflow:hidden;
 }
 .cta-section::before{
   content:'';position:absolute;inset:0;
@@ -566,25 +426,17 @@ tr:hover{background:#f8faf8;}
 .cta-section p{font-size:1.05rem;opacity:0.9;margin-bottom:1.5rem;}
 
 .cta-btn-large{
-  padding:0.9rem 2.5rem;
-  background:#fff;color:var(--primary);
-  border:none;border-radius:60px;
-  font-size:1rem;font-weight:700;
+  padding:0.9rem 2.5rem;background:#fff;color:var(--primary);
+  border:none;border-radius:60px;font-size:1rem;font-weight:700;
   cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;
   box-shadow:0 4px 20px rgba(0,0,0,0.1);
 }
-.cta-btn-large:hover{
-  transform:translateY(-3px);
-  box-shadow:0 8px 32px rgba(0,0,0,0.15);
-}
+.cta-btn-large:hover{transform:translateY(-3px);box-shadow:0 8px 32px rgba(0,0,0,0.15);}
 
 /* ═══════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════ */
-footer{
-  background:var(--dark);
-  color:#fff;padding:45px 2rem 25px;
-}
+footer{background:var(--dark);color:#fff;padding:45px 2rem 25px;}
 .footer-content{
   max-width:1200px;margin:0 auto;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
@@ -617,7 +469,7 @@ footer{
 .scroll-fade.visible{opacity:1;transform:translateY(0) scale(1);}
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE — EXACTLY MATCHES HEALTHCHECKUP STYLE
+   RESPONSIVE — EXACTLY MATCHES HEALTHCHECKUP
 ═══════════════════════════════════════════ */
 @media(max-width:960px){
   .checkup-grid{grid-template-columns:1fr;gap:1.2rem;}
@@ -634,11 +486,7 @@ footer{
   .logo span{display:none;}
   .checkup-container{padding:0 1rem;}
   .checkup-grid{padding:1rem 0;}
-  .checkup-card,
-  .benefits-section,
-  .comparison-section,
-  .cta-section,
-  .price-sidebar{border-radius:18px;}
+  .checkup-card,.benefits-section,.comparison-section,.cta-section,.price-sidebar{border-radius:18px;}
   .card-header{padding:1.5rem 1.2rem 1rem;}
   .card-header h1{font-size:1.5rem;}
   .card-header p{font-size:0.9rem;}
@@ -679,8 +527,7 @@ footer{
 }
 </style>
 
-<link rel="stylesheet" href="../css/mobile-responsive.css">
-<link rel="stylesheet" href="../css/mobile-nav.css">
+<!-- ⚠️ EXTERNAL CSS REMOVED TO AVOID OVERRIDES -->
 </head>
 <body>
 
@@ -703,7 +550,6 @@ footer{
       <li><a href="service.html" class="nav-link">Services</a></li>
       <li><a href="../index.html#about" class="nav-link">About</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
-      <!-- ORDER NOW BUTTON REMOVED -->
     </ul>
     <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -711,29 +557,22 @@ footer{
   </div>
 </nav>
 
-<!-- Mobile Drawer — order now removed -->
+<!-- Mobile Drawer -->
 <div class="nav-drawer" id="navDrawer">
   <a href="service.html">Services</a>
   <a href="../index.html#about">About</a>
   <a href="contact.html">Contact</a>
-  <!-- ORDER NOW BUTTON REMOVED -->
 </div>
 
 <!-- ══════════════════════════════════════════
-     PAGE HEADER — NO QURANIC VERSE
+     PAGE HEADER
 ══════════════════════════════════════════ -->
 <section class="page-header">
   <div class="page-orb page-orb-1"></div>
   <div class="page-orb page-orb-2"></div>
   <div class="sec-bubbles" id="checkupHeaderBubbles"></div>
-  
   <div class="header-content">
-    <!-- Professional Badge -->
-    <div class="badge">
-      <i class="fas fa-certificate"></i>
-      Basic Package
-    </div>
-    
+    <div class="badge"><i class="fas fa-certificate"></i> Basic Package</div>
     <h1>Basic <span>Checkup</span></h1>
     <p class="sub-text">Entry-level health screening — CBC, Blood Sugar &amp; Blood Pressure.</p>
   </div>
@@ -756,25 +595,15 @@ footer{
           <h1>Basic Checkup</h1>
           <p>Entry-level health screening for routine check</p>
         </div>
-
         <div class="card-body">
           <h2>What's Included in Basic Checkup?</h2>
           <p>The Basic Checkup package is our most affordable and popular health screening solution. It includes the three most essential tests for a comprehensive health overview. Perfect for routine annual checkups and early detection of common health issues.</p>
 
           <h3>📋 Three Essential Tests Included</h3>
           <ul class="tests-list">
-            <li class="test-item">
-              <span class="test-name">🩸 CBC Test (Complete Blood Count)</span>
-              <span class="test-price">Rs. 800</span>
-            </li>
-            <li class="test-item">
-              <span class="test-name">🍬 Blood Sugar (Fasting Glucose)</span>
-              <span class="test-price">Rs. 400</span>
-            </li>
-            <li class="test-item">
-              <span class="test-name">💓 Blood Pressure Check</span>
-              <span class="test-price">Rs. 300</span>
-            </li>
+            <li class="test-item"><span class="test-name">🩸 CBC Test (Complete Blood Count)</span><span class="test-price">Rs. 800</span></li>
+            <li class="test-item"><span class="test-name">🍬 Blood Sugar (Fasting Glucose)</span><span class="test-price">Rs. 400</span></li>
+            <li class="test-item"><span class="test-name">💓 Blood Pressure Check</span><span class="test-price">Rs. 300</span></li>
           </ul>
 
           <h3>Why Choose Basic Checkup Package?</h3>
@@ -852,36 +681,12 @@ footer{
       <div class="benefits-section scroll-fade" data-aos="fade-up">
         <h2>🎯 Basic Checkup Benefits</h2>
         <div class="benefits-grid">
-          <div class="benefit-card">
-            <div class="benefit-icon">💰</div>
-            <div class="benefit-title">Most Affordable</div>
-            <div class="benefit-desc">Entry-level pricing for complete health screening</div>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">⚡</div>
-            <div class="benefit-title">Quick & Easy</div>
-            <div class="benefit-desc">All tests completed in just 30 minutes</div>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">📊</div>
-            <div class="benefit-title">Comprehensive Report</div>
-            <div class="benefit-desc">Detailed results with health insights included</div>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">🛡️</div>
-            <div class="benefit-title">Early Detection</div>
-            <div class="benefit-desc">Catch health issues before they become serious</div>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">✅</div>
-            <div class="benefit-title">No Special Prep</div>
-            <div class="benefit-desc">Simple fasting only - no complex preparations needed</div>
-          </div>
-          <div class="benefit-card">
-            <div class="benefit-icon">🏥</div>
-            <div class="benefit-title">Professional Service</div>
-            <div class="benefit-desc">Certified technicians and modern equipment</div>
-          </div>
+          <div class="benefit-card"><div class="benefit-icon">💰</div><div class="benefit-title">Most Affordable</div><div class="benefit-desc">Entry-level pricing for complete health screening</div></div>
+          <div class="benefit-card"><div class="benefit-icon">⚡</div><div class="benefit-title">Quick & Easy</div><div class="benefit-desc">All tests completed in just 30 minutes</div></div>
+          <div class="benefit-card"><div class="benefit-icon">📊</div><div class="benefit-title">Comprehensive Report</div><div class="benefit-desc">Detailed results with health insights included</div></div>
+          <div class="benefit-card"><div class="benefit-icon">🛡️</div><div class="benefit-title">Early Detection</div><div class="benefit-desc">Catch health issues before they become serious</div></div>
+          <div class="benefit-card"><div class="benefit-icon">✅</div><div class="benefit-title">No Special Prep</div><div class="benefit-desc">Simple fasting only - no complex preparations needed</div></div>
+          <div class="benefit-card"><div class="benefit-icon">🏥</div><div class="benefit-title">Professional Service</div><div class="benefit-desc">Certified technicians and modern equipment</div></div>
         </div>
       </div>
 
@@ -890,13 +695,7 @@ footer{
         <h2>📊 Basic vs Individual Tests Comparison</h2>
         <div class="table-wrapper">
           <table>
-            <thead>
-              <tr>
-                <th>Feature</th>
-                <th>Individual Tests</th>
-                <th>Basic Package</th>
-              </tr>
-            </thead>
+            <thead><tr><th>Feature</th><th>Individual Tests</th><th>Basic Package</th></tr></thead>
             <tbody>
               <tr><td><strong>Total Cost</strong></td><td>Rs. 1,500</td><td>Rs. 2,500</td></tr>
               <tr><td><strong>Appointments</strong></td><td>3 separate visits</td><td>1 single visit</td></tr>
@@ -917,35 +716,20 @@ footer{
       </div>
 
       <!-- Popup -->
-      <div id="basicCheckupPopup" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); justify-content: center; align-items: center; z-index: 9999; font-family: 'Inter','Segoe UI',sans-serif;">
-        <div style="background: #ffffff; padding: 40px 50px; border-radius: 20px; max-width: 420px; width: 90%; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.3); animation: popIn 0.3s ease-out; border-top: 6px solid var(--primary);">
-          <div style="font-size: 48px; margin-bottom: 10px;">🏥</div>
-          <h2 style="color: #1a1a2e; margin: 15px 0 10px; font-size: 24px; font-weight: 800;">Coming Soon</h2>
-          <p style="color: #555; font-size: 16px; line-height: 1.6; margin-bottom: 25px;">
-            Basic Checkup booking is currently unavailable. <br>We are enhancing our services and will be ready <strong>very soon</strong>.
-          </p>
-          <button onclick="document.getElementById('basicCheckupPopup').style.display='none'; document.body.style.overflow='auto';" style="background: var(--primary); color: white; border: none; padding: 12px 40px; border-radius: 50px; font-size: 16px; font-weight: 600; cursor: pointer; transition: background 0.2s; box-shadow: 0 4px 15px rgba(45,151,13,0.4);">
-            Got It
-          </button>
+      <div id="basicCheckupPopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);backdrop-filter:blur(8px);justify-content:center;align-items:center;z-index:9999;font-family:'Inter','Segoe UI',sans-serif;">
+        <div style="background:#fff;padding:40px 50px;border-radius:20px;max-width:420px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.3);animation:popIn 0.3s ease-out;border-top:6px solid var(--primary);">
+          <div style="font-size:48px;margin-bottom:10px;">🏥</div>
+          <h2 style="color:#1a1a2e;margin:15px 0 10px;font-size:24px;font-weight:800;">Coming Soon</h2>
+          <p style="color:#555;font-size:16px;line-height:1.6;margin-bottom:25px;">Basic Checkup booking is currently unavailable. <br>We are enhancing our services and will be ready <strong>very soon</strong>.</p>
+          <button onclick="document.getElementById('basicCheckupPopup').style.display='none'; document.body.style.overflow='auto';" style="background:var(--primary);color:#fff;border:none;padding:12px 40px;border-radius:50px;font-size:16px;font-weight:600;cursor:pointer;box-shadow:0 4px 15px rgba(45,151,13,0.4);">Got It</button>
         </div>
       </div>
 
-      <style>
-        @keyframes popIn { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-        #basicCheckupPopup { display: none; }
-      </style>
-
+      <style>@keyframes popIn{0%{transform:scale(0.8);opacity:0;}100%{transform:scale(1);opacity:1;}}</style>
       <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          var popup = document.getElementById('basicCheckupPopup');
-          if (popup) {
-            popup.addEventListener('click', function(e) {
-              if (e.target === this) {
-                this.style.display = 'none';
-                document.body.style.overflow = 'auto';
-              }
-            });
-          }
+        document.addEventListener('DOMContentLoaded',function(){
+          var p=document.getElementById('basicCheckupPopup');
+          if(p){p.addEventListener('click',function(e){if(e.target===this){this.style.display='none';document.body.style.overflow='auto';}});}
         });
       </script>
 
@@ -954,22 +738,17 @@ footer{
     <!-- RIGHT: Price Sidebar -->
     <div class="price-sidebar scroll-fade" data-aos="fade-left">
       <h3>💰 Price Breakdown</h3>
-      
       <ul class="individual-prices">
         <li><span>CBC Test</span><span class="individual-price">Rs. 800</span></li>
         <li><span>Blood Sugar</span><span class="individual-price">Rs. 400</span></li>
         <li><span>Blood Pressure</span><span class="individual-price">Rs. 300</span></li>
       </ul>
-
       <div style="border-top:2px solid var(--primary-light);margin:1rem 0;"></div>
-
       <div style="padding:0.5rem 0;">
         <div class="total-label">Individual Total Cost</div>
         <div class="total-price" style="font-size:1.5rem;color:var(--text-muted);">Rs. 1,500</div>
       </div>
-
       <div style="border-top:2px solid var(--primary-light);margin:0.5rem 0;"></div>
-
       <div class="total-section">
         <div class="total-label">Basic Package Price</div>
         <div class="total-price">Rs. 2,500</div>
@@ -990,33 +769,11 @@ footer{
 ══════════════════════════════════════════ -->
 <footer>
   <div class="footer-content">
-    <div class="footer-section">
-      <h4>About Us</h4>
-      <ul>
-        <li><a href="about.html">Our Story</a></li>
-        <li><a href="expertteam.html">Team</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="service.html">Blood Tests</a></li>
-        <li><a href="service.html">Health Packages</a></li>
-        <li><a href="homecollection.html">Home Collection</a></li>
-      </ul>
-    </div>
-    <div class="footer-section">
-      <h4>Contact Us</h4>
-      <ul>
-        <li><a href="tel:+92300123456">📞 +92 (300) 123-456</a></li>
-        <li><a href="mailto:info@medicare.com">📧 info@medicare.com</a></li>
-        <li><a href="contact.html">📍 123 Medical Street, Karachi</a></li>
-      </ul>
-    </div>
+    <div class="footer-section"><h4>About Us</h4><ul><li><a href="about.html">Our Story</a></li><li><a href="expertteam.html">Team</a></li></ul></div>
+    <div class="footer-section"><h4>Services</h4><ul><li><a href="service.html">Blood Tests</a></li><li><a href="service.html">Health Packages</a></li><li><a href="homecollection.html">Home Collection</a></li></ul></div>
+    <div class="footer-section"><h4>Contact Us</h4><ul><li><a href="tel:+92300123456">📞 +92 (300) 123-456</a></li><li><a href="mailto:info@medicare.com">📧 info@medicare.com</a></li><li><a href="contact.html">📍 123 Medical Street, Karachi</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <p>&copy; <span id="year">2026</span> The Medicare Laboratory &amp; Diagnostic Center. All rights reserved. | Designed by Tahami Tech for your health</p>
-  </div>
+  <div class="footer-bottom"><p>&copy; <span id="year">2026</span> The Medicare Laboratory &amp; Diagnostic Center. All rights reserved. | Designed by Tahami Tech for your health</p></div>
 </footer>
 
 <!-- ══════════════════════════════════════════
@@ -1027,126 +784,77 @@ footer{
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
 <script>
-/* ── AOS ── */
-AOS.init({ duration: 720, once: true, easing: 'ease-out-cubic', offset: 55 });
-
-/* ── GSAP ── */
+AOS.init({duration:720,once:true,easing:'ease-out-cubic',offset:55});
 gsap.registerPlugin(ScrollTrigger);
 
-/* Page header stagger with badge */
 gsap.fromTo('.page-header .badge, .page-header h1, .page-header .sub-text',
-  { y: 15, opacity: 0 },
-  { y: 0, opacity: 1, duration: 0.5, stagger: 0.08, ease: 'power3.out', delay: 0.1 }
-);
+  {y:15,opacity:0},{y:0,opacity:1,duration:0.5,stagger:0.08,ease:'power3.out',delay:0.1});
 
-/* ── NAVBAR — SCROLL & ACTIVE LINK ── */
+var nav=document.getElementById('mainNav');
+var stb=document.getElementById('scrollTopBtn');
 
-var nav = document.getElementById('mainNav');
-var stb = document.getElementById('scrollTopBtn');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>60){nav.classList.add('nav-scrolled');}else{nav.classList.remove('nav-scrolled');}
+  if(window.scrollY>420){stb.classList.add('show');}else{stb.classList.remove('show');}
+},{passive:true});
 
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 60) {
-    nav.classList.add('nav-scrolled');
-  } else {
-    nav.classList.remove('nav-scrolled');
-  }
-  if (window.scrollY > 420) {
-    stb.classList.add('show');
-  } else {
-    stb.classList.remove('show');
-  }
-}, { passive: true });
-
-/* Active link highlight */
-function updateActiveLink() {
-  var navLinks = document.querySelectorAll('.nav-link');
-  var currentPage = window.location.pathname.split('/').pop();
-  navLinks.forEach(function(link) {
+function updateActiveLink(){
+  var navLinks=document.querySelectorAll('.nav-link');
+  var currentPage=window.location.pathname.split('/').pop();
+  navLinks.forEach(function(link){
     link.classList.remove('active');
-    var href = link.getAttribute('href');
-    if (href) {
-      if (href.includes('service') || currentPage === 'service.html') {
-        if (href.includes('service')) {
-          link.classList.add('active');
-        }
-      }
+    var href=link.getAttribute('href');
+    if(href&&(href.includes('service')||currentPage==='service.html')){
+      if(href.includes('service')){link.classList.add('active');}
     }
   });
 }
+window.addEventListener('load',function(){setTimeout(updateActiveLink,300);});
 
-window.addEventListener('load', function() {
-  setTimeout(updateActiveLink, 300);
-});
-
-/* Hamburger */
-function closeDrawer() {
-  var hbg = document.getElementById('hamburger');
-  var drw = document.getElementById('navDrawer');
-  if (hbg) hbg.classList.remove('open');
-  if (drw) drw.classList.remove('open');
-  document.body.style.overflow = '';
+function closeDrawer(){
+  var hbg=document.getElementById('hamburger');
+  var drw=document.getElementById('navDrawer');
+  if(hbg)hbg.classList.remove('open');
+  if(drw)drw.classList.remove('open');
+  document.body.style.overflow='';
 }
 
-/* Mobile nav is handled by javascript/mobile-nav.js */
-
-/* Smooth hash scroll */
-document.querySelectorAll('a[href^="#"]').forEach(function(a) {
-  a.addEventListener('click', function(e) {
-    var h = this.getAttribute('href');
-    if (h !== '#') {
-      var t = document.querySelector(h);
-      if (t) {
-        e.preventDefault();
-        closeDrawer();
-        t.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var h=this.getAttribute('href');
+    if(h!=='#'){
+      var t=document.querySelector(h);
+      if(t){e.preventDefault();closeDrawer();t.scrollIntoView({behavior:'smooth',block:'start'});}
     }
   });
 });
 
-stb.addEventListener('click', function() {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+stb.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
 
-/* Scroll-fade */
-var sfObs = new IntersectionObserver(function(entries) {
-  entries.forEach(function(e) {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      sfObs.unobserve(e.target);
-    }
+var sfObs=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('visible');sfObs.unobserve(e.target);}
   });
-}, { threshold: 0.1, rootMargin: '0px 0px -70px 0px' });
+},{threshold:0.1,rootMargin:'0px 0px -70px 0px'});
+document.querySelectorAll('.scroll-fade').forEach(function(el){sfObs.observe(el);});
 
-document.querySelectorAll('.scroll-fade').forEach(function(el) {
-  sfObs.observe(el);
-});
+var fc=document.querySelector('.footer-bottom p');
+if(fc)fc.innerHTML=fc.innerHTML.replace('2026',new Date().getFullYear());
 
-/* Dynamic year */
-var fc = document.querySelector('.footer-bottom p');
-if(fc) fc.innerHTML = fc.innerHTML.replace('2026', new Date().getFullYear());
-
-/* Button ripple */
 document.querySelectorAll('.cta-btn, .cta-btn-large, .book-btn, .btn-primary, .btn-secondary').forEach(function(btn){
-  btn.addEventListener('click', function(e){
-    var r = document.createElement('span');
-    var rc = btn.getBoundingClientRect();
-    var sz = Math.max(rc.width, rc.height);
-    r.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rc.left-sz/2)+'px;top:'+(e.clientY-rc.top-sz/2)+'px;transform:scale(0);animation:ripple 0.6s cubic-bezier(.34,1.56,.64,1);pointer-events:none;';
-    btn.style.position = 'relative'; btn.style.overflow = 'hidden';
+  btn.addEventListener('click',function(e){
+    var r=document.createElement('span');
+    var rc=btn.getBoundingClientRect();
+    var sz=Math.max(rc.width,rc.height);
+    r.style.cssText='position:absolute;border-radius:50%;background:rgba(255,255,255,0.25);width:'+sz+'px;height:'+sz+'px;left:'+(e.clientX-rc.left-sz/2)+'px;top:'+(e.clientY-rc.top-sz/2)+'px;transform:scale(0);animation:ripple 0.6s cubic-bezier(.34,1.56,.64,1);pointer-events:none;';
+    btn.style.position='relative';btn.style.overflow='hidden';
     btn.appendChild(r);
-    setTimeout(function(){ r.remove(); }, 620);
+    setTimeout(function(){r.remove();},620);
   });
 });
 </script>
 
-<!-- Ripple keyframe -->
-<style>
-@keyframes ripple{
-  0%{transform:scale(0);opacity:0.5;}
-  100%{transform:scale(3.5);opacity:0;}
-}
-</style>
+<style>@keyframes ripple{0%{transform:scale(0);opacity:0.5;}100%{transform:scale(3.5);opacity:0;}}</style>
 
 <!-- ═══ SECTION BUBBLES ═══ -->
 <style>
@@ -1217,7 +925,6 @@ document.querySelectorAll('.cta-btn, .cta-btn-large, .book-btn, .btn-primary, .b
 })();
 </script>
 
-<script src="../javascript/loader-nav.js"></script>
-<script src="../javascript/mobile-nav.js" defer></script>
+<!-- ⚠️ EXTERNAL JS REMOVED TO AVOID CONFLICTS -->
 </body>
 </html>
