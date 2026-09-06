@@ -638,11 +638,12 @@ footer{
 .scroll-fade.visible{opacity:1;transform:translateY(0) scale(1);}
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE (aligned with reference pages)
+   RESPONSIVE (aligned with advancetech layout)
 ═══════════════════════════════════════════ */
 @media(max-width:960px){
-  .checkup-grid, .premium-grid{grid-template-columns:1fr;}
+  .premium-grid{grid-template-columns:1fr;gap:1.5rem;}
   .price-sidebar{position:static;}
+  .premium-container{padding:0 1.5rem;}
 }
 @media(max-width:768px){
   .page-header{padding:10px 1.5rem 8px;min-height:6vh;}
@@ -652,12 +653,27 @@ footer{
   nav ul{display:none;}
   .nav-hamburger{display:flex;}
   .logo span{display:none;}
-  .card-header{padding:1.5rem 1.2rem;}
-  .card-header h1{font-size:1.5rem;}
+  .premium-card,
+  .benefits-section,
+  .comparison-section,
+  .cta-section,
+  .price-sidebar{border-radius:18px;}
+  .card-header{padding:1.5rem 1.2rem 1.1rem;}
+  .card-header h1{font-size:1.8rem;}
   .card-body{padding:1.2rem;}
+  .card-body h2{font-size:1.3rem;}
+  .card-body h3{font-size:1.08rem;}
+  .test-item{grid-template-columns:1fr;gap:0.35rem;padding:0.85rem 0.9rem;}
+  .test-price{justify-self:start;}
+  .info-box{padding:1rem 1.1rem;}
   .benefits-grid{grid-template-columns:1fr 1fr;}
   .premium-grid{padding:1rem 0;}
-  .checkup-container, .premium-container{padding:0 1.2rem;}
+  .premium-container{padding:0 1.2rem;}
+  .price-sidebar{padding:1.3rem;}
+  .total-price{font-size:1.8rem;}
+  .cta-section{padding:2.2rem 1.2rem;}
+  .cta-section h2{font-size:1.7rem;}
+  .footer-content{grid-template-columns:1fr;}
 }
 @media(max-width:480px){
   .page-header{padding:8px 1rem 6px;min-height:5vh;}
@@ -665,9 +681,19 @@ footer{
   .page-header .sub-text{font-size:0.45rem;}
   .benefits-grid{grid-template-columns:1fr;}
   .premium-grid{padding:0.8rem 0;}
-  .checkup-container, .premium-container{padding:0 1rem;}
+  .premium-container{padding:0 0.85rem;}
   .card-body{padding:1rem;}
   .card-header{padding:1.2rem 1rem;}
+  .card-header h1{font-size:1.4rem;}
+  .card-body h2{font-size:1.15rem;}
+  .card-body p,.info-box li,.test-name,.test-price,.total-section{font-size:0.92rem;}
+  .comparison-section,.benefits-section{padding:1.3rem 1rem;}
+  .table-wrapper{overflow-x:auto;}
+  table{min-width:420px;}
+  .cta-section h2{font-size:1.45rem;}
+  .cta-btn-large{width:100%;}
+  .nav-container{padding:0 1rem;}
+  .logo-img{width:46px;height:46px;}
 }
 </style>
 
