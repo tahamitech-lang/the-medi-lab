@@ -331,19 +331,17 @@ nav ul a.active::after{width:100% !important;}
 }
 
 /* ═══════════════════════════════════════════
-   MAIN CONTENT
+   MAIN CONTENT — PREMIUM CHECKUP
 ═══════════════════════════════════════════ */
 .premium-container{
   max-width:1200px;margin:0 auto;padding:0 2rem;
 }
 
-/* ── Main Grid ── */
 .premium-grid{
-  display:grid;grid-template-columns:1fr 360px;gap:2rem;
-  padding:1.5rem 0;
+  display:grid;grid-template-columns:1fr 340px;gap:2.5rem;
+  padding:2.5rem 0;
 }
 
-/* ── Card ── */
 .premium-card{
   background:#fff;
   border-radius:var(--radius);
@@ -355,7 +353,7 @@ nav ul a.active::after{width:100% !important;}
 .card-header{
   background:linear-gradient(145deg,var(--primary),var(--primary-dark));
   color:#fff;
-  padding:2rem 2rem 1.5rem;
+  padding:2.5rem 2.5rem 2rem;
   text-align:center;
   position:relative;
   overflow:hidden;
@@ -378,38 +376,38 @@ nav ul a.active::after{width:100% !important;}
   border:1px solid rgba(255,255,255,0.1);
 }
 .card-header h1{
-  font-size:2rem;font-weight:800;
-  margin-bottom:0.2rem;
+  font-size:2.2rem;font-weight:800;
+  margin-bottom:0.3rem;
 }
 .card-header p{
-  opacity:0.85;font-size:0.95rem;
+  opacity:0.85;font-size:1rem;
 }
 
-.card-body{padding:2rem;}
+.card-body{padding:2.5rem;}
 .card-body h2{
-  font-size:1.5rem;font-weight:800;
+  font-size:1.6rem;font-weight:800;
   color:var(--primary);
-  margin-bottom:0.8rem;
-  padding-bottom:0.6rem;
+  margin-bottom:1rem;
+  padding-bottom:0.8rem;
   border-bottom:3px solid var(--primary-light);
 }
 .card-body h3{
-  font-size:1.1rem;font-weight:700;
+  font-size:1.2rem;font-weight:700;
   color:var(--primary);
-  margin-top:1.5rem;margin-bottom:0.8rem;
+  margin-top:2rem;margin-bottom:1rem;
 }
 .card-body p{
   color:var(--text-muted);
-  font-size:0.95rem;line-height:1.8;
-  margin-bottom:0.8rem;
+  font-size:0.98rem;line-height:1.8;
+  margin-bottom:1rem;
 }
 
 /* ── Tests List ── */
 .tests-list{list-style:none;padding:0;}
 .test-item{
   display:grid;grid-template-columns:1fr auto;
-  gap:1rem;padding:0.6rem 1rem;
-  margin-bottom:0.4rem;
+  gap:1rem;padding:0.8rem 1rem;
+  margin-bottom:0.6rem;
   background:#f8faf8;
   border-radius:12px;
   border-left:4px solid var(--primary);
@@ -427,16 +425,16 @@ nav ul a.active::after{width:100% !important;}
 .info-box{
   background:linear-gradient(145deg,#f5faf5,#ffffff);
   border-left:4px solid var(--primary-light);
-  padding:1rem 1.2rem;
-  margin:0.8rem 0;
+  padding:1.2rem 1.5rem;
+  margin:1.2rem 0;
   border-radius:12px;
 }
-.info-box h3{color:var(--primary);margin-top:0;margin-bottom:0.4rem;font-size:0.95rem;}
+.info-box h3{color:var(--primary);margin-top:0;margin-bottom:0.6rem;font-size:1rem;}
 .info-box ul{list-style:none;padding:0;margin:0;}
 .info-box li{
-  padding:0.3rem 0;color:var(--text-muted);
+  padding:0.4rem 0;color:var(--text-muted);
   border-bottom:1px solid rgba(45,151,13,0.04);
-  font-size:0.88rem;
+  font-size:0.92rem;
 }
 .info-box li:last-child{border-bottom:none;}
 .info-box li::before{content:'✓ ';color:var(--primary-light);font-weight:700;}
@@ -445,24 +443,24 @@ nav ul a.active::after{width:100% !important;}
 .price-sidebar{
   background:#fff;
   border-radius:var(--radius);
-  padding:1.5rem;
+  padding:1.8rem;
   box-shadow:0 12px 48px rgba(45,151,13,0.06);
   border:1px solid rgba(45,151,13,0.04);
   height:fit-content;
   position:sticky;top:90px;
 }
 .price-sidebar h3{
-  font-size:1rem;font-weight:700;
+  font-size:1.1rem;font-weight:700;
   color:var(--primary);
   text-align:center;
-  padding-bottom:0.8rem;
+  padding-bottom:1rem;
   border-bottom:2px solid var(--primary-light);
-  margin-bottom:0.8rem;
+  margin-bottom:1.2rem;
 }
 .individual-prices{list-style:none;padding:0;}
 .individual-prices li{
   display:grid;grid-template-columns:1fr auto;
-  padding:0.3rem 0;font-size:0.82rem;
+  padding:0.5rem 0;font-size:0.9rem;
   border-bottom:1px solid rgba(0,0,0,0.03);
   color:var(--text-muted);
 }
@@ -471,35 +469,35 @@ nav ul a.active::after{width:100% !important;}
 
 .total-section{
   background:linear-gradient(145deg,#f0f8f0,#ffffff);
-  padding:1rem;
+  padding:1.2rem;
   border-radius:12px;
   border:2px solid var(--primary-light);
   margin-top:0.5rem;
 }
-.total-label{font-size:0.75rem;color:var(--text-muted);}
+.total-label{font-size:0.8rem;color:var(--text-muted);}
 .total-price{
-  font-size:2rem;font-weight:900;
+  font-size:2.2rem;font-weight:900;
   color:var(--primary);
   text-align:center;
 }
-.total-unit{text-align:center;color:var(--text-muted);font-size:0.75rem;}
+.total-unit{text-align:center;color:var(--text-muted);font-size:0.8rem;}
 
 .savings-badge{
   background:linear-gradient(135deg,#ff6b6b,#ee5a24);
-  color:#fff;padding:0.5rem;
+  color:#fff;padding:0.6rem;
   border-radius:10px;
   text-align:center;
   font-weight:700;
-  font-size:0.8rem;
-  margin:0.4rem 0;
+  font-size:0.85rem;
+  margin:0.6rem 0;
 }
 
 .book-btn{
-  width:100%;padding:0.8rem;
+  width:100%;padding:0.9rem;
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
   color:#fff;border:none;border-radius:60px;
-  font-size:0.95rem;font-weight:700;
-  cursor:pointer;margin-top:0.8rem;
+  font-size:1rem;font-weight:700;
+  cursor:pointer;margin-top:1rem;
   transition:transform 0.3s,box-shadow 0.3s;
   box-shadow:0 4px 20px rgba(45,151,13,0.3);
 }
@@ -512,24 +510,24 @@ nav ul a.active::after{width:100% !important;}
 .benefits-section{
   background:#fff;
   border-radius:var(--radius);
-  padding:2rem;
+  padding:2.5rem;
   box-shadow:0 12px 48px rgba(45,151,13,0.06);
   border:1px solid rgba(45,151,13,0.04);
-  margin-top:1.5rem;
+  margin-top:2rem;
 }
 .benefits-section h2{
-  font-size:1.5rem;font-weight:800;
+  font-size:1.6rem;font-weight:800;
   color:var(--primary);
-  margin-bottom:1rem;
-  padding-bottom:0.6rem;
+  margin-bottom:1.5rem;
+  padding-bottom:0.8rem;
   border-bottom:3px solid var(--primary-light);
 }
 .benefits-grid{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;
 }
 .benefit-card{
   background:linear-gradient(145deg,#f5faf5,#ffffff);
-  padding:1rem;
+  padding:1.2rem;
   border-radius:12px;
   border-left:4px solid var(--primary);
   transition:transform 0.3s,box-shadow 0.3s;
@@ -538,44 +536,43 @@ nav ul a.active::after{width:100% !important;}
   transform:translateY(-5px);
   box-shadow:0 8px 24px rgba(45,151,13,0.06);
 }
-.benefit-icon{font-size:2rem;margin-bottom:0.2rem;}
-.benefit-title{font-weight:600;color:var(--text-dark);margin-bottom:0.1rem;}
-.benefit-desc{font-size:0.82rem;color:var(--text-muted);}
+.benefit-icon{font-size:2.2rem;margin-bottom:0.3rem;}
+.benefit-title{font-weight:600;color:var(--text-dark);margin-bottom:0.2rem;}
+.benefit-desc{font-size:0.85rem;color:var(--text-muted);}
 
 /* ── Comparison Table ── */
 .comparison-section{
   background:#fff;
   border-radius:var(--radius);
-  padding:2rem;
+  padding:2.5rem;
   box-shadow:0 12px 48px rgba(45,151,13,0.06);
   border:1px solid rgba(45,151,13,0.04);
-  margin-top:1.5rem;
+  margin-top:2rem;
 }
 .comparison-section h2{
-  font-size:1.5rem;font-weight:800;
+  font-size:1.6rem;font-weight:800;
   color:var(--primary);
-  margin-bottom:1rem;
-  padding-bottom:0.6rem;
+  margin-bottom:1.5rem;
+  padding-bottom:0.8rem;
   border-bottom:3px solid var(--primary-light);
 }
 .table-wrapper{overflow-x:auto;}
 table{width:100%;border-collapse:collapse;}
 th{
   background:linear-gradient(135deg,var(--primary),var(--primary-dark));
-  color:#fff;padding:0.7rem 1rem;text-align:left;font-weight:600;
-  font-size:0.85rem;
+  color:#fff;padding:0.8rem 1rem;text-align:left;font-weight:600;
 }
-td{padding:0.6rem 1rem;border-bottom:1px solid #f0f0f0;font-size:0.85rem;}
+td{padding:0.7rem 1rem;border-bottom:1px solid #f0f0f0;font-size:0.9rem;}
 tr:hover{background:#f8faf8;}
 
 /* ── CTA Section ── */
 .cta-section{
   background:linear-gradient(145deg,var(--primary),var(--primary-dark));
   color:#fff;
-  padding:2.5rem 2rem;
+  padding:3rem 2.5rem;
   border-radius:var(--radius);
   text-align:center;
-  margin-top:1.5rem;
+  margin-top:2rem;
   position:relative;overflow:hidden;
 }
 .cta-section::before{
@@ -583,14 +580,14 @@ tr:hover{background:#f8faf8;}
   background:radial-gradient(ellipse at 30% 30%,rgba(79,240,84,0.06),transparent 60%);
 }
 .cta-section>*{position:relative;z-index:1;}
-.cta-section h2{font-size:1.8rem;font-weight:800;margin-bottom:0.6rem;}
-.cta-section p{font-size:1rem;opacity:0.9;margin-bottom:1.2rem;}
+.cta-section h2{font-size:2rem;font-weight:800;margin-bottom:0.8rem;}
+.cta-section p{font-size:1.05rem;opacity:0.9;margin-bottom:1.5rem;}
 
 .cta-btn-large{
-  padding:0.8rem 2.2rem;
+  padding:0.9rem 2.5rem;
   background:#fff;color:var(--primary);
   border:none;border-radius:60px;
-  font-size:0.95rem;font-weight:700;
+  font-size:1rem;font-weight:700;
   cursor:pointer;transition:transform 0.3s,box-shadow 0.3s;
   box-shadow:0 4px 20px rgba(0,0,0,0.1);
 }
@@ -638,7 +635,7 @@ footer{
 .scroll-fade.visible{opacity:1;transform:translateY(0) scale(1);}
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE (women health style)
+   RESPONSIVE — MATCHES HEALTHCHECKUP STYLE
 ═══════════════════════════════════════════ */
 @media(max-width:960px){
   .premium-grid{grid-template-columns:1fr;gap:1.2rem;}

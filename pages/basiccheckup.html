@@ -202,7 +202,7 @@ nav ul a.active::after{width:100% !important;}
 }
 
 /* ═══════════════════════════════════════════
-   PAGE HEADER — MINIMAL TOP SPACE + CENTERED
+   PAGE HEADER — BASIC CHECKUP STYLE
 ═══════════════════════════════════════════ */
 .page-header{
   background:linear-gradient(145deg,var(--primary) 0%,#4a8a3a 40%,var(--primary-dark) 100%);
@@ -241,7 +241,6 @@ nav ul a.active::after{width:100% !important;}
   justify-content:center;
 }
 
-/* ─── Page Header Badge ─── */
 .page-header .badge{
   display:inline-flex;
   align-items:center;
@@ -261,7 +260,6 @@ nav ul a.active::after{width:100% !important;}
 }
 .page-header .badge i{color:var(--primary-light);}
 
-/* ─── HEADING ─── */
 .page-header h1{
   font-size:clamp(1.4rem,2.8vw,2.2rem);
   font-weight:900;
@@ -280,7 +278,6 @@ nav ul a.active::after{width:100% !important;}
   background-clip:text;
 }
 
-/* ─── Page Header Sub Text ─── */
 .page-header .sub-text{
   font-size:0.6rem;
   opacity:0.9;
@@ -293,7 +290,6 @@ nav ul a.active::after{width:100% !important;}
   animation:heroFadeUp 0.9s ease 0.55s both;
 }
 
-/* ─── Floating Orbs ─── */
 .page-orb{
   position:absolute;
   border-radius:50%;
@@ -302,19 +298,15 @@ nav ul a.active::after{width:100% !important;}
   z-index:0;
 }
 .page-orb-1{
-  width:60px;
-  height:60px;
+  width:60px;height:60px;
   background:radial-gradient(circle,rgba(79,240,84,0.06),transparent 70%);
-  top:-15px;
-  right:-10px;
+  top:-15px;right:-10px;
   animation-delay:0s;
 }
 .page-orb-2{
-  width:40px;
-  height:40px;
+  width:40px;height:40px;
   background:radial-gradient(circle,rgba(255,255,255,0.04),transparent 70%);
-  bottom:-10px;
-  left:-10px;
+  bottom:-10px;left:-10px;
   animation-delay:4s;
 }
 @keyframes orbFloat{
@@ -331,19 +323,17 @@ nav ul a.active::after{width:100% !important;}
 }
 
 /* ═══════════════════════════════════════════
-   MAIN CONTENT
+   MAIN CONTENT — BASIC CHECKUP
 ═══════════════════════════════════════════ */
 .checkup-container{
   max-width:1200px;margin:0 auto;padding:0 2rem;
 }
 
-/* ── Main Grid ── */
 .checkup-grid{
   display:grid;grid-template-columns:1fr 340px;gap:2.5rem;
   padding:2.5rem 0;
 }
 
-/* ── Card ── */
 .checkup-card{
   background:#fff;
   border-radius:var(--radius);
@@ -627,7 +617,7 @@ footer{
 .scroll-fade.visible{opacity:1;transform:translateY(0) scale(1);}
 
 /* ═══════════════════════════════════════════
-   RESPONSIVE (women health style)
+   RESPONSIVE — MATCHES HEALTHCHECKUP STYLE
 ═══════════════════════════════════════════ */
 @media(max-width:960px){
   .checkup-grid{grid-template-columns:1fr;gap:1.2rem;}
